@@ -7,9 +7,7 @@ This browser based web application to ...
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
 * Hi, my name is Nickolay, looking forward to implement our project ideas into reality!
-* Hi, my name is Darrel, I can't wait to make this project useful for others!!!
-* ...
-* Hi, My name is Darrel.
+* Hi, my name is Darrel, I can't wait to make this project useful for others!!
 * Hi, My name is Manases, looking forward to learn about coding.
 	
 ## 3. Technologies and Resources Used
