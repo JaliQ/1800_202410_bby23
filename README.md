@@ -8,7 +8,7 @@ This browser based web application to ...
 List team members and/or short bio's here... 
 * Hi, my name is Nickolay, looking forward to implement our project ideas into reality!
 * Hi, My name is Darrel.
-* Hi, My name is Manases, looking forward to learn about coding. this is a test
+* Hi, My name is Manases, looking forward to learn about coding.
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
