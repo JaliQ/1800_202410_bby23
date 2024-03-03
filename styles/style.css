@@ -1,5 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* user attributes for the navbar */
+
+/* Navbar pre login */
+#login-navbar{
+        margin-right: 0.5vw;
+}       
+
+/* Navbar post login */
+
+/* User logo css */
+#user-logo{
+        width: 3vw;
+        height: auto;
+}       
+#username-tag{
+        margin-top: 1vh;
+}
+/* The search section in the navbar */
+#search-navbar{
+        margin-left: 5vw;
+}
+#search-input{
+        width: 40vw;
+}
+/* footer */
+footer{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(128, 128, 128, 0.431);
+        text-align: right;
+        display: grid;
+        grid-template-columns: 90vw 10vw;
+}
+#x-logo{
+        margin-left: 2vw;
+        width: 3vw;
+        height: auto;
+}
+#help-footer{
+        margin-top: 1vh;
+}
+
+
+
 .container{
     padding: 10px;
     margin: auto;
@@ -37,6 +82,8 @@
 }
 
 
+
+
 @media only screen and (max-width: 900px) {
     .focus-in-contract {
         animation: none;
@@ -56,6 +103,17 @@
         height: 50px;
         font-size: 22px;
     }
+
+    /* navbar search section */
+    #search-navbar{
+        margin-left: 0vw;
+    }
+
+    /* logo for the user name section navbar */
+    #user-logo{
+        width: 0vw;
+        height: auto;
+    } 
 }
 
 
