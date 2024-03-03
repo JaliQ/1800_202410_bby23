@@ -19,7 +19,7 @@
     <!-- Other libraries go here -->
 
     <!-- Link to styles of your own -->
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <link rel="stylesheet" href="./styles/style.css">
 
 </head>
 
@@ -35,27 +35,52 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Stocks
+                            Portfolios
                         </a>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Learn
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">My portfolio</a></li>
-                            <li><a class="dropdown-item" href="#">Watchlist</a></li>
+                            <li><a class="dropdown-item" href="#">Main portfolio</a></li>
+                            <li><a class="dropdown-item" href="#">Porfolio test</a></li>
+                            <li><a class="dropdown-item" href="#">Crypto portfolio</a></li>
                         </ul>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Favourites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">learn</a>
+                    </li> -->
+                    <li class="nav-item" id="search-navbar">
+                        <form class="d-flex" role="Username">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="d-flex" role="Username">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" id="username-tag">
+                                Username
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Porfile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="#">Help</a></li>
+                                <li><a class="dropdown-item" href="#">Send feedback</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="redir()">Sign out</a></li>
+                            </ul>
+                        </li>
+                        <div>
+                            <img id="user-logo" src="./img/userlogo.png" alt="">
+                        </div>
                 </form>
             </div>
         </div>
@@ -66,10 +91,22 @@
     <!-- Stuff for body goes here -->
 
 
+
+    <!-- The footer goes here -->
+    <footer>
+        <h4 id="help-footer">Help</h4>
+        <img id="x-logo" src="img/x_logo.png" alt="">
+    </footer>
+
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
 
+    <script>
+        redir = () =>{
+            window.location.href = "./index.html";
+        }
+    </script>
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
 
