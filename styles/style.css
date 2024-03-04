@@ -22,7 +22,7 @@
         margin-left: 5vw;
 }
 #search-input{
-        width: 40vw;
+        width: 30vw;
 }
 /* footer */
 footer{
@@ -36,8 +36,8 @@ footer{
 }
 #x-logo{
         margin-left: 2vw;
-        width: 3vw;
-        height: auto;
+        width: auto;
+        height: 6vh;
 }
 #help-footer{
         margin-top: 1vh;
@@ -118,6 +118,12 @@ footer{
         width: 0vw;
         height: auto;
     } 
+    /* logo of x in the footer */
+    #x-logo{
+        margin-left: 2vw;
+        width: auto;
+        height: 5vh;
+}
 }
 
 
