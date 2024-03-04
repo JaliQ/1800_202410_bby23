@@ -31,13 +31,18 @@
             <h1 class="focus-in-contract">The Asset Club</h1>
             <p>A virtual collection of your investments in cryptocurrencies and traditional stocks. It provides a comprehensive overview of your holdings, including the types of assets you own, their current market value, and their performance over time.</p>
             <form action="GET">
-                <input type="button" value="Sign Up" class="shadow-pop-tr" onclick="redir()">
-                <input type="button" value="Sign In" class="shadow-pop-tr" onclick="redir()">
+                <input id="1" type="button" value="Sign Up" class="shadow-pop-tr" onclick="redir()">
+                <input id="2" type="button" value="Sign In" class="shadow-pop-tr" onclick="redir()">
             </form>
     </div>
     <script>
         redir = () =>{
-            window.location.href = "./login.html";
+            if (event.target.id=="1"){
+                window.location.href = "./signup.html";
+            }
+            else{
+                window.location.href = "./login.html";
+            }
         }
     </script>
 

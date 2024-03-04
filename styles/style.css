@@ -81,7 +81,11 @@ footer{
     margin: 10px;
 }
 
+/*Sign Up*/
 
+.form-group{
+        margin: 10px;
+}
 
 
 @media only screen and (max-width: 900px) {
