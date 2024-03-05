@@ -43,6 +43,31 @@ footer{
         margin-top: 1vh;
 }
 
+/* card */
+.card{
+        margin: 0 auto;
+        border-radius: 25px;
+        background: #73AD21;
+        height: 70px;
+        width: 500px;
+}
+
+.card img{
+        width: 30px;
+}
+
+.card img:hover{
+        cursor: pointer;
+}
+
+.card-content {
+        display: flex;
+        justify-content: space-evenly;
+}
+
+.stock-name{
+        text-align: center;
+}
 
 
 .container{
