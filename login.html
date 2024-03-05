@@ -23,10 +23,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <link rel="stylesheet" href="./styles/style.css">
 
-    <style>
-            @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-    </style>
-
 </head>
 
 <body>
@@ -55,15 +51,13 @@ loginForm.addEventListener('submit', (e) =>{
     e.preventDefault();
     const email = loginForm["login-email"].value;
     const pass = loginForm["login-pass1"].value;
-    try{
-        auth.signInWithEmailAndPassword(email, pass).then(cred =>{
+    auth.signInWithEmailAndPassword(email, pass).then(cred =>{
             console.log(cred);
             window.location.href = "./main.html";    
+        }).catch( function (error) {
+            alert(error.message);
         })
-    } catch {
-        alert("Password or email is not correct");
-    }
-})
+    })
     </script>
 </body>
 

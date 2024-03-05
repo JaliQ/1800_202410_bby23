@@ -61,6 +61,8 @@
         if (pass1==pass2){
                 auth.createUserWithEmailAndPassword(email,pass1).then(cred =>{
                 window.location.href = "./main.html";
+            }).catch(function(error){
+                alert(error.message);
             });
         }else{
             alert("Passwords do not match!");
