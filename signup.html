@@ -34,40 +34,81 @@
             <h1 class="display-5 fw-bold mb-4" style="font-family: Montserrat;">Assets Club</h1>
             <form id="signup-form">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="signup-email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="signup-email" aria-describedby="emailHelp"
+                        placeholder="blablabla@mail.com">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="signup-pass1" placeholder="Password">
+                    <label for="exampleInputEmail1">First Name</label>
+                    <input type="text" class="form-control" id="signup-firstname" aria-describedby="firstnameHelp"
+                        placeholder="John">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Last Name</label>
+                    <input type="text" class="form-control" id="signup-lastname" aria-describedby="lastnameHelp"
+                        placeholder="Doe">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="signup-pass1" placeholder="*********">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Confirm Password</label>
-                    <input type="password" class="form-control" id="signup-pass2" placeholder="Password">
+                    <input type="password" class="form-control" id="signup-pass2" placeholder="*********">
                 </div>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
-              </form>
+            </form>
         </div>
     </div>
     <script src="./scripts/firebaseAPI_BBY23.js"></script>
     <script>
         //Create user profile
-    const signupForm = document.getElementById("signup-form");
-    signupForm.addEventListener("submit", (e) =>{
-        e.preventDefault();
-        const email = signupForm["signup-email"].value;
-        const pass1 = signupForm["signup-pass1"].value;     
-        const pass2 = signupForm["signup-pass2"].value;
-        if (pass1==pass2){
-                auth.createUserWithEmailAndPassword(email,pass1).then(cred =>{
-                window.location.href = "./main.html";
-            }).catch(function(error){
-                alert(error.message);
-            });
-        }else{
-            alert("Passwords do not match!");
-        }
-    })
+        const signupForm = document.getElementById("signup-form");
+        signupForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const email = signupForm["signup-email"].value;
+            const firstName = signupForm["signup-firstname"].value;
+            const lastName = signupForm["signup-lastname"].value;
+            const pass1 = signupForm["signup-pass1"].value;
+            const pass2 = signupForm["signup-pass2"].value;
+
+            console.log(email, pass1)
+            const usersRef = db.collection("users");
+
+            const dictionary = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+            let upperCaseFlag = false;
+            let lowerCaseFlag = false;
+            // console.log(email, pass1, firstName, lastName)
+            for (let i = 0; i < dictionary.length; i++) {
+                for (let j = 0; j < pass1.length; j++) {
+                    if(dictionary[i] == pass1[j]){
+                        upperCaseFlag = true;
+                    } else if(dictionary[i].toLowerCase() == pass1[j]){
+                        lowerCaseFlag = true;
+                    } 
+                }   
+            }
+            if(upperCaseFlag && lowerCaseFlag){
+                console.log("success")
+                usersRef.add({
+                    email: email,
+                    first_name: firstName,
+                    last_name: lastName
+                });
+                if (pass1==pass2){
+                        auth.createUserWithEmailAndPassword(email,pass1).then(cred =>{
+                        window.location.href = "./main.html";
+                    }).catch(function(error){
+                        alert(error.message);
+                    });
+                }else{
+                    alert("Passwords do not match!");
+                }
+            } else {
+                alert("Password must contain upper case & lower case letters");
+            }
+        })
     </script>
     <script src="./scripts/authentication.js"></script>
 </body>
