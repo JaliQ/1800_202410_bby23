@@ -25,27 +25,56 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Asset Club</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Asset Club</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Portfolios
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Main portfolio</a></li>
+                        <li><a class="dropdown-item" href="#">Porfolio test</a></li>
+                        <li><a class="dropdown-item" href="#">Crypto portfolio</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Learn</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Favourites</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">learn</a>
+                </li> -->
+                
+            </ul>
+            <form class="d-flex" role="Username">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Portfolios
+                            aria-expanded="false" id="username-tag">
+                            Username
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Main portfolio</a></li>
-                            <li><a class="dropdown-item" href="#">Porfolio test</a></li>
-                            <li><a class="dropdown-item" href="#">Crypto portfolio</a></li>
+                            <li><a class="dropdown-item" href="#" id="open-popup-profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Help</a></li>
+                            <li><a class="dropdown-item" href="#">Send feedback</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="redir()">Sign out</a></li>
                         </ul>
                     </li>
+<<<<<<< HEAD
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="./learn.html">Learn</a>
                     </li>
@@ -83,8 +112,42 @@
                         </div>
                 </form>
             </div>
+=======
+                    <div>
+                        <img id="user-logo" src="./img/userlogo.png" alt="">
+                    </div>
+            </form>
+>>>>>>> 7496164 (Modify the login and sign up page, added a pop up window to modify the user's information, and a pop up window to add a new asset.)
         </div>
-    </nav>
+    </div>
+</nav>
+
+    <!-- pop up to update the profile information -->
+    <dialog id="profile-pop-up">
+        <h3 id="header-popup">Profile</h3>
+        <form>
+            <div class="input-profile-popup">
+                <label for="Name">First Name:</label>
+                <input type="text" value="" class="input-popup">
+            </div>
+            <div class="input-profile-popup">
+                <label for="Name">Last Name:</label>
+                <input type="text" value="" class="input-popup">
+            </div>
+            <div class="input-profile-popup">
+                <label for="Name" id="email-popup">Email:</label>
+                <input type="email" value="" class="input-popup">
+            </div>
+            <div class="input-profile-popup">
+                <label for="Name" id="password-label-popup">Password:</label>
+                <input type="password" value="" class="input-popup">
+            </div>
+            <div id="button-popup">
+            <button type="submit" class="btn-popup">Save</button>
+            <button type="submit" id="close-popup-profile" class="btn-popup">Close</button>
+        </div>
+        </form>
+    </dialog>
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
@@ -174,7 +237,49 @@
                 </div>
             </div>
         </div>
+        <div class="card" id="add-stock">
+            <div class="card-content" id="add-stock">
+                <img id="plus-icon" src="./img/plus-icon.jpg" alt="plus">
+            </div>
+        </div>
     </div>
+
+    <!-- pop up to add a stock -->
+    <dialog id="add-stock-popup">
+        <h3>Add asset</h3>
+        <form>
+            <div class="input-addAsset-popup">
+                <label for="">Asset</label>
+                <input type="text">
+            </div>
+            <div class="input-addAsset-popup">
+                <label for="">Stock</label>
+                <input type="radio">
+                <label for="" id="label-cripto-popup">Criptocurrencies</label>
+                <input type="radio">
+            </div>
+            <div class="input-addAsset-popup">
+                <label for="">Quantity</label>
+                <input type="number" id="quantity-popup-input">
+            </div>
+            <div class="input-addAsset-popup">
+                <label for="">Price per Stock</label>
+                <input type="number" id="price-popup-input">
+            </div>
+            <div class="input-addAsset-popup">
+                <label for="">Date</label>
+                <input type="date">
+            </div>
+            <div class="input-addAsset-popup">
+                <label for="">Total</label>
+                <input type="text" id="total-popup-input">
+            </div>
+            <div class="input-addAsset-popup">
+                <button type="submit" class="btn-popup">Save</button>
+                <button type="submit" id="close-addStock-popup" class="btn-popup">Close</button>
+            </div>
+        </form>
+    </dialog>
 
 
     <!-- The footer goes here -->
@@ -193,7 +298,8 @@
         }    
     </script>
     <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/skeleton.js"></script>
 
 </body>
 

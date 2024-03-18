@@ -3,29 +3,33 @@
 /* user attributes for the navbar */
 
 /* Navbar pre login */
-#login-navbar{
+#login-navbar {
         margin-right: 0.5vw;
-}       
+}
 
 /* Navbar post login */
 
 /* User logo css */
-#user-logo{
+#user-logo {
         width: 3vw;
         height: auto;
-}       
-#username-tag{
+}
+
+#username-tag {
         margin-top: 1vh;
 }
+
 /* The search section in the navbar */
-#search-navbar{
+#search-navbar {
         margin-left: 5vw;
 }
-#search-input{
+
+#search-input {
         width: 30vw;
 }
+
 /* footer */
-footer{
+footer {
         position: fixed;
         bottom: 0;
         width: 100%;
@@ -34,17 +38,19 @@ footer{
         display: grid;
         grid-template-columns: 90vw 10vw;
 }
-#x-logo{
+
+#x-logo {
         margin-left: 2vw;
         width: auto;
         height: 6vh;
 }
-#help-footer{
+
+#help-footer {
         margin-top: 1vh;
 }
 
 /* card */
-.card{
+.card {
         margin: 0 auto;
         border-radius: 25px;
         background: #73AD21;
@@ -52,11 +58,11 @@ footer{
         width: 500px;
 }
 
-.card img{
+.card img {
         width: 30px;
 }
 
-.card img:hover{
+.card img:hover {
         cursor: pointer;
 }
 
@@ -65,90 +71,343 @@ footer{
         justify-content: space-evenly;
 }
 
-.stock-name{
+.stock-name {
         text-align: center;
 }
 
+/* Sign up page */
+#sign-up {
+        width: 50vw;
+        height: auto;
+        border-radius: 30px;
+        margin: 1vw;
+        margin-left: 25vw;
+}
 
-.container{
-    padding: 10px;
-    margin: auto;
-    height: 600px;
-    text-align: center;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.637);
+/* sign up image */
+#sign-up-img {
+        width: 30vw;
+        height: auto;
+}
+
+/* inputs */
+#signup-email {
+        width: 30vw;
+        margin-left: 6vw;
+}
+
+#signup-pass1 {
+        width: 30vw;
+        margin-left: 6vw;
+}
+
+#signup-pass2 {
+        width: 30vw;
+        margin-left: 6vw;
+}
+
+/* Login page */
+#login {
+        width: 50vw;
+        height: auto;
+        border-radius: 30px;
+        margin: 1vw;
+        margin-left: 25vw;
+        text-align: center;
+        align-items: center;
+}
+#login-form{
+        width: 45vw;
+}
+/* image of the login */
+#img-login {
+        width: 30vw;
+        height: auto;
+}
+
+
+
+/* login inputs */
+#login-email {
+        width: 30vw;
+        margin-left: 6vw;
+}
+
+#login-pass1 {
+        width: 30vw;
+        margin-left: 6vw;
+}
+
+/* main page */
+/* cards */
+.card{
+        margin-top: 1vh;
+}
+/* Profile pop up */
+#profile-pop-up{
+        border-radius: 30px;
+        background-color: white;
+        width: 40vw;
+        height: 40vh;
+        text-align: center;
+}
+#header-popup{
+        margin-top: 1vh;
+}
+#email-popup{
+        margin-left: 2.5vw;
+}
+.input-popup{
+        width: 15vw;
+}
+
+.input-profile-popup{
+        margin-top: 1vh;
+}
+#button-popup{
+        margin-top: 1vh;
+}
+/* add stocks button */
+#add-stock{
+        text-align: center;
+}
+#plus-icon{
+        margin-top: 0.5vh;
+        /* margin-left: 14vw; */
+        height: 8vh;
+        width: 5vw;
+}
+
+/* add a stock pop-up */
+#add-stock-popup{
+        width: 30vw;
+        background-color: white;
+        border-radius: 30px;
+        text-align: center;
+}
+#quantity-popup-input{
+        width: 8vw;
+}
+#price-popup-input{
+        width: 10vw;
+}
+#total-popup-input{
+        width: 10vw;
+}
+#label-cripto-popup{
+        margin-left: 1vw;
+}
+.input-addAsset-popup{
+        margin-top: 1vh;
+}
+/* buttons for the pop-up windows */
+.btn-popup{
+        background-color: #000000;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+}
+/* close buttons inside the popup windows */
+#close-popup-profile, #close-addStock-popup{
+        background-color: red;
+}
+
+.container {
+        padding: 10px;
+        margin: auto;
+        height: 600px;
+        text-align: center;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.637);
 }
 
 .focus-in-contract {
-	-webkit-animation: focus-in-contract 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: focus-in-contract 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        -webkit-animation: focus-in-contract 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: focus-in-contract 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .shadow-pop-tr {
-	-webkit-animation: shadow-pop-tr 0.4s cubic-bezier(0.470, 0.000, 0.745, 0.715) 2s both;
-	        animation: shadow-pop-tr 0.4s cubic-bezier(0.470, 0.000, 0.745, 0.715) 2s both;
+        -webkit-animation: shadow-pop-tr 0.4s cubic-bezier(0.470, 0.000, 0.745, 0.715) 2s both;
+        animation: shadow-pop-tr 0.4s cubic-bezier(0.470, 0.000, 0.745, 0.715) 2s both;
 }
 
-.container h1{
-    font-size: 55px;
+.container h1 {
+        font-size: 55px;
 }
 
-.container p{
-    font-size: 28px;
-    margin-bottom: 90px ;
+.container p {
+        font-size: 28px;
+        margin-bottom: 90px;
 }
 
-.container input{
-    width: 150px;
-    font-size: 32px;
-    height: 60px;
-    border-radius: 6px;
-    margin: 10px;
+.container input {
+        width: 150px;
+        font-size: 32px;
+        height: 60px;
+        border-radius: 6px;
+        margin: 10px;
 }
 
 /*Sign Up*/
 
-.form-group{
+.form-group {
         margin: 10px;
 }
 
 
 @media only screen and (max-width: 900px) {
-    .focus-in-contract {
-        animation: none;
-    }
+        .focus-in-contract {
+                animation: none;
+        }
 
-    .container h1{
-        font-size: 38px;
-    }
-    
-    .container p{
-        font-size: 22px;
-        margin-bottom: 5px;
-    }
-    
-    .container input{
-        width: 90px;
-        height: 50px;
-        font-size: 22px;
-    }
+        .container h1 {
+                font-size: 38px;
+        }
 
-    /* navbar search section */
-    #search-navbar{
-        margin-left: 0vw;
-    }
+        .container p {
+                font-size: 22px;
+                margin-bottom: 5px;
+        }
 
-    /* logo for the user name section navbar */
-    #user-logo{
-        width: 0vw;
-        height: auto;
-    } 
-    /* logo of x in the footer */
-    #x-logo{
-        margin-left: 2vw;
-        width: auto;
-        height: 5vh;
+        .container input {
+                width: 90px;
+                height: 50px;
+                font-size: 22px;
+        }
+
+        /* navbar search section */
+        #search-navbar {
+                margin-left: 0vw;
+        }
+
+        /* logo for the user name section navbar */
+        #user-logo {
+                width: 10vw;
+                height: auto;
+                margin-left: 3vw;
+        }
+
+        /* logo of x in the footer */
+        #x-logo {
+                margin-left: 2vw;
+                width: auto;
+                height: 5vh;
+        }
+
+        /* login */
+        #login {
+                width: 100vw;
+                height: auto;
+                margin: 0%;
+
+        }
+
+        #login-form{
+                width: 80vw;
+                margin-left: 0%;
+        }
+
+        #img-login {
+                width: 60vw;
+                height: auto;
+                margin-top: 5vh;
+        }
+
+        /* login inputs */
+        #login-email {
+                width: 60vw;
+                margin-left: 10vw;
+        }
+
+        #login-pass1 {
+                width: 60vw;
+                margin-left: 10vw;
+        }
+
+        /* sign up page */
+        #sign-up {
+                width: 100vw;
+                height: auto;
+                margin: 0%;
+        }
+
+        /* sign up image */
+        #sign-up-img {
+                width: 60vw;
+                height: auto;
+        }
+
+        /* inputs */
+        #signup-email {
+                width: 60vw;
+                margin-left: 10vw;
+        }
+
+        #signup-pass1 {
+                width: 60vw;
+                margin-left: 10vw;
+        }
+
+        #signup-pass2 {
+                width: 60vw;
+                margin-left: 10vw;
+        }
+
+        /* plus icon to add stock */
+        #plus-icon{
+                margin-top: 1vh;
+                /* margin-left: 38vw; */
+                height: 8vh;
+                width: 14vw;
+        }
+
+        /* add stock pop-up */
+        #add-stock-popup{
+                width: 70vw;
+        }
+        #quantity-popup-input{
+                width: 15vw;
+        }
+        #price-popup-input{
+                width: 15vw;
+        }
+        #total-popup-input{
+                width: 15vw;
+        }
+        #label-cripto-popup{
+                margin-left: 1vw;
+        }
+        .input-addAsset-popup{
+                margin-top: 1vh;
+        }
+
+        /* Profile pop up */
+#profile-pop-up{
+        border-radius: 30px;
+        background-color: white;
+        width: 80vw;
+        height: 40vh;
+        text-align: center;
 }
+#header-popup{
+        margin-top: 1vh;
+}
+#email-popup{
+        margin-left: 8vw;
+}
+.input-popup{
+        width: 35vw;
+}
+#password-label-popup{
+        margin-left: 2vw;
+}
+
 }
 
 
@@ -168,59 +427,64 @@ footer{
  * animation focus-in-contract
  * ----------------------------------------
  */
- @-webkit-keyframes focus-in-contract {
-    0% {
-      letter-spacing: 1em;
-      -webkit-filter: blur(12px);
-              filter: blur(12px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-filter: blur(0px);
-              filter: blur(0px);
-      opacity: 1;
-    }
-  }
-  @keyframes focus-in-contract {
-    0% {
-      letter-spacing: 1em;
-      -webkit-filter: blur(12px);
-              filter: blur(12px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-filter: blur(0px);
-              filter: blur(0px);
-      opacity: 1;
-    }
-  }
+@-webkit-keyframes focus-in-contract {
+        0% {
+                letter-spacing: 1em;
+                -webkit-filter: blur(12px);
+                filter: blur(12px);
+                opacity: 0;
+        }
 
-  @-webkit-keyframes shadow-pop-tr {
-    0% {
-      -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
-              box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
-      -webkit-transform: translateX(0) translateY(0);
-              transform: translateX(0) translateY(0);
-    }
-    100% {
-      -webkit-box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
-              box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
-      -webkit-transform: translateX(-8px) translateY(8px);
-              transform: translateX(-8px) translateY(8px);
-    }
-  }
-  @keyframes shadow-pop-tr {
-    0% {
-      -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
-              box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
-      -webkit-transform: translateX(0) translateY(0);
-              transform: translateX(0) translateY(0);
-    }
-    100% {
-      -webkit-box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
-              box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
-      -webkit-transform: translateX(-8px) translateY(8px);
-              transform: translateX(-8px) translateY(8px);
-    }
-  }
-  
+        100% {
+                -webkit-filter: blur(0px);
+                filter: blur(0px);
+                opacity: 1;
+        }
+}
+
+@keyframes focus-in-contract {
+        0% {
+                letter-spacing: 1em;
+                -webkit-filter: blur(12px);
+                filter: blur(12px);
+                opacity: 0;
+        }
+
+        100% {
+                -webkit-filter: blur(0px);
+                filter: blur(0px);
+                opacity: 1;
+        }
+}
+
+@-webkit-keyframes shadow-pop-tr {
+        0% {
+                -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+                box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+                -webkit-transform: translateX(0) translateY(0);
+                transform: translateX(0) translateY(0);
+        }
+
+        100% {
+                -webkit-box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
+                box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
+                -webkit-transform: translateX(-8px) translateY(8px);
+                transform: translateX(-8px) translateY(8px);
+        }
+}
+
+@keyframes shadow-pop-tr {
+        0% {
+                -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+                box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+                -webkit-transform: translateX(0) translateY(0);
+                transform: translateX(0) translateY(0);
+        }
+
+        100% {
+                -webkit-box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
+                box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
+                -webkit-transform: translateX(-8px) translateY(8px);
+                transform: translateX(-8px) translateY(8px);
+        }
+}
