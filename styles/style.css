@@ -96,6 +96,16 @@ footer {
         margin-left: 6vw;
 }
 
+#signup-firstname{
+        width: 30vw;
+        margin-left: 6vw; 
+}
+
+#signup-lastname{
+        width: 30vw;
+        margin-left: 6vw; 
+}
+
 #signup-pass1 {
         width: 30vw;
         margin-left: 6vw;
@@ -345,6 +355,16 @@ footer {
 
         /* inputs */
         #signup-email {
+                width: 60vw;
+                margin-left: 10vw;
+        }
+
+        #signup-firstname{
+                width: 60vw;
+                margin-left: 10vw; 
+        }
+        
+        #signup-lastname{
                 width: 60vw;
                 margin-left: 10vw;
         }

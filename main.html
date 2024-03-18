@@ -26,71 +26,38 @@
 <body>
     <!-- Navbar -->
     <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Asset Club</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Portfolios
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Main portfolio</a></li>
-                        <li><a class="dropdown-item" href="#">Porfolio test</a></li>
-                        <li><a class="dropdown-item" href="#">Crypto portfolio</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Learn</a>
-                </li>
-
-                <!-- <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Favourites</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">learn</a>
-                </li> -->
-                
-            </ul>
-            <form class="d-flex" role="Username">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Asset Club</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false" id="username-tag">
-                            Username
+                            aria-expanded="false">
+                            Portfolios
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" id="open-popup-profile">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Help</a></li>
-                            <li><a class="dropdown-item" href="#">Send feedback</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="redir()">Sign out</a></li>
+                            <li><a class="dropdown-item" href="#">Main portfolio</a></li>
+                            <li><a class="dropdown-item" href="#">Porfolio test</a></li>
+                            <li><a class="dropdown-item" href="#">Crypto portfolio</a></li>
                         </ul>
                     </li>
-<<<<<<< HEAD
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="./learn.html">Learn</a>
                     </li>
-
+    
                     <!-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Favourites</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">learn</a>
                     </li> -->
-                    <li class="nav-item" id="search-navbar">
-                        <form class="d-flex" role="Username">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </li>
+                    
                 </ul>
                 <form class="d-flex" role="Username">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -100,7 +67,7 @@
                                 Username
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Porfile</a></li>
+                                <li><a class="dropdown-item" href="#" id="open-popup-profile">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Settings</a></li>
                                 <li><a class="dropdown-item" href="#">Help</a></li>
                                 <li><a class="dropdown-item" href="#">Send feedback</a></li>
@@ -112,15 +79,8 @@
                         </div>
                 </form>
             </div>
-=======
-                    <div>
-                        <img id="user-logo" src="./img/userlogo.png" alt="">
-                    </div>
-            </form>
->>>>>>> 7496164 (Modify the login and sign up page, added a pop up window to modify the user's information, and a pop up window to add a new asset.)
         </div>
-    </div>
-</nav>
+    </nav>
 
     <!-- pop up to update the profile information -->
     <dialog id="profile-pop-up">
@@ -254,24 +214,24 @@
             </div>
             <div class="input-addAsset-popup">
                 <label for="">Stock</label>
-                <input type="radio">
-                <label for="" id="label-cripto-popup">Criptocurrencies</label>
-                <input type="radio">
+                <input type="radio" id="radio-stock" onclick="clearOther(this)">
+                <label for="" id="label-cripto-popup">Criptocurrency</label>
+                <input type="radio" id="radio-crypto" onclick="clearOther(this)">
             </div>
             <div class="input-addAsset-popup">
                 <label for="">Quantity</label>
-                <input type="number" id="quantity-popup-input">
+                <input type="number" id="quantity-popup-input" oninput="calculate()">
             </div>
             <div class="input-addAsset-popup">
                 <label for="">Price per Stock</label>
-                <input type="number" id="price-popup-input">
+                <input type="number" id="price-popup-input" oninput="calculate()">
             </div>
             <div class="input-addAsset-popup">
                 <label for="">Date</label>
                 <input type="date">
             </div>
             <div class="input-addAsset-popup">
-                <label for="">Total</label>
+                <label for="">Total $</label>
                 <input type="text" id="total-popup-input">
             </div>
             <div class="input-addAsset-popup">
@@ -292,14 +252,14 @@
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
 
-    <script>
+    <!-- <script>
         redir = () =>{
         window.location.href = "./index.html";
         }    
-    </script>
+    </script> -->
     <!-- Link to scripts of your own -->
     <script src="./scripts/script.js"></script>
-    <script src="./scripts/skeleton.js"></script>
+    <!-- <script src="./scripts/skeleton.js"></script> -->
 
 </body>
 
