@@ -10,7 +10,7 @@ function displayArticle() {
         .then( doc => {
             content = doc.data().content;
             // only populate title, and image
-            document.getElementById('content').innerHTML = content;
+            document.getElementById('learn-content').innerHTML = content;
         } );
 }
 
