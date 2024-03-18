@@ -1,4 +1,4 @@
-export function writeUsers(email, firstName, lastName){
+function writeUsers(email, firstName, lastName){
     // populate datain in users collection on firestore database 
     const usersRef = db.collection("users");
     usersRef.add({
@@ -9,3 +9,6 @@ export function writeUsers(email, firstName, lastName){
     console.log("in the main js")
 
 }
+
+
+
