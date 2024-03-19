@@ -74,6 +74,7 @@
 
             console.log(email, pass1)
             const usersRef = db.collection("users");
+            const portsRef = db.collection("portfolios");
 
             const dictionary = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -94,7 +95,8 @@
                 usersRef.add({
                     email: email,
                     first_name: firstName,
-                    last_name: lastName
+                    last_name: lastName,
+                    portfolio_id: []
                 });
                 if (pass1==pass2){
                         auth.createUserWithEmailAndPassword(email,pass1).then(cred =>{
