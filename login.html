@@ -35,32 +35,40 @@
             <h1 class="display-5 fw-bold mb-4" style="font-family: Montserrat;">Assets Club</h1>
             <form id="login-form">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp"
+                        placeholder="Enter email">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="login-pass1" placeholder="Password">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="login-pass1" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary">Log In</button>
             </form>
+        </div>
     </div>
-  </div>
 
     <script src="./scripts/firebaseAPI_BBY23.js"></script>
     <script>
         const loginForm = document.getElementById("login-form");
-loginForm.addEventListener('submit', (e) =>{
-    e.preventDefault();
-    const email = loginForm["login-email"].value;
-    const pass = loginForm["login-pass1"].value;
-    auth.signInWithEmailAndPassword(email, pass).then(cred =>{
-            console.log(cred);
-            window.location.href = "./main.html";    
-        }).catch( function (error) {
-            alert(error.message);
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = loginForm["login-email"].value;
+            const pass = loginForm["login-pass1"].value;
+            auth.signInWithEmailAndPassword(email, pass).then(cred => {
+                console.log(cred);
+                window.location.href = "./main.html";
+            }).catch(function (error) {
+                alert(error.message);
+            })
         })
-    })
+    </script>
+    <script>
+        const usersRef = db.collection("users");
+        const userEmail = loginForm["login-email"].value;
+        const usernameQueryRef = usersRef.where('email', '==', 'harrypotter@mail.com').get();
+
+        console.log(usernameQueryRef, "<<<<<")
     </script>
 </body>
 

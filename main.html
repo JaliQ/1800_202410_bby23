@@ -64,7 +64,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false" id="username-tag">
-                                Username
+                                
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#" id="open-popup-profile">Profile</a></li>
@@ -260,7 +260,7 @@
     <!-- Link to scripts of your own -->
     <script src="./scripts/script.js"></script>
     <script>
-        const usersRef = db.collection("users");
+        document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");
     </script>
 
 </body>

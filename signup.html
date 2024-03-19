@@ -99,8 +99,10 @@
                     portfolio_id: []
                 });
                 if (pass1==pass2){
-                        auth.createUserWithEmailAndPassword(email,pass1).then(cred =>{
-                        window.location.href = "./main.html";
+                    localStorage.setItem("first_name", firstName);
+                    localStorage.setItem("last_name", lastName);
+                    auth.createUserWithEmailAndPassword(email,pass1).then(cred =>{
+                    window.location.href = "./main.html";
                     }).catch(function(error){
                         alert(error.message);
                     });
