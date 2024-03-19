@@ -50,14 +50,14 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="./learn.html">Learn</a>
                     </li>
-    
+
                     <!-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Favourites</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">learn</a>
                     </li> -->
-                    
+
                 </ul>
                 <form class="d-flex" role="Username">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -86,26 +86,29 @@
     <dialog id="profile-pop-up">
         <h3 id="header-popup">Profile</h3>
         <form>
+            <fieldset class="mb-3" id="personalInfoFields" disabled>
             <div class="input-profile-popup">
                 <label for="Name">First Name:</label>
-                <input type="text" value="" class="input-popup">
+                <input type="text" placeholder="Enter your name" class="input-popup" id="firstNameInput">
             </div>
             <div class="input-profile-popup">
                 <label for="Name">Last Name:</label>
-                <input type="text" value="" class="input-popup">
+                <input type="text" placeholder="Enter Last Name" class="input-popup" id="lastNameInput">
             </div>
             <div class="input-profile-popup">
                 <label for="Name" id="email-popup">Email:</label>
-                <input type="email" value="" class="input-popup">
+                <input type="email" placeholder="Enter email" class="input-popup" id="emailInput">
             </div>
-            <div class="input-profile-popup">
+        </fieldset>
+            <!-- <div class="input-profile-popup">
                 <label for="Name" id="password-label-popup">Password:</label>
-                <input type="password" value="" class="input-popup">
-            </div>
+                <input type="password" value="" class="input-popup" id="passwordInput">
+            </div> -->
             <div id="button-popup">
-            <button type="submit" class="btn-popup">Save</button>
-            <button type="submit" id="close-popup-profile" class="btn-popup">Close</button>
-        </div>
+                <button type="submit" class="btn-popup" id="saveBtn" onclick="saveUserInfo()">Save</button>
+                <button type="submit" class="btn-popup" id="edit-profile-popup" onclick="editUserInfo()">Edit</button>
+                <button type="submit" id="close-popup-profile" class="btn-popup">Close</button>
+            </div>
         </form>
     </dialog>
     <!------------------------------>
@@ -209,21 +212,21 @@
         <h3>Add asset</h3>
         <form>
             <div class="input-addAsset-popup">
-                <label for="">Asset</label>
+                <label for="asset">Asset</label>
                 <input type="text">
             </div>
             <div class="input-addAsset-popup">
-                <label for="">Stock</label>
+                <label for="stock">Stock</label>
                 <input type="radio" id="radio-stock" onclick="clearOther(this)">
-                <label for="" id="label-cripto-popup">Criptocurrency</label>
+                <label for="Crypto" id="label-cripto-popup">Criptocurrency</label>
                 <input type="radio" id="radio-crypto" onclick="clearOther(this)">
             </div>
             <div class="input-addAsset-popup">
-                <label for="">Quantity</label>
+                <label for="Quantity">Quantity</label>
                 <input type="number" id="quantity-popup-input" oninput="calculate()">
             </div>
             <div class="input-addAsset-popup">
-                <label for="">Price per Stock</label>
+                <label for="Price">Price per Stock</label>
                 <input type="number" id="price-popup-input" oninput="calculate()">
             </div>
             <div class="input-addAsset-popup">
@@ -231,7 +234,7 @@
                 <input type="date">
             </div>
             <div class="input-addAsset-popup">
-                <label for="">Total $</label>
+                <label for="date">Total $</label>
                 <input type="text" id="total-popup-input">
             </div>
             <div class="input-addAsset-popup">
@@ -259,6 +262,8 @@
     </script> -->
     <!-- Link to scripts of your own -->
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/firebaseAPI_BBY23.js"></script>
+    <script src="./scripts/profile.js"></script>
     <script>
         document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");
     </script>

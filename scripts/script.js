@@ -49,3 +49,5 @@ function clearOther(clickedRadio) {
     var otherRadio = document.getElementById(otherRadioId);
     otherRadio.checked = false;
 }
+
+
