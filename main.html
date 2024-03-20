@@ -17,7 +17,14 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <!-- Other libraries go here -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css">
 
@@ -95,10 +102,10 @@
                 <label for="Name">Last Name:</label>
                 <input type="text" placeholder="Enter Last Name" class="input-popup" id="lastNameInput">
             </div>
-            <div class="input-profile-popup">
+            <!-- <div class="input-profile-popup">
                 <label for="Name" id="email-popup">Email:</label>
                 <input type="email" placeholder="Enter email" class="input-popup" id="emailInput">
-            </div>
+            </div> -->
         </fieldset>
             <!-- <div class="input-profile-popup">
                 <label for="Name" id="password-label-popup">Password:</label>
@@ -218,7 +225,7 @@
             <div class="input-addAsset-popup">
                 <label for="stock">Stock</label>
                 <input type="radio" id="radio-stock" onclick="clearOther(this)">
-                <label for="Crypto" id="label-cripto-popup">Criptocurrency</label>
+                <label for="Crypto" id="label-cripto-popup">Cryptocurrency</label>
                 <input type="radio" id="radio-crypto" onclick="clearOther(this)">
             </div>
             <div class="input-addAsset-popup">
@@ -235,7 +242,7 @@
             </div>
             <div class="input-addAsset-popup">
                 <label for="date">Total $</label>
-                <input type="text" id="total-popup-input">
+                <input type="text" id="total-popup-input" disabled> 
             </div>
             <div class="input-addAsset-popup">
                 <button type="submit" class="btn-popup">Save</button>
