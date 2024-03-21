@@ -26,6 +26,7 @@
 </head>
 
 <body>
+
     <div class="min-vh-100 bg-light" id="sign-up">
         <div class="text-center pt-5">
             <img src="./img/candlestick.jpeg" alt="candlestick.jpg" class="img-fluid" id="sign-up-img">
@@ -83,14 +84,14 @@
             // console.log(email, pass1, firstName, lastName)
             for (let i = 0; i < dictionary.length; i++) {
                 for (let j = 0; j < pass1.length; j++) {
-                    if(dictionary[i] == pass1[j]){
+                    if (dictionary[i] == pass1[j]) {
                         upperCaseFlag = true;
-                    } else if(dictionary[i].toLowerCase() == pass1[j]){
+                    } else if (dictionary[i].toLowerCase() == pass1[j]) {
                         lowerCaseFlag = true;
-                    } 
-                }   
+                    }
+                }
             }
-            if(upperCaseFlag && lowerCaseFlag){
+            if (upperCaseFlag && lowerCaseFlag) {
                 console.log("success")
                 usersRef.add({
                     email: email,
@@ -98,15 +99,15 @@
                     last_name: lastName,
                     portfolio_id: []
                 });
-                if (pass1==pass2){
+                if (pass1 == pass2) {
                     localStorage.setItem("first_name", firstName);
                     localStorage.setItem("last_name", lastName);
-                    auth.createUserWithEmailAndPassword(email,pass1).then(cred =>{
-                    window.location.href = "./main.html";
-                    }).catch(function(error){
+                    auth.createUserWithEmailAndPassword(email, pass1).then(cred => {
+                        window.location.href = "./main.html";
+                    }).catch(function (error) {
                         alert(error.message);
                     });
-                }else{
+                } else {
                     alert("Passwords do not match!");
                 }
             } else {
@@ -115,6 +116,7 @@
         })
     </script>
     <!-- <script src="./scripts/authentication.js"></script> -->
+    <script src="./scripts/script.js"></script>
 </body>
 
 </html>

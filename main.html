@@ -32,62 +32,7 @@
 
 <body>
     <!-- Navbar -->
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Asset Club</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Portfolios
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Main portfolio</a></li>
-                            <li><a class="dropdown-item" href="#">Porfolio test</a></li>
-                            <li><a class="dropdown-item" href="#">Crypto portfolio</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./learn.html">Learn</a>
-                    </li>
-
-                    <!-- <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Favourites</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">learn</a>
-                    </li> -->
-
-                </ul>
-                <form class="d-flex" role="Username">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false" id="username-tag">
-                                
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" id="open-popup-profile">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Help</a></li>
-                                <li><a class="dropdown-item" href="#">Send feedback</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="redir()">Sign out</a></li>
-                            </ul>
-                        </li>
-                        <div>
-                            <img id="user-logo" src="./img/userlogo.png" alt="">
-                        </div>
-                </form>
-            </div>
-        </div>
-    </nav>
+    <nav id="navbarPlaceholder"></nav>
 
     <!-- pop up to update the profile information -->
     <dialog id="profile-pop-up">
@@ -114,10 +59,12 @@
             <div id="button-popup">
                 <button type="submit" class="btn-popup" id="saveBtn" onclick="saveUserInfo()">Save</button>
                 <button type="submit" class="btn-popup" id="edit-profile-popup" onclick="editUserInfo()">Edit</button>
-                <button type="submit" id="close-popup-profile" class="btn-popup">Close</button>
+                <button type="submit" id="close-popup-profile" class="btn-popup" onclick="closeModal()">Close</button>
             </div>
         </form>
     </dialog>
+
+    
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
@@ -271,8 +218,9 @@
     <script src="./scripts/script.js"></script>
     <script src="./scripts/firebaseAPI_BBY23.js"></script>
     <script src="./scripts/profile.js"></script>
+    <script src="./scripts/skeleton.js"></script>
     <script>
-        document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");
+        // document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");
     </script>
 
 </body>

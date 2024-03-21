@@ -2,18 +2,32 @@ function sayHello() {
 }
 //sayHello();
 
+//------------------------------------------------
+// Call this function when the "logout" button is clicked
+//-------------------------------------------------
+// function logout() {
+//     firebase.auth().signOut().then(() => {
+//         // Sign-out successful.
+//         console.log("logging out user");
+//         window.location.href = "./index.html";
+//       }).catch((error) => {
+//         // An error happened.
+//       });
+// }
+
 // modal for the profile popup window
 const modal = document.querySelector('#profile-pop-up');
-const openModal = document.querySelector('#open-popup-profile');
-const closeModal = document.querySelector('#close-popup-profile');
+//const openModal = document.querySelector('#open-popup-profile');
+// const closeModal = document.querySelector('#close-popup-profile');
 
-openModal.addEventListener('click', () => {
+function openModal() {
     modal.showModal();
-})
+}
 
-closeModal.addEventListener('click', function () {
+function closeModal() {
     modal.close();
-})
+    document.getElementById('personalInfoFields').disabled = true;
+}
 
 // modal to add a stock to your portfolio
 const modal1 = document.querySelector('#add-stock-popup');

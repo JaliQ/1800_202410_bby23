@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Assets Club</title>
+    <meta name="comp1800 template" content="My 1800 App">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Boostrap Library JS CDN  go here -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- Other libraries go here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="./styles/style.css">
+
+</head>
+
+<body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+
+    <!-- our own navbar goes here -->
+    <div id="navbarPlaceholder"></div>
+
+    <!-- pop up to update the profile information -->
+    <dialog id="profile-pop-up">
+        <h3 id="header-popup">Profile</h3>
+        <form>
+            <fieldset class="mb-3" id="personalInfoFields" disabled>
+                <div class="input-profile-popup">
+                    <label for="Name">First Name:</label>
+                    <input type="text" placeholder="Enter your name" class="input-popup" id="firstNameInput">
+                </div>
+                <div class="input-profile-popup">
+                    <label for="Name">Last Name:</label>
+                    <input type="text" placeholder="Enter Last Name" class="input-popup" id="lastNameInput">
+                </div>
+                <!-- <div class="input-profile-popup">
+            <label for="Name" id="email-popup">Email:</label>
+            <input type="email" placeholder="Enter email" class="input-popup" id="emailInput">
+        </div> -->
+            </fieldset>
+            <!-- <div class="input-profile-popup">
+            <label for="Name" id="password-label-popup">Password:</label>
+            <input type="password" value="" class="input-popup" id="passwordInput">
+        </div> -->
+            <div id="button-popup">
+                <button type="submit" class="btn-popup" id="saveBtn" onclick="saveUserInfo()">Save</button>
+                <button type="submit" class="btn-popup" id="edit-profile-popup" onclick="editUserInfo()">Edit</button>
+                <button type="submit" id="close-popup-profile" class="btn-popup" onclick="closeModal()">Close</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- the body of your page goes here -->
+    <!-- stuff -->
+
+
+    <!-- our own footer goes here-->
+    <nav id="footerPlaceholder"></nav>
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+
+    <!-- <script>
+        redir = () =>{
+        window.location.href = "./index.html";
+        }    
+    </script> -->
+    <!-- Link to scripts of your own -->
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/firebaseAPI_BBY23.js"></script>
+    <script src="./scripts/profile.js"></script>
+
+</body>
+
+</html>
