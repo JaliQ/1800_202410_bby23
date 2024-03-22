@@ -91,14 +91,8 @@
                 }   
             }
             if(upperCaseFlag && lowerCaseFlag){
-                console.log("success")
-                usersRef.add({
-                    email: email,
-                    first_name: firstName,
-                    last_name: lastName,
-                    portfolio_id: []
-                });
-                if (pass1==pass2){
+                if(pass1 == pass2) {
+                    console.log("success")
                     localStorage.setItem("first_name", firstName);
                     localStorage.setItem("last_name", lastName);
                     auth.createUserWithEmailAndPassword(email,pass1).then(cred =>{
