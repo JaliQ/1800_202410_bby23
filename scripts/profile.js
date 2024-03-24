@@ -1,5 +1,4 @@
-var currentUser;              //points to the document of the user who is logged in
-
+var currentUser;               //points to the document of the user who is logged in
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
@@ -17,6 +16,9 @@ function populateUserInfo() {
                     // let userEmail = userDoc.data().email;
 
                     // console.log(userName, userLastName, userEmail, " in populate info")
+                    let userName = userDoc.data().first_name;
+                    let userLast = userDoc.data().last_name;
+                    // let userEmail = userDoc.data().email;
 
                     // //if the data fields are not empty, then write them in to the form.
                     // if (userName != null) {
@@ -49,21 +51,19 @@ function saveUserInfo() {
     currentUser = db.collection("users")
 
     //a) get user entered values
-    userName = document.getElementById('firstNameInput').value;       //get the value of the field with id="nameInput"
-    userLastName = document.getElementById('lastNameInput').value;     //get the value of the field with id="schoolInput"
-    userEmail = document.getElementById('emailInput').value;       //get the value of the field with id="cityInput"
+    userName = document.getElementById('firstNameInput').value;      
+    userLast = document.getElementById('lastNameInput').value;     
+    // userEmail = document.getElementById('emailInput').value; 
 
-
-    console.log(userName, userLastName, userEmail, "<<<<<<<<,")
     //b) update user's document in Firestore
     currentUser.update({
         first_name: userName,
-        last_name: userLastName,
-        email: userEmail
+        last_name: userLast
+        // city: userCity
     })
-        .then(() => {
-            console.log("Document successfully updated!");
-        })
+    .then(() => {
+        console.log("Document successfully updated!");
+    })
 
     //c) disable edit 
     document.getElementById('personalInfoFields').disabled = true;
