@@ -40,6 +40,7 @@
     
     .dropDown:hover .dropContent{
         display: block;
+        text-align: center;
     }
     
     .dropItem:hover {
@@ -52,13 +53,15 @@
     #brand-navbar {
         margin-top: 20%;
         margin-left: 15%;
+        margin-right: 5vw;
         font-size: 20px;
     }
     
     #options-navbar {
         display: grid;
-        grid-template-columns: 8% 8% 80%;
+        grid-template-columns: 8% 8% 84%;
         margin-top: 1%;
+        margin-left: 3vw;
     }
     
     #portfolioTag{
@@ -68,28 +71,29 @@
     
     #learnTag{
         margin-top: 18%;
-        margin-left: 0%;
+        margin-left: 2vw;
     }
     
     
     
     #usertag {
-        margin-top: 18%;
-        text-align: center;
+        margin-top: 10%;
+        text-align: right;
+        margin-right: 0%;
     
     }
     
     #username {
-        margin-left: 80%;
+        margin-left: 70%;
         display: grid;
         grid-template-columns: 50% 50%;
     }
     
     #userlogo {
         margin-top: 1vh;
-        margin-left: 5%;
-        height: 70%;
-        width: 50%;
+        margin-left: 1vw;
+        height: 60%;
+        width: 40%;
     }
 
 /* footer */
@@ -426,7 +430,11 @@ footer {
                 margin-top: 1%;
                 text-align: center;
             }
-            
+            #portfolioTag{
+                margin-top: 10%;
+               margin-right: 0%;
+            }
+
             #learnTag{
                 margin-top: 10%;
                 margin-left: 0%;
