@@ -368,6 +368,20 @@ footer {
         margin: 10px;
 }
 
+#learn-content{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        font: "Montserrat";
+        text-align: center;
+}
+
+#learn-content p{
+        font-size: 26px;
+}
 
 @media only screen and (max-width: 900px) {
         .focus-in-contract {
@@ -582,15 +596,24 @@ footer {
         text-align: left;
 }
 
-}
-
 #learn-content{
-        margin-top: 20px;
+        text-align: justify;
         padding: 10px;
-        font: "Montserrat";
-        font-size: 26px;
 }
 
+#learn-content p{
+        font-size: 16px;
+        font-weight: bold;
+}
+
+}
+
+
+
+
+.card-body a{
+        text-decoration: none;
+}
 
 
 

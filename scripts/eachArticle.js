@@ -9,6 +9,7 @@ function displayArticle() {
         .get()
         .then( doc => {
             content = doc.data().content;
+            content = "<p>"+content+"</p>";
             // only populate title, and image
             document.getElementById('learn-content').innerHTML = content;
         } );
