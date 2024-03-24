@@ -24,7 +24,7 @@
               <a class="dropItem" href="#">Settings</a>
               <a class="dropItem" href="#">Help</a>
               <a class="dropItem" href="#" onclick="openModalFeedback()">Send feedback</a>
-              <a class="dropItem" href="./index.html">Sign out</a>
+              <a class="dropItem" href="#" onclick="signout()">Sign out</a>
             </div>
           </div>
         </div>
@@ -37,6 +37,11 @@
 
 
 
-
-<script src="../scripts/script.js"></script>
+<script>
+  signout = () => {
+    firebase.auth().signOut()
+    window.location.href = "../index.html"
+  }
+</script>
+<script src="./scripts/script.js"></script>
 <script>document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");</script>

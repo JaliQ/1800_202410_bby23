@@ -91,7 +91,7 @@ closeModalAddStock.addEventListener('click', function () {
     
 })
 
-redirLearn = () => {
+function redirLearn () {
     window.location.href = "./learn.html";
 }
 

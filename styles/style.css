@@ -216,6 +216,7 @@ footer {
 /* cards */
 .card{
         margin-top: 1vh;
+        width: 100%;
 }
 /* Profile pop up */
 #profile-pop-up{
