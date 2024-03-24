@@ -1,32 +1,96 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* user attributes for the navbar */
-
-/* Navbar pre login */
-#login-navbar {
-        margin-right: 0.5vw;
-}
-
-/* Navbar post login */
-
-/* User logo css */
-#user-logo {
-        width: 3vw;
-        height: auto;
-}
-
-#username-tag {
+#navbar {
+        background-color: rgb(214, 214, 214);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 10% 90%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+   #navbar a{
+        cursor: pointer;
+   } 
+    .dropDown{
+        display: inline-block;
+        cursor: pointer;
+    }
+    
+    .dropDown a{
+        display: block;
+        color: black;
+        text-decoration: none;
+    }
+    
+    .dropDown .dropContent{
+        margin-top: 0vh;
+        display: none;
+        position:absolute;
+        background-color: rgb(240, 240, 240);
+        min-width: 100px;
+        box-shadow: 2px 2px 5px black;
+        padding: 1vh 1vw;
+        z-index: 1000;
+    }
+    
+    .dropContent a{
+        padding: 1vh;
+    }
+    
+    .dropDown:hover .dropContent{
+        display: block;
+    }
+    
+    .dropItem:hover {
+        background-color: rgb(19, 19, 19);
+        color: white;
+    }
+    
+    
+    
+    #brand-navbar {
+        margin-top: 20%;
+        margin-left: 15%;
+        font-size: 20px;
+    }
+    
+    #options-navbar {
+        display: grid;
+        grid-template-columns: 8% 8% 80%;
+        margin-top: 1%;
+    }
+    
+    #portfolioTag{
+        margin-top: 18%;
+       margin-right: 0%;
+    }
+    
+    #learnTag{
+        margin-top: 18%;
+        margin-left: 0%;
+    }
+    
+    
+    
+    #usertag {
+        margin-top: 18%;
+        text-align: center;
+    
+    }
+    
+    #username {
+        margin-left: 80%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    
+    #userlogo {
         margin-top: 1vh;
-}
-
-/* The search section in the navbar */
-#search-navbar {
-        margin-left: 5vw;
-}
-
-#search-input {
-        width: 30vw;
-}
+        margin-left: 5%;
+        height: 70%;
+        width: 50%;
+    }
 
 /* footer */
 footer {
@@ -180,12 +244,38 @@ footer {
 /* add stocks button */
 #add-stock{
         text-align: center;
+        cursor: pointer;
 }
+
+/* Plus card to add an asset */
+#plusTag{
+        font-size: 50px;
+}
+
 #plus-icon{
         margin-top: 0.5vh;
         /* margin-left: 14vw; */
         height: 8vh;
         width: 5vw;
+}
+
+/* Send feedback pop up */
+#sendFeedback{
+        width: 40vw;
+        background-color: white;
+        border-radius: 30px;
+        text-align: center;
+}
+#tInput{
+        width: 20vw;
+}
+
+#desPopup{
+        height: 20vh;
+        width: 20vw;
+        margin-bottom: 2vh;
+        margin-top: 1vh;
+        text-align: start;
 }
 
 /* add a stock pop-up */
@@ -196,13 +286,13 @@ footer {
         text-align: center;
 }
 #quantity-popup-input{
-        width: 8vw;
+        width: 11vw;
 }
 #price-popup-input{
-        width: 10vw;
+        width: 8vw;
 }
 #total-popup-input{
-        width: 10vw;
+        width: 12vw;
 }
 #label-cripto-popup{
         margin-left: 1vw;
@@ -210,6 +300,14 @@ footer {
 .input-addAsset-popup{
         margin-top: 1vh;
 }
+#dateAddAsset{
+        width: 13vw;
+        text-align: center;
+}
+
+/* #addAssetLabel{
+        margin-left: 5vw;
+} */
 /* buttons for the pop-up windows */
 .btn-popup{
         background-color: #000000;
@@ -291,24 +389,60 @@ footer {
                 font-size: 22px;
         }
 
-        /* navbar search section */
-        #search-navbar {
-                margin-left: 0vw;
-        }
-
-        /* logo for the user name section navbar */
-        #user-logo {
-                width: 10vw;
-                height: auto;
-                margin-left: 3vw;
-        }
-
-        /* logo of x in the footer */
-        #x-logo {
-                margin-left: 2vw;
-                width: auto;
-                height: 5vh;
-        }
+        #navbar {
+                background-color: rgb(214, 214, 214);
+                overflow: hidden;
+                display: grid;
+                grid-template-rows: 40% 60%;
+                grid-template-columns: 100%;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+        
+            #brand-navbar {
+                margin-top: 2%;
+                font-size: 20px;
+                margin-left: 0%;
+                text-align: center;
+            }
+        
+            #options-navbar {
+                display: grid;
+                grid-template-columns: 33% 33% 33%;
+                margin-top: 1%;
+                text-align: center;
+            }
+            
+            #learnTag{
+                margin-top: 10%;
+                margin-left: 0%;
+            }
+        
+            #userlogo {
+                height: 0%;
+                width: 0%;
+            }
+        
+            #username {
+                display: grid;
+                margin-left: 0%;
+                grid-template-columns: 100%;
+            }
+        
+            #usertag {
+                margin-top: 10%;
+                text-align: center;
+            
+            }
+        
+            .dropDown .dropContent{
+                margin-top: 0vh;
+                display: none;
+                position: absolute;
+                background-color: rgb(240, 240, 240);
+                min-width: 100px;
+                box-shadow: 2px 2px 5px black;
+                padding: 1vh 1vw;
+            }
 
         /* login */
         #login {
@@ -426,6 +560,26 @@ footer {
 }
 #password-label-popup{
         margin-left: 2vw;
+}
+/* Send feedback pop up */
+#sendFeedback{
+        width: 80vw;
+        height: 60vh;
+        background-color: white;
+        border-radius: 30px;
+        text-align: center;
+}
+
+#tInput{
+        width: 50vw;
+}
+
+#desPopup{
+        height: 20vh;
+        width: 50vw;
+        margin-bottom: 2vh;
+        margin-top: 1vh;
+        text-align: left;
 }
 
 }

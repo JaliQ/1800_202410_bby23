@@ -1,58 +1,42 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="./main.html">Asset Club</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Portfolios
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Main portfolio</a></li>
-                        <li><a class="dropdown-item" href="#">Porfolio test</a></li>
-                        <li><a class="dropdown-item" href="#">Crypto portfolio</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./learn.html">Learn</a>
-                </li>
-
-                <!-- <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Favourites</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">learn</a>
-                </li> -->
-                
-            </ul>
-            <form class="d-flex" role="Username">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false" id="username-tag">
-                    
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" id="open-popup-profile" onclick="openModal()">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Help</a></li>
-                            <li><a class="dropdown-item" href="#">Send feedback</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="redir()">Sign out</a></li>
-                        </ul>
-                    </li>
-                    <div>
-                        <img id="user-logo" src="./img/userlogo.png" alt="">
-                    </div>
-            </form>
+<!-- Navbar goes here -->
+<nav id="navbar">
+    <div id="brand-navbar"><a id="brand-tag" onclick="redirHome()">AssetClub</a></div>
+    <div id="options-navbar">
+      <div class="dropDown">
+        <div id="portfolioTag">
+        <a id="portfolio" onclick="redirHome()">Portfolio</a> 
+      </div>
+        <div class="dropContent">
+          <a class="dropItem" href="#">Main Portfolio</a>
+          <a class="dropItem" href="#">Crypto</a>
+          <a class="dropItem" href="#">Secundary Portfolio</a>
         </div>
+      </div>
+      <div id="learnTag"><a id="learn" onclick="redirLearn()">Learn</a></div>
+      <div id="username">
+        <div id="usertag">
+          <div class="dropDown">
+            <div id="userTag">
+            <a id="username-tag"></a> 
+          </div>
+            <div class="dropContent">
+              <a class="dropItem" href="#" onclick="openModal()">Profile</a>
+              <a class="dropItem" href="#">Settings</a>
+              <a class="dropItem" href="#">Help</a>
+              <a class="dropItem" href="#" onclick="openModalFeedback()">Send feedback</a>
+              <a class="dropItem" href="./index.html">Sign out</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img id="userlogo" src="./img/userlogo.png" alt="">
+        </div>
+      </div>
     </div>
-</nav>
+  </nav>
+
+
+
+
 
 <script>document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");</script>

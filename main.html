@@ -64,6 +64,26 @@
         </form>
     </dialog>
 
+    <!-- Pop up window to sendfeedback -->
+    <dialog id="sendFeedback">
+        <h3 id="feedback">Send feedback to Asset Club</h3>
+        <form>
+            <div class="input-feedback-popup">
+                <label for="title">Title</label><br>
+                <input type="text" placeholder="Title" class="input-popup" id="tInput">
+            </div>
+            <div class="input-profile-popup">
+                <label for="Name">What did you think of Asset Club?</label><br>
+                <textarea placeholder="Description" class="input-popup" id="desPopup"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn-popup" id="saveBtn" onclick="submitFeedback()">Submit</button>
+                <button type="submit" id="close-popup-profile" class="btn-popup"
+                    onclick="closeModalFeeback()">Close</button>
+            </div>
+        </form>
+    </dialog>
+
     
     <!------------------------------>
     <!-- Your HTML Layout go here -->
@@ -156,7 +176,7 @@
         </div>
         <div class="card" id="add-stock">
             <div class="card-content" id="add-stock">
-                <img id="plus-icon" src="./img/plus-icon.jpg" alt="plus">
+                <h1 id="plusTag">+</h1>
             </div>
         </div>
     </div>
@@ -164,10 +184,10 @@
     <!-- pop up to add a stock -->
     <dialog id="add-stock-popup">
         <h3>Add asset</h3>
-        <form>
-            <div class="input-addAsset-popup">
+        <form id="addAssetForm">
+            <div class="input-addAsset-popup" id="addAssetLabel">
                 <label for="asset">Asset</label>
-                <input type="text">
+                <input type="text" id="assetInput">
             </div>
             <div class="input-addAsset-popup">
                 <label for="stock">Stock</label>
@@ -185,7 +205,7 @@
             </div>
             <div class="input-addAsset-popup">
                 <label for="">Date</label>
-                <input type="date">
+                <input type="date" id="dateAddAsset">
             </div>
             <div class="input-addAsset-popup">
                 <label for="date">Total $</label>
