@@ -11,7 +11,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 let pg = document.getElementById('portfolio-display');
                 let str = "<p>You portfolios are: "
                 portfolios.forEach(element => {
-                    str+=element.portfolioName;
+                    str+=(element.portfolioName + " ");
                 });
                 str+="</p>";
                 pg.innerHTML=str;
@@ -29,6 +29,7 @@ firebase.auth().onAuthStateChanged((user) => {
     
                     db.collection("users").doc(user.uid).update({ portfolios: portfolios }).then(() => {
                         console.log("Portfolio created successfully.");
+                        location.reload();
                     }).catch((error) => {
                         console.error("Error updating document:", error);
                     });
