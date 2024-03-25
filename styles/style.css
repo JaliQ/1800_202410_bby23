@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+#portfolio-display p{
+        font-family: "Montserrat";
+        text-align: center;
+        font-size: 36px;
+        padding-top: 30px;
+}
+
 /* user attributes for the navbar */
 #navbar {
         background-color: rgb(214, 214, 214);

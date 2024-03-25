@@ -7,7 +7,12 @@
         <a id="portfolio" onclick=""></a>Portfolios</a> 
       </div>
         <div class="dropContent loads-portfolios">
-          <button class="btn btn-primary dropItem" onclick="">Create New Portfolio</button>
+                    <div class="load-here">
+
+                    </div>          
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Create New Portfolio
+                    </button>               
         </div>
       </div>
       <div id="learnTag"><a id="learn" onclick="redirLearn()">Learn</a></div>
@@ -33,25 +38,14 @@
     </div>
   </nav>
 
-
+ 
 
 <script>
   signout = () => {
     firebase.auth().signOut()
     window.location.href = "../index.html"
   }
-
-  loadPortfolios = () => {
-
-    db.collection("users").doc().get()
-        .then(userDoc => {
-            userDoc.forEach(doc => {
-              var portfolioId = userDoc.data().portfolio_id;
-              console.log(portfolioId)
-            })
-        })
-
-}
 </script>
+<script src="../scripts/portfolios.js"></script>
 <script src="./scripts/script.js"></script>
 <script>document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");</script>
