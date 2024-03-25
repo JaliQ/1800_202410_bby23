@@ -75,7 +75,6 @@
 
             console.log(email, pass1)
             const usersRef = db.collection("users");
-            const portsRef = db.collection("portfolios");
 
             const dictionary = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -93,19 +92,25 @@
             }
             if (upperCaseFlag && lowerCaseFlag) {
                 console.log("success")
-                usersRef.add({
-                    email: email,
-                    first_name: firstName,
-                    last_name: lastName,
-                    portfolio_id: []
-                });
+                
                 if (pass1 == pass2) {
                     localStorage.setItem("first_name", firstName);
                     localStorage.setItem("last_name", lastName);
-                    auth.createUserWithEmailAndPassword(email, pass1).then(cred => {
+                    auth.createUserWithEmailAndPassword(email, pass1).then(cred => { 
+                        console.log("creatind db table")
+                        usersRef.doc(cred.user.uid).set({
+                        email: email,
+                        first_name: firstName,
+                        last_name: lastName,
+                        portfolios: []
+                    }).then(() => {
+                        console.log("Profile created")
                         window.location.href = "./main.html";
+                    });
+                    
                     }).catch(function (error) {
                         alert(error.message);
+                        
                     });
                 } else {
                     alert("Passwords do not match!");

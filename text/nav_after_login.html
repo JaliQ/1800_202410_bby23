@@ -4,12 +4,10 @@
     <div id="options-navbar">
       <div class="dropDown">
         <div id="portfolioTag">
-        <a id="portfolio" onclick=""></a>Portfolio</a> 
+        <a id="portfolio" onclick=""></a>Portfolios</a> 
       </div>
-        <div class="dropContent">
-          <a class="dropItem" href="#">Main Portfolio</a>
-          <a class="dropItem" href="#">Crypto</a>
-          <a class="dropItem" href="#">Secundary Portfolio</a>
+        <div class="dropContent loads-portfolios">
+          <button class="btn btn-primary dropItem" onclick="">Create New Portfolio</button>
         </div>
       </div>
       <div id="learnTag"><a id="learn" onclick="redirLearn()">Learn</a></div>
@@ -42,6 +40,18 @@
     firebase.auth().signOut()
     window.location.href = "../index.html"
   }
+
+  loadPortfolios = () => {
+
+    db.collection("users").doc().get()
+        .then(userDoc => {
+            userDoc.forEach(doc => {
+              var portfolioId = userDoc.data().portfolio_id;
+              console.log(portfolioId)
+            })
+        })
+
+}
 </script>
 <script src="./scripts/script.js"></script>
 <script>document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");</script>
