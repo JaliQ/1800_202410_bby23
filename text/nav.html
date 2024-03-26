@@ -4,12 +4,15 @@
     <div id="options-navbar">
       <div class="dropDown">
         <div id="portfolioTag">
-        <a id="portfolio" onclick=""></a>Portfolio</a> 
+        <a id="portfolio" onclick=""></a>Portfolios</a> 
       </div>
-        <div class="dropContent">
-          <a class="dropItem" href="#">Main Portfolio</a>
-          <a class="dropItem" href="#">Crypto</a>
-          <a class="dropItem" href="#">Secundary Portfolio</a>
+        <div class="dropContent loads-portfolios">
+                    <div class="load-here">
+
+                    </div>          
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Create New Portfolio
+                    </button>               
         </div>
       </div>
       <div id="learnTag"><a id="learn" onclick="redirLearn()">Learn</a></div>
@@ -35,7 +38,7 @@
     </div>
   </nav>
 
-
+ 
 
 <script>
   signout = () => {
@@ -48,5 +51,6 @@
     })
   }
 </script>
+<script src="../scripts/portfolios.js"></script>
 <script src="./scripts/script.js"></script>
 <script>document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");</script>

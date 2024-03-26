@@ -1,19 +1,4 @@
-function sayHello() {
-}
-//sayHello();
 
-//------------------------------------------------
-// Call this function when the "logout" button is clicked
-//-------------------------------------------------
-// function logout() {
-//     console.log("in scriptjs")
-//     firebase.auth().signOut().then(() => {
-//         // Sign-out successful.
-//         console.log("logging out user");
-//       }).catch((error) => {
-//         // An error happened.
-//       });
-// }
 
 // modal for the profile popup window
 const modal = document.querySelector('#profile-pop-up');

@@ -84,76 +84,36 @@
         </form>
     </dialog>
 
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New Portfolio</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="portfolioForm">
+                <div class="mb-3">
+                  <label for="portfolioName" class="form-label">Portfolio Name</label>
+                  <input type="text" class="form-control" id="portfolioName" required>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" onclick="createPortfolio()">Create Portfolio</button>
+            </div>
+          </div>
+        </div>
+      </div>
     
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-    <div style="margin-top: 10px;">
-        <div class="card">
-            <div class="card-content">
-                <img src="./img/star-svgrepo-com.svg" alt="star">
-                <div class="stock-name">
-                    <span>name</span>
-                    <h3>TSLA</h3>
-                </div>
-                <div class="stock-name">
-                    <span>price</span>
-                    <h3>$50</h3>
-                </div>
-                <div class="stock-name">
-                    <span>change</span>
-                    <h3>+2.43%</h3>
-                </div>
-                <div class="stock-name">
-                    <span>avg</span>
-                    <h3>$52.3</h3>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <img src="./img/star-svgrepo-com.svg" alt="star">
-                <div class="stock-name">
-                    <span>name</span>
-                    <h3>TSLA</h3>
-                </div>
-                <div class="stock-name">
-                    <span>price</span>
-                    <h3>$50</h3>
-                </div>
-                <div class="stock-name">
-                    <span>change</span>
-                    <h3>+2.43%</h3>
-                </div>
-                <div class="stock-name">
-                    <span>avg</span>
-                    <h3>$52.3</h3>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <img src="./img/star-svgrepo-com.svg" alt="star">
-                <div class="stock-name">
-                    <span>name</span>
-                    <h3>TSLA</h3>
-                </div>
-                <div class="stock-name">
-                    <span>price</span>
-                    <h3>$50</h3>
-                </div>
-                <div class="stock-name">
-                    <span>change</span>
-                    <h3>+2.43%</h3>
-                </div>
-                <div class="stock-name">
-                    <span>avg</span>
-                    <h3>$52.3</h3>
-                </div>
-            </div>
-        </div>
-        <div class="card">
+    <div id="portfolio-display" style="margin-top: 10px;">
+        <!-- <div class="card">
             <div class="card-content">
                 <img src="./img/star-svgrepo-com.svg" alt="star">
                 <div class="stock-name">
@@ -178,7 +138,7 @@
             <div class="card-content" id="add-stock">
                 <h1 id="plusTag">+</h1>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- pop up to add a stock -->
@@ -235,6 +195,7 @@
         }    
     </script> -->
     <!-- Link to scripts of your own -->
+    
     <script src="./scripts/script.js"></script>
     <script src="./scripts/firebaseAPI_BBY23.js"></script>
     <script src="./scripts/profile.js"></script>
@@ -244,6 +205,8 @@
     <script>
         // document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");
     </script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/portfolios.js"></script>
 
 </body>
 

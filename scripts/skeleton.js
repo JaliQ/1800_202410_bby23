@@ -3,7 +3,7 @@
 // (navbar, footer, and other things) into html doc. 
 //---------------------------------------------------
 function loadSkeleton(){
-    console.log($('#navbarPlaceholder').load('./text/nav_after_login.html'));
+    console.log($('#navbarPlaceholder').load('./text/nav.html'));
     console.log($('#modalPlaceholder').load('./text/modals.html'));
     // console.log($('#footerPlaceholder').load('./text/footer.html'));
 }
