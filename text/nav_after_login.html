@@ -39,8 +39,13 @@
 
 <script>
   signout = () => {
-    firebase.auth().signOut()
-    window.location.href = "../index.html"
+    firebase.auth().signOut().then(() => {
+      localStorage.removeItem('first_name');
+      localStorage.removeItem('last_name');
+      window.location.href = "./index.html"
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 </script>
 <script src="./scripts/script.js"></script>

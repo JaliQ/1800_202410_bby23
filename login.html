@@ -45,11 +45,13 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Log In</button>
             </form>
+            <div style="margin-top: 20px;">
+                <a href="signup.html">Don't have an account?</a>
+            </div>
         </div>
     </div>
 
-    <!-- <script src="./scripts/firebaseAPI_BBY23.js"></script> -->
-    <script src="./scripts/firebaseAPI_BBY23.js"></script>
+    <!-- scripts -->
     <script>
         const loginForm = document.getElementById("login-form");
         loginForm.addEventListener('submit', (e) => {
@@ -58,23 +60,24 @@
             const pass = loginForm["login-pass1"].value;
             auth.signInWithEmailAndPassword(email, pass).then(cred => {
                 console.log(cred);
-                alert(cred);
+                alert(JSON.stringify(cred.user));
+                
                 window.location.href = "./main.html";
             }).catch(function (error) {
                 alert(error.message);
             })
         })
-
-
-    </script>
+        </script>
     <script>
         const usersRef = db.collection("users");
         const userEmail = loginForm["login-email"].value;
         const usernameQueryRef = usersRef.where('email', '==', 'harrypotter@mail.com').get();
-
+        
         console.log(usernameQueryRef, "<<<<<")
     </script>
+    <script src="./scripts/firebaseAPI_BBY23.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/authentication.js"></script>
 </body>
 
 </html>
