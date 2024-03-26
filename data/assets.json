@@ -1,0 +1,12 @@
+[
+    {"name": "Apple Inc.", "symbol": "AAPL", "price": 170.55},
+    {"name": "Microsoft Corporation", "symbol": "MSFT", "price": 290.65},
+    {"name": "Amazon.com Inc.", "symbol": "AMZN", "price": 3325.00},
+    {"name": "Tesla, Inc.", "symbol": "TSLA", "price": 805.72},
+    {"name": "Google LLC", "symbol": "GOOGL", "price": 2745.89},
+    {"name": "Bitcoin", "symbol": "BTC", "price": 48290.00},
+    {"name": "Ethereum", "symbol": "ETH", "price": 3082.12},
+    {"name": "Ripple", "symbol": "XRP", "price": 0.89},
+    {"name": "Litecoin", "symbol": "LTC", "price": 155.44},
+    {"name": "Dogecoin", "symbol": "DOGE", "price": 0.162}
+]
