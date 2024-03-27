@@ -4,12 +4,12 @@ const apiKey = 'ef2c2f7c-d21a-4720-80ab-5fb284d79ffc'
 const client = new CoinMarketCap(apiKey)
 
 client.getTickers().then(console.log).catch(console.error)
-client.getTickers({id: 1}).then(console.log).catch(console.error)
-client.getIdMap({symbol: 'BTC,ETH'}).then(console.log).catch(console.error)
-client.getGlobal().then(console.log).catch(console.error)
-client.getIdMap({limit: 5}).then(console.log).catch(console.error)
-console.log("IN ASSETSNPM: client")
-client.getMetadata({symbol: 'BTC'}).then(console.log).catch(console.error)
+// client.getTickers({id: 1}).then(console.log).catch(console.error)
+// client.getIdMap({symbol: 'BTC,ETH'}).then(console.log).catch(console.error)
+// client.getGlobal().then(console.log).catch(console.error)
+// client.getIdMap({limit: 5}).then(console.log).catch(console.error)
+// console.log("IN ASSETSNPM: client")
+// client.getMetadata({symbol: 'BTC'}).then(console.log).catch(console.error)
 
 // const options = {
 //     mode: 'no-cors',

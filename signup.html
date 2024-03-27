@@ -93,12 +93,9 @@
                     }
                 }
             }
-            if(upperCaseFlag && lowerCaseFlag){
-                if(pass1 == pass2) {
-                    console.log("success")
+
             if (upperCaseFlag && lowerCaseFlag) {
                 console.log("success")
-                
                 if (pass1 == pass2) {
                     localStorage.setItem("first_name", firstName);
                     localStorage.setItem("last_name", lastName);
@@ -124,7 +121,7 @@
             } else {
                 alert("Password must contain upper case & lower case letters");
             }
-        }}})
+        })
     </script>
     <!-- <script src="./scripts/authentication.js"></script> -->
     <script src="./scripts/script.js"></script>
