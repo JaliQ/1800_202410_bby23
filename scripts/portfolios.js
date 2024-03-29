@@ -40,7 +40,13 @@ firebase.auth().onAuthStateChanged((user) => {
                 console.error("Error getting document:", error);
             });
         } else {
-            alert("Enter the name!");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+            // alert("Enter the name!");
         }
     }
     loadPortfolios = () => {
@@ -50,7 +56,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 let str = ''
                 portfolios.forEach(portfolio =>{
                     let name = portfolio.portfolioName;
-                    str+= `<a href=>${name}</a>`
+                    str+= `<a href='' class="dropItem">${name}</a>`
                 })
                 document.querySelector(".load-here").innerHTML = str;
             })

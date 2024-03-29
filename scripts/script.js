@@ -1,16 +1,16 @@
 
 
 // modal for the profile popup window
-const modal = document.querySelector('#profile-pop-up');
+const modal0 = document.querySelector('#profile-pop-up');
 //const openModal = document.querySelector('#open-popup-profile');
 // const closeModal = document.querySelector('#close-popup-profile');
 
-function openModal() {
-    modal.showModal();
+function openModalProfile() {
+    modal0.showModal();
 }
 
-function closeModal() {
-    modal.close();
+function closeModalProfile() {
+    modal0.close();
     document.getElementById('personalInfoFields').disabled = true;
 }
 
@@ -46,6 +46,13 @@ function submitFeedback() {
         // Clear input fields after submission
         document.getElementById("tInput").value = "";
         document.getElementById("desPopup").value = "";
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Thanks for your feedback.",
+            showConfirmButton: false,
+            timer: 1500
+          });
     })
     .catch((error) => {
         console.error("Error adding document: ", error);

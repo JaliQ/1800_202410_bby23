@@ -23,30 +23,38 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <link rel="stylesheet" href="./styles/style.css">
 
+    <!-- Sweet alert links -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="min-vh-100 bg-light" id="login">
-        <div class="text-center pt-5">
-            <img src="./img/candlestick.jpeg" alt="candlestick.jpg" id="img-login" class="img-fluid">
-        </div>
-        <div class="p-5 mb-4 rounded-3 text-center" id="login-group">
-            <h1 class="display-5 fw-bold mb-4" style="font-family: Montserrat;">Assets Club</h1>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp"
-                        placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="login-pass1" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Log In</button>
-            </form>
-            <div style="margin-top: 20px;">
-                <a href="signup.html">Don't have an account?</a>
+    <div class="min-vh-100" id="login">
+        <div>
+            <div class="text-center pt-5">
+                <img src="./img/candlestick.jpeg" alt="candlestick.jpg" id="img-login" class="img-fluid">
+            </div>
+            <div class="p-5 mb-4 rounded-3 " style="text-align: center;">
+                <h1 class="display-5 fw-bold mb-4" style="font-family: Montserrat;">Assets Club</h1>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                    </div>
+                    <div class="form-group" id="formLogin">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="login-pass1" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1vh;">Log In</button><br><br>
+                    <a href="signup.html" id="noAccount">Don't have an account?</a>
+                </form>
             </div>
         </div>
     </div>
@@ -61,13 +69,19 @@
             auth.signInWithEmailAndPassword(email, pass).then(cred => {
                 console.log(cred);
                 alert(JSON.stringify(cred.user));
-                
+
                 window.location.href = "./main.html";
             }).catch(function (error) {
-                alert(error.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error.message,
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+                // alert(error.message);
             })
         })
-        </script>
+    </script>
     <!-- <script>
         const usersRef = db.collection("users");
         const userEmail = loginForm["login-email"].value;

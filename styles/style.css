@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+body{
+        background-color: #000000;
+        color: white;
+}
+
 #portfolio-display p{
         font-family: "Montserrat";
         text-align: center;
@@ -9,11 +14,11 @@
 
 /* user attributes for the navbar */
 #navbar {
-        background-color: rgb(214, 214, 214);
         overflow: hidden;
         display: grid;
         grid-template-columns: 10% 90%;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: "Josefin Sans", sans-serif;
+        box-decoration-break: clone;
     }
     
    #navbar a{
@@ -31,28 +36,56 @@
     }
     
     .dropDown .dropContent{
-        margin-top: 0vh;
+        margin-top: 0%;
         display: none;
         position:absolute;
-        background-color: rgb(240, 240, 240);
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 250, 250);
         min-width: 100px;
-        box-shadow: 2px 2px 5px black;
+        box-shadow: 2px 2px 5px rgb(0, 0, 0);
         padding: 1vh 1vw;
         z-index: 1000;
+        
     }
     
     .dropContent a{
         padding: 1vh;
+        color: white;
     }
+
+    #portfolio:hover .dropContent{
+        display: block;
+        text-align: center;
+    }
+
+    #portfoliosDropDown{
+        margin-top: -25px;
+    }
+
+    #usertag:hover .dropContent {
+        display: block;
+        text-align: center;
+      }
+
+      #usertag:hover #username-tag{
+        color: #0f7823;
+      }
+
+      #usertag:hover #username-tag{
+        color:#0f7823;
+      }
     
     .dropDown:hover .dropContent{
         display: block;
         text-align: center;
     }
-    
+    .material-symbols-outlined:hover{
+        cursor: pointer;
+    }
+
     .dropItem:hover {
-        background-color: rgb(19, 19, 19);
-        color: white;
+        background-color: rgb(251, 251, 251);
+        color: rgb(0, 0, 0);
     }
     
     
@@ -62,6 +95,9 @@
         margin-left: 15%;
         margin-right: 5vw;
         font-size: 20px;
+    }
+    #brand-navbar:hover{
+        color: #0f7823;
     }
     
     #options-navbar {
@@ -74,20 +110,54 @@
     #portfolioTag{
         margin-top: 18%;
        margin-right: 0%;
+       padding: 0%;
+       height: 100%;
+       display: grid;
+       grid-template-columns: 40% auto;
+    }
+
+    #portfolio{
+        text-align: left;
+    }
+
+    #portfolioIcon{
+        text-align: right;
+    }
+
+    #portfolioTag:hover {
+        color: #0f7823;
     }
     
     #learnTag{
         margin-top: 18%;
-        margin-left: 2vw;
+        margin-left: 3vw;
+        display: grid;
+        grid-template-columns: 40% auto;
     }
     
-    
+    #learn{
+        text-align: left;
+        margin-left: 0.5vw;
+    }
+    #learnIcon{
+        text-align: right;
+    }
+
+    #learnTag:hover {
+        color: #0f7823;
+    }
     
     #usertag {
         margin-top: 10%;
         text-align: right;
         margin-right: 0%;
+        display: grid;
+        grid-template-columns: 80% 20%;
     
+    }
+    /* The a element containing the name of the user. */
+    #userTag{
+        text-align: right;
     }
     
     #username {
@@ -97,38 +167,72 @@
     }
     
     #userlogo {
-        margin-top: 1vh;
-        margin-left: 1vw;
-        height: 60%;
-        width: 40%;
+        text-align: left;
     }
 
 /* footer */
 footer {
-        position: fixed;
+        /* position: fixed; */
         bottom: 0;
         width: 100%;
-        background-color: rgba(128, 128, 128, 0.431);
-        text-align: right;
-        display: grid;
-        grid-template-columns: 90vw 10vw;
+        background-color: #004452;
+        text-align: center;
+        margin-top: 2vh;
+        color: black;
 }
 
+footer img{
+        cursor: pointer;
+}
+
+#optionsFooter{
+        color:#07f2c2;
+}
+footer a{
+        cursor: pointer;
+        
+}
+
+footer h3{
+        cursor: pointer;
+        color: #07f2c2;;
+}
+
+/* Twitter logo footer */
 #x-logo {
-        margin-left: 2vw;
+        /* margin-left: 2vw; */
+        width: auto;
+        height: 5vh;
+}
+
+/* Logo instagram footer */
+#instaLogo {
+        margin-left: 1vw;
         width: auto;
         height: 6vh;
 }
 
-#help-footer {
-        margin-top: 1vh;
+/* Email logo footer */
+#emailLogo {
+        /* margin-left: 2vw; */
+        width: auto;
+        height: 10vh;
+}
+
+#optionsFooter a{
+        margin-left: 1vw;
+        font-size: large;
+}
+
+#optionsFooter a:hover{
+        color: aliceblue;
 }
 
 /* card */
 .card {
         margin: 0 auto;
         border-radius: 25px;
-        background: #73AD21;
+        background: #07f2c2;
         height: 70px;
         width: 500px;
 }
@@ -193,16 +297,15 @@ footer {
 
 /* Login page */
 #login {
+        
         width: 50vw;
         height: auto;
         border-radius: 30px;
         margin: 1vw;
         margin-left: 25vw;
-        text-align: center;
-        align-items: center;
-}
-#login-form{
-        width: 45vw;
+        justify-content: center;
+        color: #000000;
+        background-color: rgb(60, 167, 238);
 }
 /* image of the login */
 #img-login {
@@ -377,7 +480,13 @@ footer {
 /*Sign Up*/
 
 .form-group {
-        margin: 10px;
+        margin: 0%;
+        text-align: center;
+}
+.form-group  input{
+        margin: 0%;
+        text-align: center;
+        justify-content: center;
 }
 
 #learn-content{
@@ -415,17 +524,17 @@ footer {
                 font-size: 22px;
         }
 
+        /* Navabr css */
         #navbar {
-                background-color: rgb(214, 214, 214);
                 overflow: hidden;
                 display: grid;
                 grid-template-rows: 40% 60%;
                 grid-template-columns: 100%;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
             }
         
             #brand-navbar {
                 margin-top: 2%;
+                width: 100%;
                 font-size: 20px;
                 margin-left: 0%;
                 text-align: center;
@@ -440,6 +549,13 @@ footer {
             #portfolioTag{
                 margin-top: 10%;
                margin-right: 0%;
+            }
+        
+            #dropDownProfile{
+                margin-left: 8vw;
+            }
+            #portfoliosDropDown{
+                margin-left: 3vw;
             }
 
             #learnTag{
@@ -468,9 +584,7 @@ footer {
                 margin-top: 0vh;
                 display: none;
                 position: absolute;
-                background-color: rgb(240, 240, 240);
                 min-width: 100px;
-                box-shadow: 2px 2px 5px black;
                 padding: 1vh 1vw;
             }
 
@@ -479,7 +593,18 @@ footer {
                 width: 100vw;
                 height: auto;
                 margin: 0%;
+                border-radius: 0px;
+                margin: 0%;
+                justify-content: center;
+                text-align: center;
 
+        }
+        #formLoginInputs{
+                margin-left: 3vw;
+        }
+        #formLoginInputs form{
+                text-align: center;
+                justify-content: center;
         }
 
         #login-form{
@@ -490,8 +615,10 @@ footer {
         #img-login {
                 width: 60vw;
                 height: auto;
-                margin-top: 5vh;
+                /* margin-top: 5vh; */
         }
+        
+        
 
         /* login inputs */
         #login-email {
