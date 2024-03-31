@@ -58,4 +58,38 @@ It has the following subfolders and files:
 
 ```
 
+## 8. in scripts folder, create firebaseAPI_BBY23.js
+Copy and paste the following code in to the js file
+```
+//----------------------------------------
+//  Your web app's Firebase configuration
+//----------------------------------------
+const firebaseConfig = {
+  // bby23 configuration
+  // apiKey: "AIzaSyBMKol-RIAxg5N13MteabzGFGhTL5_6uV8",
+  // authDomain: "assetsclub-bby23.firebaseapp.com",
+  // projectId: "assetsclub-bby23",
+  // storageBucket: "assetsclub-bby23.appspot.com",
+  // messagingSenderId: "599229072336",
+  // appId: "1:599229072336:web:5fce050d7520a1f9f26fd5"
+
+  // (newer version of BBY23) configuration
+  apiKey: "AIzaSyDSXGI9YwHelCjlNVS_eP1bk59sOHH651U",
+  authDomain: "assetsclub-bby23-f21cd.firebaseapp.com",
+  projectId: "assetsclub-bby23-f21cd",
+  storageBucket: "assetsclub-bby23-f21cd.appspot.com",
+  messagingSenderId: "815738954492",
+  appId: "1:815738954492:web:ac2058c29837748b72ed79"
+};
+
+//--------------------------------------------
+// initialize the Firebase app
+// initialize Firestore database if using it
+//--------------------------------------------
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const storage = firebase.storage();
+const auth = firebase.auth()
+```
+
 
