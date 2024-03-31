@@ -1,50 +1,58 @@
 <!-- Navbar goes here -->
 <nav id="navbar">
-    <div id="brand-navbar"><a id="brand-tag" onclick="redirHome()">AssetClub</a></div>
-    <div id="options-navbar">
-      <div class="dropDown">
-        <div id="portfolioTag">
-        <a id="portfolio" onclick=""></a>Portfolios</a> 
+  <div id="brand-navbar"><a id="brand-tag" onclick="redirHome()">AssetClub</a></div>
+  <div id="options-navbar">
+    <div class="dropDown">
+      <div id="portfolioTag">
+        <span class="material-symbols-outlined" id="portfolioIcon">
+          business_center
+          </span>
+        <a id="portfolio" onclick="redirHome()">Portfolio</a>
       </div>
-        <div class="dropContent loads-portfolios">
-                    <div class="load-here">
-
-                    </div>          
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      Create New Portfolio
-                    </button>               
-        </div>
-      </div>
-      <div id="learnTag"><a id="learn" onclick="redirLearn()">Learn</a></div>
-      <div id="username">
-        <div id="usertag">
-          <div class="dropDown">
-            <div id="userTag">
-            <a id="username-tag"></a> 
-          </div>
-            <div class="dropContent">
-              <a class="dropItem" href="#" onclick="openModal()">Profile</a>
-              <a class="dropItem" href="#">Settings</a>
-              <a class="dropItem" href="#">Help</a>
-              <a class="dropItem" href="#" onclick="openModalFeedback()">Send feedback</a>
-              <a class="dropItem" href="#" onclick="signout()">Sign out</a>
-            </div>
-          </div>
-        </div>
-        <div>
-          <img id="userlogo" src="./img/userlogo.png" alt="">
-        </div>
+      <div class="dropContent loads-portfolios" id="portfoliosDropDown">
+        <div class="load-here"></div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Create New Portfolio
+        </button>
       </div>
     </div>
-  </nav>
+    <div id="learnTag"> 
+      <span class="material-symbols-outlined" id="learnIcon">
+      book_4
+      </span>
+      <a id="learn" onclick="redirLearn()">Learn</a></div>
+    <div id="username">
+      <div id="usertag">
+        <div class="dropDown">
+          <div id="userTag">
+            <a id="username-tag"></a>
+          </div>
+          <div class="dropContent" id="dropDownProfile">
+            <a class="dropItem" href="#" onclick="openModalProfile()">Profile</a>
+            <a class="dropItem" href="#">Settings</a>
+            <a class="dropItem" href="#">Help</a>
+            <a class="dropItem" href="#" onclick="openModalFeedback()">Send feedback</a>
+            <a class="dropItem" href="#" onclick="signout()">Sign out</a>
+          </div>
+        </div>
+        <span class="material-symbols-outlined" id="userLogo">
+          account_circle
+        </span>
+      </div>
+      <div id="userlogo">
+        <!-- <img id="userlogo" src="./img/userlogo.png" alt=""> -->
 
- 
+      </div>
+    </div>
+  </div>
+</nav>
+
+
 
 <script>
   signout = () => {
     firebase.auth().signOut().then(() => {
-      localStorage.removeItem('first_name');
-      localStorage.removeItem('last_name');
+      localStorage.clear();
       window.location.href = "./index.html"
     }).catch((err) => {
       console.log(err);
@@ -52,5 +60,5 @@
   }
 </script>
 <script src="../scripts/portfolios.js"></script>
-<script src="./scripts/script.js"></script>
+<!-- <script src="./scripts/script.js"></script> -->
 <script>document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");</script>

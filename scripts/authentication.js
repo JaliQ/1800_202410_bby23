@@ -83,9 +83,20 @@ function submitForm(e){
                 window.location.assign("main.html");       //re-direct to main.html after signup
             }).catch(function (error) {
                 console.log("Error adding new user: " + error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                  });
             });
         } else {
-            alert("User already exist")
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
         }
         return false;
         

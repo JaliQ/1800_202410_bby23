@@ -23,6 +23,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <link rel="stylesheet" href="./styles/style.css">
 
+    <!-- Sweet alert links -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -93,33 +96,50 @@
                     }
                 }
             }
-
             if (upperCaseFlag && lowerCaseFlag) {
-                console.log("success")
                 if (pass1 == pass2) {
-                    localStorage.setItem("first_name", firstName);
-                    localStorage.setItem("last_name", lastName);
-                    auth.createUserWithEmailAndPassword(email, pass1).then(cred => { 
-                        console.log("creatind db table")
-                        usersRef.doc(cred.user.uid).set({
-                        email: email,
-                        first_name: firstName,
-                        last_name: lastName,
-                        portfolios: []
-                    }).then(() => {
-                        console.log("Profile created")
-                        window.location.href = "./main.html";
-                    });
-                    
-                    }).catch(function (error) {
-                        alert(error.message);
-                        
-                    });
-                } else {
-                    alert("Passwords do not match!");
+                    console.log("success")
+                    if (upperCaseFlag && lowerCaseFlag) {
+                        console.log("success")
+
+                        if (pass1 == pass2) {
+                            localStorage.setItem("first_name", firstName);
+                            localStorage.setItem("last_name", lastName);
+                            auth.createUserWithEmailAndPassword(email, pass1).then(cred => {
+                                console.log("creatind db table")
+                                usersRef.doc(cred.user.uid).set({
+                                    email: email,
+                                    first_name: firstName,
+                                    last_name: lastName,
+                                    portfolios: []
+                                }).then(() => {
+                                    console.log("Profile created")
+                                    window.location.href = "./main.html";
+                                });
+
+                            }).catch(function (error) {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: error.message
+                                });
+
+                            });
+                        } else {
+                            Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Passwords do not match!"
+                                });
+                        }
+                    } else {
+                        Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Password must contain upper case & lower case letters"
+                                });
+                    }
                 }
-            } else {
-                alert("Password must contain upper case & lower case letters");
             }
         })
     </script>

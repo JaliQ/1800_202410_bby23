@@ -24,10 +24,21 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <!-- Sweet alert links -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
+    <!-- Google Material links -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lobster&family=Protest+Revolution&display=swap" rel="stylesheet">
+    
+
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css">
-
 </head>
 
 <body>
@@ -39,19 +50,19 @@
         <h3 id="header-popup">Profile</h3>
         <form>
             <fieldset class="mb-3" id="personalInfoFields" disabled>
-            <div class="input-profile-popup">
-                <label for="Name">First Name:</label>
-                <input type="text" placeholder="Enter your name" class="input-popup" id="firstNameInput">
-            </div>
-            <div class="input-profile-popup">
-                <label for="Name">Last Name:</label>
-                <input type="text" placeholder="Enter Last Name" class="input-popup" id="lastNameInput">
-            </div>
-            <!-- <div class="input-profile-popup">
+                <div class="input-profile-popup">
+                    <label for="Name">First Name:</label>
+                    <input type="text" placeholder="Enter your name" class="input-popup" id="firstNameInput">
+                </div>
+                <div class="input-profile-popup">
+                    <label for="Name">Last Name:</label>
+                    <input type="text" placeholder="Enter Last Name" class="input-popup" id="lastNameInput">
+                </div>
+                <!-- <div class="input-profile-popup">
                 <label for="Name" id="email-popup">Email:</label>
                 <input type="email" placeholder="Enter email" class="input-popup" id="emailInput">
             </div> -->
-        </fieldset>
+            </fieldset>
             <!-- <div class="input-profile-popup">
                 <label for="Name" id="password-label-popup">Password:</label>
                 <input type="password" value="" class="input-popup" id="passwordInput">
@@ -59,7 +70,7 @@
             <div id="button-popup">
                 <button type="submit" class="btn-popup" id="saveBtn" onclick="saveUserInfo()">Save</button>
                 <button type="submit" class="btn-popup" id="edit-profile-popup" onclick="editUserInfo()">Edit</button>
-                <button type="submit" id="close-popup-profile" class="btn-popup" onclick="closeModal()">Close</button>
+                <button type="submit" id="close-popup-profile" class="btn-popup" onclick="closeModalProfile()">Close</button>
             </div>
         </form>
     </dialog>
@@ -87,27 +98,27 @@
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">New Portfolio</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="portfolioForm">
-                <div class="mb-3">
-                  <label for="portfolioName" class="form-label">Portfolio Name</label>
-                  <input type="text" class="form-control" id="portfolioName" required>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: black;">New Portfolio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              </form>
+                <div class="modal-body">
+                    <form id="portfolioForm">
+                        <div class="mb-3">
+                            <label for="portfolioName" class="form-label" style="color: black;">Portfolio Name</label>
+                            <input type="text" class="form-control" id="portfolioName" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="createPortfolio()">Create Portfolio</button>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="createPortfolio()">Create Portfolio</button>
-            </div>
-          </div>
         </div>
-      </div>
-    
+    </div>
+
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
@@ -115,6 +126,12 @@
     <div id="portfolio-display" style="margin-top: 10px;">
     </div>
 
+    <div class="card" id="add-stock">
+        <div class="card-content" id="add-stock">
+            <h1 id="plusTag">+</h1>
+        </div>
+    </div>
+    <!-- <div id="assets-examples" style="margin-top: 10px;"> -->
     <!-- each asset card -->
     <!-- <div class="card">
         <div class="card-content">
@@ -141,14 +158,7 @@
             </div>
         </div>
     </div> -->
-    <div class="card" id="add-stock">
-        <div class="card-content" id="add-stock">
-            <h1 id="plusTag">+</h1>
-        </div>
-    </div>
-    <!-- <div id="assets-examples" style="margin-top: 10px;"> -->
-
-    </div>
+    <!-- </div> -->
 
     <!-- pop up to add a stock -->
     <dialog id="add-stock-popup">
@@ -172,16 +182,20 @@
                 <label for="Price">Price per Stock</label>
                 <input type="number" id="price-popup-input" oninput="calculate()">
             </div>
+            <!-- <div class="input-addAsset-popup">
+                <label for="Price">Price per Stock</label>
+                <input type="number" id="price-popup-input">
+            </div> -->
             <div class="input-addAsset-popup">
                 <label for="">Date</label>
                 <input type="date" id="dateAddAsset">
             </div>
             <div class="input-addAsset-popup">
                 <label for="date">Total $</label>
-                <input type="text" id="total-popup-input" disabled> 
+                <input type="text" id="total-popup-input" disabled>
             </div>
             <div class="input-addAsset-popup">
-                <button type="submit" class="btn-popup">Save</button>
+                <button type="submit" onclick="updatePortfolio()" class="btn-popup">Save</button>
                 <button type="submit" id="close-addStock-popup" class="btn-popup">Close</button>
             </div>
         </form>
@@ -189,34 +203,60 @@
 
 
     <!-- The footer goes here -->
-    <footer>
-        <h4 id="help-footer">Help</h4>
-        <img id="x-logo" src="img/x_logo.png" alt="">
-    </footer>
+    <div id="footerPlaceholder"></div>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
 
-    <!-- <script>
-        redir = () =>{
-        window.location.href = "./index.html";
-        }    
-    </script> -->
     <!-- Link to scripts of your own -->
-    
+
     <script src="./scripts/script.js"></script>
     <script src="./scripts/firebaseAPI_BBY23.js"></script>
     <script src="./scripts/profile.js"></script>
     <!-- <script src="./data/assetsNpmCmc.js"></script> -->
-    <script src="./data/assetsCMC.js"></script>
+    <!-- <script src="./data/assetsCMC.js"></script> -->
     <!-- <script src="./scripts/bundle.js"></script> -->
-    <script>
-        // document.getElementById("username-tag").innerHTML = localStorage.getItem("first_name") + " " + localStorage.getItem("last_name");
-    </script>
-    <!-- <script src="./data/list.js"></script> -->
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/portfolios.js"></script>
+
+    <!-- add form to database -->
+    <!-- <script>
+        const addAssetForm = document.getElementById("addAssetForm");
+        addAssetForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const assetName = addAssetForm["assetInput"].value;
+            const assetQty = addAssetForm["quantity-popup-input"].value;
+            const assetBuyPrice = addAssetForm["price-popup-input"].value;
+            const assetBuyDate = addAssetForm["dateAddAsset"].value;
+
+            // calculate total price in the pop up modal
+            const assetTotalPrice = +assetQty * +assetBuyPrice;
+
+            // replace value in the pop modal total price
+            document.getElementById("total-popup-input").innerHTML = assetTotalPrice;
+
+            let currentUser = db.collection("users").doc(user.uid);
+
+            currentUser
+                .get()
+                .collection("portfolios")
+                .where("portfolioName", "==". localStorage.getItem("current_portfolio"))
+                .update({
+                    assetName,
+                    assetQty,
+                    assetEntryPrice: assetBuyPrice,
+                    assetBuyDate
+                })
+                .then((res) => {
+                    console.log("successfully update asset")
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+
+        })
+    </script> -->
 
 </body>
 
