@@ -64,9 +64,67 @@ firebase.auth().onAuthStateChanged((user) => {
                 portfolios.forEach(portfolio => {
                     let name = portfolio.portfolioName;
                     // str+= `<a href='' class="dropItem">${name}</a>`
-                    str += `<a href='' id="portfolioSelection" class="dropItem" onclick="assignPortfolio()">${name}</a>`
+                    str += `<a href="javascript:void(0);" id="portfolioSelection" class="dropItem" onclick="assignPortfolio()">${name}</a>`
                 })
                 document.querySelector(".load-here").innerHTML = str;
+            })
+    }
+
+    loadPortfoliosAssets = () => {
+        let currentUser = db.collection("users").doc(user.uid);
+
+        currentUser
+            .get()
+            .then((doc) => {
+                var portList = doc.data().portfolios;
+                var assetList;
+                for (let i = 0; i < portList.length; i++) {
+                    if(portList[i].portfolioName == localStorage.getItem("current_portfolio")){
+                        // console.log(JSON.stringify(portList[i]) + " each asset")
+                        assetList = portList[i].assets;
+                    }
+                }
+
+                let str = `<div class="card" id="display-card"> 
+                `
+
+                assetList.forEach(asset => {
+                    console.log("Asset Name:", asset.assetName);
+                    console.log("Quantity:", asset.assetQty);
+                    console.log("Entry Price:", asset.assetEntryPrice);
+                    console.log("Buy Date:", asset.assetBuyDate);
+                    console.log("-------------");
+
+                    str += `<div class="card-content">
+                    <img src="./img/star-svgrepo-com.svg" alt="star">
+                    <div class="stock-name">
+                        <span>name</span>
+                        <h3>${asset.assetName}</h3>
+                    </div>
+                    <div class="stock-name">
+                        <span>entry price</span>
+                        <h3>${asset.assetEntryPrice}</h3>
+                    </div>
+                    <div class="stock-name">
+                        <span>current price</span>
+                        <h3>$170.55</h3>
+                    </div>
+                    <div class="stock-name">
+                        <span>qty</span>
+                        <h3>${asset.assetQty}</h3>
+                    </div>
+                    <div class="stock-name">
+                        <span>ROI</span>
+                        <h3>-</h3>
+                    </div>
+                </div>`
+
+            });
+            str += `</div>`;
+            document.getElementById("assets-examples").innerHTML = str;
+            })
+            .catch((error) => {
+                console.log(error)
             })
     }
 
@@ -75,6 +133,12 @@ firebase.auth().onAuthStateChanged((user) => {
         let currentPortfolio = document.getElementById("portfolioSelection").innerHTML;
         alert(currentPortfolio);
         localStorage.setItem("current_portfolio", currentPortfolio);
+        
+        document.getElementById('portfolio-display').style.display = "none";
+        document.getElementById('current-portfolio').innerHTML = `<h3> ${localStorage.getItem("current_portfolio")} </h3>`;
+        
+        loadPortfoliosAssets();
+
     }
 
     updatePortfolio = () => {

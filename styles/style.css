@@ -12,6 +12,14 @@ body{
         padding-top: 30px;
 }
 
+#current-portfolio h3{
+        font-family: "Montserrat";
+        color: red;
+        text-align: center;
+        font-size: 36px;
+        padding-top: 30px;
+}
+
 /* user attributes for the navbar */
 #navbar {
         overflow: hidden;
