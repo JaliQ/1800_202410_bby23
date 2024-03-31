@@ -50,14 +50,13 @@ function saveUserInfo() {
     console.log(userName, userLast, "Data for save user info")
 
     //enter code here
-    currentUser = db.collection("users")
+    // currentUser = db.collection("users").doc(user.uid)
 
     
     //b) update user's document in Firestore
     currentUser.update({
         first_name: userName,
         last_name: userLast
-        // city: userCity
     })
     .then(() => {
         console.log("Document successfully updated!");
