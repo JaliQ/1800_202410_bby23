@@ -97,37 +97,55 @@ firebase.auth().onAuthStateChanged((user) => {
                         assetList = portList[i].assets;
                     }
                 }
-
-                const cardArea = document.getElementById("assets-examples");
+                let assetNames = [];
                 assetList.forEach(asset => {
+                    assetNames.push(asset.assetName)
+                })
+                let params = ""
+                assetNames.forEach(name => {
+                    params+=`${name},`
+                })
+                params = params.slice(0,-1);
+                fetch(`http://localhost:5000/prices?symbol=${params}`)
+                .then( res => res.json())
+                .then(prices => {
+                    const cardArea = document.getElementById("assets-examples");
+                    console.log(prices)
+                    assetList.forEach(asset => {
+                    let name = asset.assetName;
+                    let qty = asset.assetQty;
+                    let entry = asset.assetEntryPrice;
+                    console.log(prices.name, name)
                     let str = `<div class="card" id="display-card"> `
                     str += `<div class="card-content">
                     <img src="./img/star-svgrepo-com.svg" alt="star">
                     <div class="stock-name">
                         <span>name</span>
-                        <h3>${asset.assetName}</h3>
+                        <h3>${name}</h3>
                     </div>
                     <div class="stock-name">
                         <span>entry price</span>
-                        <h3>${asset.assetEntryPrice}</h3>
+                        <h3>${entry}</h3>
                     </div>
                     <div class="stock-name">
                         <span>current price</span>
-                        <h3>$170.55</h3>
+                        <h3>${prices[name].toFixed(2)}</h3>
                     </div>
                     <div class="stock-name">
                         <span>qty</span>
-                        <h3>${asset.assetQty}</h3>
+                        <h3>${qty}</h3>
                     </div>
                     <div class="stock-name">
                         <span>ROI</span>
-                        <h3>-</h3>
+                        <h3>${(((qty*prices[name]-entry*qty)/(qty*entry))*100).toFixed(2)}%</h3>
                     </div>
                 </div>`
                 str += `</div>`;
                 cardArea.innerHTML += str;
             });
             
+        })
+                
             
             })
             .catch((error) => {
