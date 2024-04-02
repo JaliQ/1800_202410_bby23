@@ -79,7 +79,7 @@
             const pass1 = signupForm["signup-pass1"].value;
             const pass2 = signupForm["signup-pass2"].value;
 
-            console.log(email, pass1)
+        
             const usersRef = db.collection("users");
 
             const dictionary = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -99,8 +99,6 @@
             if (upperCaseFlag && lowerCaseFlag) {
                 if (pass1 == pass2) {
                     console.log("success")
-                    if (upperCaseFlag && lowerCaseFlag) {
-                        console.log("success")
 
                         if (pass1 == pass2) {
                             localStorage.setItem("first_name", firstName);
@@ -132,15 +130,14 @@
                                     text: "Passwords do not match!"
                                 });
                         }
-                    } else {
-                        Swal.fire({
+                    }
+                } else {
+                    Swal.fire({
                                     icon: "error",
-                                    title: "Oops...",
+                                    title: "Password Inpur Error",
                                     text: "Password must contain upper case & lower case letters"
                                 });
-                    }
                 }
-            }
         })
     </script>
     <!-- <script src="./scripts/authentication.js"></script> -->

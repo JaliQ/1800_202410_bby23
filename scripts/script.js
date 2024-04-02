@@ -62,26 +62,7 @@ function submitFeedback() {
     
 
 
-// modal to add a stock to your portfolio
-const modal1 = document.querySelector('#add-stock-popup');
-const openModalAddStock = document.querySelector('#add-stock');
-const closeModalAddStock = document.querySelector('#close-addStock-popup');
 
-openModalAddStock.addEventListener('click', function () {
-    modal1.showModal();
-})
-
-closeModalAddStock.addEventListener('click', function () {
-    modal1.close();
-    document.getElementById("assetInput").value = "";
-    document.getElementById("radio-stock").checked = false;
-    document.getElementById("radio-crypto").checked = false;
-    document.getElementById("quantity-popup-input").value = "";
-    document.getElementById("price-popup-input").value = "";
-    document.getElementById("dateAddAsset").value = "";
-    document.getElementById("total-popup-input").value = "";
-    
-})
 
 function redirLearn () {
     window.location.href = "./learn.html";
