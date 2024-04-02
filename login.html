@@ -68,7 +68,7 @@
             const pass = loginForm["login-pass1"].value;
             auth.signInWithEmailAndPassword(email, pass).then(cred => {
                 console.log(cred);
-                alert(JSON.stringify(cred.user));
+                // alert(JSON.stringify(cred.user));
 
                 window.location.href = "./main.html";
             }).catch(function (error) {

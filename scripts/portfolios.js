@@ -74,21 +74,17 @@ firebase.auth().onAuthStateChanged((user) => {
         let currentUser = db.collection("users").doc(user.uid);
         // var assetTicker;
         // var url = `https://real-time-quotes1.p.rapidapi.com/api/v1/realtime/crypto?source=${assetTicker}&target=USD`;
-        var url = `https://real-time-quotes1.p.rapidapi.com/api/v1/realtime/crypto?source=BTC&target=USD`;
-        const options = {
-            method: 'GET',
-            mode:'cors',
-            headers: {
-                'X-RapidAPI-Key': 'dd54c567bdmshbc2da4da544ff1bp1ffc40jsn2708e9551e62',
-                'X-RapidAPI-Host': 'real-time-quotes1.p.rapidapi.com',
-                'content-type': 'application/json'
+        // var url = `https://real-time-quotes1.p.rapidapi.com/api/v1/realtime/crypto?source=BTC&target=USD`;
+        // const options = {
+        //     method: 'GET',
+        //     mode:'cors',
+        //     headers: {
+        //         'X-RapidAPI-Key': 'dd54c567bdmshbc2da4da544ff1bp1ffc40jsn2708e9551e62',
+        //         'X-RapidAPI-Host': 'real-time-quotes1.p.rapidapi.com',
+        //         'content-type': 'application/json'
                 
-            }
-        };
-        fetch(url, options)
-            .then(response => console.log(response))
-            .catch(err => console.error(err))
-
+        //     }
+        // };
         currentUser
             .get()
             .then((doc) => {
@@ -141,7 +137,7 @@ firebase.auth().onAuthStateChanged((user) => {
     assignPortfolio = () => {
         localStorage.removeItem("current_portfolio");
         let currentPortfolio = document.getElementById("portfolioSelection").innerHTML;
-        alert(currentPortfolio);
+        // alert(currentPortfolio);
         localStorage.setItem("current_portfolio", currentPortfolio);
         
         document.getElementById('portfolio-display').style.display = "none";
