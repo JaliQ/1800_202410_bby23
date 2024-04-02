@@ -9,7 +9,7 @@ url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/map"
 cryptos = []
 
 parameters = {
-  'limit':'200'
+  'limit':'400'
 }
 
 headers = {

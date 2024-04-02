@@ -66,11 +66,13 @@
             e.preventDefault();
             const email = loginForm["login-email"].value;
             const pass = loginForm["login-pass1"].value;
-            auth.signInWithEmailAndPassword(email, pass).then(cred => {
-                console.log(cred);
-                alert(JSON.stringify(cred.user));
-
-                window.location.href = "./main.html";
+            auth.signInWithEmailAndPassword(email, pass).then(cred =>{
+                Swal.fire({
+                    icon: "success",
+                    title: "You are signed in!",
+                });
+                setTimeout(() => window.location.href = "./main.html", 250)
+                
             }).catch(function (error) {
                 Swal.fire({
                     icon: "error",
@@ -80,6 +82,7 @@
                 });
                 // alert(error.message);
             })
+            
         })
     </script>
     <script src="./scripts/firebaseAPI_BBY23.js"></script>
