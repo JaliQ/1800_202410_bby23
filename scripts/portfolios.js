@@ -1,3 +1,4 @@
+
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         const id = user.uid;
@@ -140,99 +141,155 @@ firebase.auth().onAuthStateChanged((user) => {
 
     assignPortfolio = () => {
         localStorage.removeItem("current_portfolio");
+        const modal = ` <div class="card" id="add-stock"> <div class="card-content" id="add-stock" onclick="document.querySelector('#add-stock-popup').showModal()"> <h1 id="plusTag">+</h1> </div> </div>`
+        inputEl.addEventListener("input", onCryptoInputChange);
         let currentPortfolio = document.getElementById("portfolioSelection").innerHTML;
-        alert(currentPortfolio);
         localStorage.setItem("current_portfolio", currentPortfolio);
         
         document.getElementById('portfolio-display').style.display = "none";
-        document.getElementById('current-portfolio').innerHTML = `<h3> ${localStorage.getItem("current_portfolio")} </h3>`;
+        document.getElementById('current-portfolio').innerHTML =`<h3> ${localStorage.getItem("current_portfolio")} </h3>` + modal;
+        const modal1 = document.querySelector('#add-stock-popup');
+        const openModalAddStock = document.getElementById('#add-stock');
+        const closeModalAddStock = document.querySelector('#close-addStock-popup');
+        closeModalAddStock.addEventListener('click', function () {
+            modal1.close();
+            document.getElementById("assetInput").value = "";
+            document.getElementById("radio-stock").checked = false;
+            document.getElementById("radio-crypto").checked = false;
+            document.getElementById("quantity-popup-input").value = "";
+            document.getElementById("price-popup-input").value = "";
+            document.getElementById("dateAddAsset").value = "";
+            document.getElementById("total-popup-input").value = "";
+            
+        })
         
         loadPortfoliosAssets();
 
     }
+
+    
 
     updatePortfolio = () => {
         console.log("updatePortfolio")
         const addAssetForm = document.getElementById("addAssetForm");
         addAssetForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            const assetName = addAssetForm["assetInput"].value;
-            const assetQty = addAssetForm["quantity-popup-input"].value;
-            const assetBuyPrice = addAssetForm["price-popup-input"].value;
-            const assetBuyDate = addAssetForm["dateAddAsset"].value;
-
-            // calculate total price in the pop up modal
-            const assetTotalPrice = +assetQty * +assetBuyPrice;
-
-            // replace value in the pop modal total price
-            document.getElementById("total-popup-input").innerHTML = assetTotalPrice;
-
-            let currentUser = db.collection("users").doc(user.uid);
-            // let currentUser = db.collection("users");
-            // let currentUserPort = db.collection("users").doc(user.uid).portfolios();
-            const newAsset = {
-                assetName,
-                assetQty,
-                assetEntryPrice: assetBuyPrice,
-                assetBuyDate: assetBuyDate,
+            let crypto = addAssetForm["radio-crypto"];
+            //if user adds crypto
+            if (crypto.checked){
+                console.log("Crypto is inputted")
             }
+            // const assetName = addAssetForm["assetInput"].value;
+            // const assetQty = addAssetForm["quantity-popup-input"].value;
+            // const assetBuyPrice = addAssetForm["price-popup-input"].value;
+            // const assetBuyDate = addAssetForm["dateAddAsset"].value;
 
-            currentUser
-                .get()
-                .then((doc) => {
-                    if(doc.exists) {
-                        var portList = doc.data().portfolios
-                        for (let i = 0; i < portList.length; i++) {
-                            if(portList[i].portfolioName == localStorage.getItem("current_portfolio")){
-                                portList[i].assets.push(newAsset);
-                            }
+            // // calculate total price in the pop up modal
+            // const assetTotalPrice = +assetQty * +assetBuyPrice;
+
+            // // replace value in the pop modal total price
+            // document.getElementById("total-popup-input").innerHTML = assetTotalPrice;
+
+            // let currentUser = db.collection("users").doc(user.uid);
+            // let currentUserPort = db.collection("users").doc(user.uid).portfolios();
+            // const newAsset = {
+            //     assetName,
+            //     assetQty,
+            //     assetEntryPrice: assetBuyPrice,
+            //     assetBuyDate: assetBuyDate,
+            // }
+
+            // currentUser
+            //     .get()
+            //     .then((doc) => {
+            //         if(doc.exists) {
+            //             var portList = doc.data().portfolios
+            //             for (let i = 0; i < portList.length; i++) {
+            //                 if(portList[i].portfolioName == localStorage.getItem("current_portfolio")){
+            //                     portList[i].assets.push(newAsset);
+            //                 }
                             
-                        }
-                        console.log(JSON.stringify(portList) + " updated portfolios");
+            //             }
+            //             console.log(JSON.stringify(portList) + " updated portfolios");
 
-                        currentUser
-                            .update({
-                                portfolios: portList
-                            })
-                            .then(() => {
-                                console.log("Portfolios updated successfully")
-                                location.reload();
-                            })
-                            .catch((error) => {
-                                console.log(error);
-                            })
-                    }
-                })
-                .catch(error => console.log(error))
+            //             currentUser
+            //                 .update({
+            //                     portfolios: portList
+            //                 })
+            //                 .then(() => {
+            //                     console.log("Portfolios updated successfully")
+            //                     location.reload();
+            //                 })
+            //                 .catch((error) => {
+            //                     console.log(error);
+            //                 })
+            //         }
+            //     })
+            //     .catch(error => console.log(error))
 
 
-        })
-    }
+    })
+}
 
     loadPortfolios();
 
 });
 
-// database look like
-// users = [
-//     user1:[
-//         {email:
-//             "harrypotter@mail.com",
-//             first_name:
-//             "Harry",
-//             last_name:
-//             "Potter"
-//             portfolios: [
-//                 {
-//                     assets: [],
-//                     portName: "first portfolio"
-//                 }
-//             ]
-//         }
-//     ]
-// ]
+const inputEl = document.getElementById("assetInput");
+let cryptos = []
+getCryptos()
+async function getCryptos(){
+    let coins  = await fetch('../data/cryptos.json');
+    let data = await coins.json();
+
+    cryptos = data.map((coin) => {
+        return coin
+    })
+}
 
 
+
+onCryptoInputChange = () => {
+    removeAutocompleteDropDown();
+    const value = inputEl.value.toLowerCase();
+    if (value.length === 0) return;
+    const filteredCoins = []
+    cryptos.forEach((coin) =>{
+        if (coin.name.substr(0, value.length).toLowerCase() === value || coin.symbol.substr(0, value.length).toLowerCase() === value){
+            filteredCoins.push(coin.name + "(" + coin.symbol + ")")
+        }
+    })
+    
+    createAutocompleteDropdown(filteredCoins);
+}
+
+function createAutocompleteDropdown(list) {
+    const listEl = document.createElement("ul");
+    listEl.id = "autocomplete-list";
+    listEl.className = "autocomplete-list";
+    list.forEach((coin) => {
+        const listItem = document.createElement("li");
+        const coinButton = document.createElement("button");
+        coinButton.addEventListener("click", onMenuButtonClick)
+        coinButton.innerHTML = coin;
+        listItem.appendChild(coinButton);
+        listEl.appendChild(listItem)
+    })
+    document.querySelector(".input-addAsset-popup").appendChild(listEl)
+}
+
+function onMenuButtonClick(e) {
+    e.preventDefault();
+    const selected = e.target.innerHTML
+    inputEl.value = selected.match(/\((.*?)\)/)[1];
+
+    removeAutocompleteDropDown();
+}
+
+function removeAutocompleteDropDown(){
+    const listEl = document.getElementById("autocomplete-list");
+    if (listEl) listEl.remove();
+}
             
 
 // currentUser
