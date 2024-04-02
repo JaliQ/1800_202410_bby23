@@ -9,7 +9,7 @@ function populateUserInfo() {
             //get the document for current user.
             currentUser.get()
                 .then(userDoc => {
-                    console.log(userDoc.data());
+                    // console.log(userDoc.data());
                     //get the data fields of the user
                     let userFirstName = userDoc.data().first_name;
                     let userLastName = userDoc.data().last_name;

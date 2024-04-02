@@ -60,9 +60,13 @@ function submitFeedback() {
 }
 
 
-const modal3 = document.querySelector('#help-modal');
+const modal3 = document.querySelector('#help-pop-up');
 openModalHelp = () => {
+    modal3.showModal();
+}
 
+closeModalHelp = () => {
+    modal3.close();
 }
 
 

@@ -788,6 +788,19 @@ footer h3{
         font-weight: bold;
 }
 
+#help-pop-up{
+        border-radius: 30px;
+        background-color: white;
+        width: 80vw;
+        height: 50vh;
+        text-align: center;
+}
+
+#help-pop-up h3{
+        text-align: center;
+        color: blue;
+}
+
 }
 
 
