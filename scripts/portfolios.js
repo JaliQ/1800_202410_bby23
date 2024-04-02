@@ -166,7 +166,7 @@ firebase.auth().onAuthStateChanged((user) => {
     
 
     updatePortfolio = () => {
-        console.log("updatePortfolio")
+        // console.log("updatePortfolio")
         const addAssetForm = document.getElementById("addAssetForm");
         addAssetForm.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -230,6 +230,11 @@ firebase.auth().onAuthStateChanged((user) => {
     loadPortfolios();
 
 });
+
+closeModalPortfolio = () => {
+    modal3 = document.querySelector('#add-stock-popup');
+    modal3.close();
+}
 
 const inputEl = document.getElementById("assetInput");
 let cryptos = []

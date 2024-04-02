@@ -67,10 +67,23 @@
             const email = loginForm["login-email"].value;
             const pass = loginForm["login-pass1"].value;
             auth.signInWithEmailAndPassword(email, pass).then(cred => {
-                console.log(cred);
-                // alert(JSON.stringify(cred.user));
+                // console.log(cred);
+                // alert(JSON.stringify(cred.user.uid));
 
-                window.location.href = "./main.html";
+                var currentUser = db.collection("users").doc(cred.user.uid);
+                currentUser
+                    .get()
+                    .then(userDoc => {
+                        // alert(JSON.stringify(userDoc.data()));
+                        var userInfo = userDoc.data();
+                        localStorage.setItem("first_name", userInfo.first_name);
+                        localStorage.setItem("last_name", userInfo.last_name);
+                        window.location.href = "./main.html";
+                    })
+                    .catch(err => {
+                        alert(error);
+                    })
+
             }).catch(function (error) {
                 Swal.fire({
                     icon: "error",

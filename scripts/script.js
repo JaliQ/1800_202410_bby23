@@ -59,7 +59,11 @@ function submitFeedback() {
     });
 }
 
-    
+
+const modal3 = document.querySelector('#help-modal');
+openModalHelp = () => {
+
+}
 
 
 
