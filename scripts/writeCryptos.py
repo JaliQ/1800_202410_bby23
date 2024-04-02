@@ -9,7 +9,8 @@ url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/map"
 cryptos = []
 
 parameters = {
-  'limit':'400'
+  'limit':'400',
+  'sort' : 'cmc_rank'
 }
 
 headers = {
