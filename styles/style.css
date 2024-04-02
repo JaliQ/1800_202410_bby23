@@ -401,6 +401,15 @@ footer h3{
         cursor: pointer;
 }
 
+/* help */
+#help-pop-up{
+        border-radius: 30px;
+        background-color: white;
+        width: 40vw;
+        height: 40vh;
+        text-align: center;
+}
+
 /* Plus card to add an asset */
 #plusTag{
         font-size: 50px;
