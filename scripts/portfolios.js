@@ -65,7 +65,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 portfolios.forEach(portfolio => {
                     let name = portfolio.portfolioName;
                     // str+= `<a href='' class="dropItem">${name}</a>`
-                    str += `<a href="javascript:void(0);" id="portfolioSelection" class="dropItem" onclick="assignPortfolio()">${name}</a>`
+                    str += `<a href="javascript:void(0);" id="portfolioSelection" class="dropItem" onclick="assignPortfolio('${name}')">${name}</a>`
                 })
                 document.querySelector(".load-here").innerHTML = str;
             })
@@ -73,19 +73,11 @@ firebase.auth().onAuthStateChanged((user) => {
 
     loadPortfoliosAssets = () => {
         let currentUser = db.collection("users").doc(user.uid);
-        // var assetTicker;
-        // var url = `https://real-time-quotes1.p.rapidapi.com/api/v1/realtime/crypto?source=${assetTicker}&target=USD`;
-        // var url = `https://real-time-quotes1.p.rapidapi.com/api/v1/realtime/crypto?source=BTC&target=USD`;
-        // const options = {
-        //     method: 'GET',
-        //     mode:'cors',
-        //     headers: {
-        //         'X-RapidAPI-Key': 'dd54c567bdmshbc2da4da544ff1bp1ffc40jsn2708e9551e62',
-        //         'X-RapidAPI-Host': 'real-time-quotes1.p.rapidapi.com',
-        //         'content-type': 'application/json'
-                
-        //     }
-        // };
+        if(document.getElementById('assets-examples') !== ""){
+            document.getElementById('assets-examples').innerHTML = ""
+        }
+
+        // console.log(document.getElementById('assets-examples').innerHTML)
         currentUser
             .get()
             .then((doc) => {
@@ -106,7 +98,7 @@ firebase.auth().onAuthStateChanged((user) => {
                     params+=`${name},`
                 })
                 params = params.slice(0,-1);
-                fetch(`http://localhost:5000/prices?symbol=${params}`)
+                fetch(`http://127.0.0.1:5000/prices?symbol=${params}`)
                 .then( res => res.json())
                 .then(prices => {
                     const cardArea = document.getElementById("assets-examples");
@@ -115,7 +107,7 @@ firebase.auth().onAuthStateChanged((user) => {
                     let name = asset.assetName;
                     let qty = asset.assetQty;
                     let entry = asset.assetEntryPrice;
-                    console.log(prices.name, name)
+                    // console.log(prices.name, name)
                     let str = `<div class="card" id="display-card"> `
                     str += `<div class="card-content">
                     <img src="./img/star-svgrepo-com.svg" alt="star">
@@ -151,14 +143,29 @@ firebase.auth().onAuthStateChanged((user) => {
             .catch((error) => {
                 console.log(error)
             })
+
+        
+        // var assetTicker;
+        // var url = `https://real-time-quotes1.p.rapidapi.com/api/v1/realtime/crypto?source=${assetTicker}&target=USD`;
+        // var url = `https://real-time-quotes1.p.rapidapi.com/api/v1/realtime/crypto?source=BTC&target=USD`;
+        // const options = {
+        //     method: 'GET',
+        //     mode:'cors',
+        //     headers: {
+        //         'X-RapidAPI-Key': 'dd54c567bdmshbc2da4da544ff1bp1ffc40jsn2708e9551e62',
+        //         'X-RapidAPI-Host': 'real-time-quotes1.p.rapidapi.com',
+        //         'content-type': 'application/json'
+                
+        //     }
+        // };
     }
 
-    assignPortfolio = () => {
+    assignPortfolio = (portfolioName) => {
         localStorage.removeItem("current_portfolio");
         const modal = ` <div class="card" id="add-stock"> <div class="card-content" id="add-stock" onclick="document.querySelector('#add-stock-popup').showModal()"> <h1 id="plusTag">+</h1> </div> </div>`
         inputEl.addEventListener("input", onCryptoInputChange);
-        let currentPortfolio = document.getElementById("portfolioSelection").innerHTML;
-        localStorage.setItem("current_portfolio", currentPortfolio);
+        // alert(portfolioName);
+        localStorage.setItem("current_portfolio", portfolioName);
         
         document.getElementById('portfolio-display').style.display = "none";
         document.getElementById('current-portfolio').innerHTML =`<h3> ${localStorage.getItem("current_portfolio")} </h3>` + modal;

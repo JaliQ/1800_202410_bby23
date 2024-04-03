@@ -31,6 +31,7 @@ def get_price():
   session.headers.update(headers)
   response = session.get("https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest", params=parameters)
   data = json.loads(response.text)
+  # print(data)
   prices = {}
   for symbol in symbols:
     price = data["data"][symbol][0]["quote"]["USD"]["price"]
