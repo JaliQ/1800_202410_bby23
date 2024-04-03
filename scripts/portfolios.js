@@ -229,7 +229,9 @@ firebase.auth().onAuthStateChanged((user) => {
                                     })
                                     .then(() => {
                                         console.log("Portfolios updated successfully")
-                                        location.reload();
+                                        document.querySelector('#add-stock-popup').close()
+                                        // location.reload();
+                                        
                                     })
                                     .catch((error) => {
                                         console.log(error);
@@ -252,10 +254,10 @@ firebase.auth().onAuthStateChanged((user) => {
 
 });
 
-closeModalPortfolio = () => {
-    modal3 = document.querySelector('#add-stock-popup');
-    modal3.close();
-}
+// closeModalPortfolio = () => {
+//     modal3 = document.querySelector('#add-stock-popup');
+//     modal3.close();
+// }
 
 const inputEl = document.getElementById("assetInput");
 let cryptos = []

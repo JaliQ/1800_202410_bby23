@@ -72,7 +72,7 @@ headers = {
 session = Session()
 session.headers.update(headers)
 response = session.get('https://yahoo-finance127.p.rapidapi.com/multi-quote/btc,tsla,eth')
-print(json.loads(response.text))
+# print(json.loads(response.text))
 
-# if __name__ == '__main__':
-#     app.run()
+if __name__ == '__main__':
+  app.run()
