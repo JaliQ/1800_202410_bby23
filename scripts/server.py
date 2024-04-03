@@ -64,5 +64,15 @@ def rewriteCryptoList():
   except (ConnectionError, Timeout, TooManyRedirects) as e:
     print(e)
 
-if __name__ == '__main__':
-    app.run()
+headers = {
+  'X-RapidAPI-Key': 'dd54c567bdmshbc2da4da544ff1bp1ffc40jsn2708e9551e62',
+  'X-RapidAPI-Host': 'yahoo-finance127.p.rapidapi.com'
+}
+
+session = Session()
+session.headers.update(headers)
+response = session.get('https://yahoo-finance127.p.rapidapi.com/multi-quote/btc,tsla,eth')
+print(json.loads(response.text))
+
+# if __name__ == '__main__':
+#     app.run()
