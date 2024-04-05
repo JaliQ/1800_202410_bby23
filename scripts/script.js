@@ -69,6 +69,11 @@ closeModalHelp = () => {
     modal3.close();
 }
 
+closeModalPortfolio = () => {
+    document.getElementById("add-stock-popup").style.display = "none";
+}
+
+
 
 
 

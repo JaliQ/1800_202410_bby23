@@ -143,32 +143,6 @@
 
    
     <div id="assets-examples" style="margin-top: 10px;">
-    <!-- each asset card -->
-    <!-- <div class="card" id="display-card"> -->
-        <!-- <div class="card-content"> -->
-            <!-- <img src="./img/star-svgrepo-com.svg" alt="star">
-            <div class="stock-name">
-                <span>name</span>
-                <h3>AAPL</h3>
-            </div>
-            <div class="stock-name">
-                <span>entry price</span>
-                <h3>AAPL</h3>
-            </div>
-            <div class="stock-name">
-                <span>current price</span>
-                <h3>$170.55</h3>
-            </div>
-            <div class="stock-name">
-                <span>qty</span>
-                <h3>AAPL</h3>
-            </div>
-            <div class="stock-name">
-                <span>ROI</span>
-                <h3>-</h3>
-            </div> -->
-        <!-- </div> -->
-    <!-- </div> -->
     </div>
 
     <!-- pop up to add a stock -->
@@ -208,7 +182,7 @@
             </div>
             <div class="input-addAsset-popup">
                 <button type="submit" onclick="updatePortfolio()" class="btn-popup">Save</button>
-                <button type="submit" id="close-addStock-popup" class="btn-popup" onclick="closeModalPortfolio()">Close</button>
+                <button type="submit" id="close-addStock-popup" class="btn-popup" onclick="document.querySelector('#add-stock-popup').close()">Close</button>
             </div>
         </form>
     </dialog>
@@ -271,3 +245,30 @@
 </body>
 
 </html>
+
+<!-- each asset card -->
+    <!-- <div class="card" id="display-card"> -->
+        <!-- <div class="card-content"> -->
+            <!-- <img src="./img/star-svgrepo-com.svg" alt="star">
+            <div class="stock-name">
+                <span>name</span>
+                <h3>AAPL</h3>
+            </div>
+            <div class="stock-name">
+                <span>entry price</span>
+                <h3>AAPL</h3>
+            </div>
+            <div class="stock-name">
+                <span>current price</span>
+                <h3>$170.55</h3>
+            </div>
+            <div class="stock-name">
+                <span>qty</span>
+                <h3>AAPL</h3>
+            </div>
+            <div class="stock-name">
+                <span>ROI</span>
+                <h3>-</h3>
+            </div> -->
+        <!-- </div> -->
+    <!-- </div> -->
