@@ -106,7 +106,7 @@ firebase.auth().onAuthStateChanged((user) => {
                     params+=`${name},`
                 })
                 params = params.slice(0,-1);
-                fetch(`http://localhost:5000/prices?symbol=${params}`)
+                fetch(`https://comp1800project.pythonanywhere.com/prices?symbol=${params}`)
                 .then( res => res.json())
                 .then(prices => {
                     const cardArea = document.getElementById("assets-examples");
