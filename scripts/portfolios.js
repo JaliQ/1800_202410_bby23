@@ -44,9 +44,9 @@ firebase.auth().onAuthStateChanged((user) => {
                     } else {
                         console.error("User document does not exist.");
                     }
-            }).catch((error) => {
-                console.error("Error getting document:", error);
-            });
+                }).catch((error) => {
+                    console.error("Error getting document:", error);
+                });
         } else {
             Swal.fire({
                 icon: "error",
@@ -72,19 +72,19 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 
     loadPortfoliosAssets = () => {
+        // console.log(user.uid + " <<<<")
         let currentUser = db.collection("users").doc(user.uid);
-        if(document.getElementById('assets-examples') !== ""){
+        if (document.getElementById('assets-examples') !== "") {
             document.getElementById('assets-examples').innerHTML = ""
         }
-
-        // console.log(document.getElementById('assets-examples').innerHTML)
+        // document.getElementById('assets-examples').innerHTML = ""
         currentUser
-            .get()
-            .then((doc) => {
+            .onSnapshot((doc) => {
+                console.log(JSON.stringify(doc.data().portfolios) + " <><><>>")
                 var portList = doc.data().portfolios;
                 var assetList;
                 for (let i = 0; i < portList.length; i++) {
-                    if(portList[i].portfolioName == localStorage.getItem("current_portfolio")){
+                    if (portList[i].portfolioName == localStorage.getItem("current_portfolio")) {
                         // console.log(JSON.stringify(portList[i]) + " each asset")
                         assetList = portList[i].assets;
                     }
@@ -95,21 +95,21 @@ firebase.auth().onAuthStateChanged((user) => {
                 })
                 let params = ""
                 assetNames.forEach(name => {
-                    params+=`${name},`
+                    params += `${name},`
                 })
-                params = params.slice(0,-1);
+                params = params.slice(0, -1);
                 fetch(`https://comp1800project.pythonanywhere.com/prices?symbol=${params}`)
-                .then( res => res.json())
-                .then(prices => {
-                    const cardArea = document.getElementById("assets-examples");
-                    console.log(prices)
-                    assetList.forEach(asset => {
-                    let name = asset.assetName;
-                    let qty = asset.assetQty;
-                    let entry = asset.assetEntryPrice;
-                    // console.log(prices.name, name)
-                    let str = `<div class="card" id="display-card"> `
-                    str += `<div class="card-content">
+                    .then(res => res.json())
+                    .then(prices => {
+                        const cardArea = document.getElementById("assets-examples");
+                        console.log(prices)
+                        assetList.forEach(asset => {
+                            let name = asset.assetName;
+                            let qty = asset.assetQty;
+                            let entry = asset.assetEntryPrice;
+                            // console.log(prices.name, name)
+                            let str = `<div class="card" id="display-card"> `
+                            str += `<div class="card-content">
                     <img src="./img/star-svgrepo-com.svg" alt="star">
                     <div class="stock-name">
                         <span>name</span>
@@ -129,35 +129,16 @@ firebase.auth().onAuthStateChanged((user) => {
                     </div>
                     <div class="stock-name">
                         <span>ROI</span>
-                        <h3>${(((qty*prices[name]-entry*qty)/(qty*entry))*100).toFixed(2)}%</h3>
+                        <h3>${(((qty * prices[name] - entry * qty) / (qty * entry)) * 100).toFixed(2)}%</h3>
                     </div>
                 </div>`
-                str += `</div>`;
-                cardArea.innerHTML += str;
-            });
-            
-        })
-                
-            
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+                            str += `</div>`;
+                            cardArea.innerHTML += str;
+                        });
 
-        
-        // var assetTicker;
-        // var url = `https://real-time-quotes1.p.rapidapi.com/api/v1/realtime/crypto?source=${assetTicker}&target=USD`;
-        // var url = `https://real-time-quotes1.p.rapidapi.com/api/v1/realtime/crypto?source=BTC&target=USD`;
-        // const options = {
-        //     method: 'GET',
-        //     mode:'cors',
-        //     headers: {
-        //         'X-RapidAPI-Key': 'dd54c567bdmshbc2da4da544ff1bp1ffc40jsn2708e9551e62',
-        //         'X-RapidAPI-Host': 'real-time-quotes1.p.rapidapi.com',
-        //         'content-type': 'application/json'
-                
-        //     }
-        // };
+                    })
+            })
+            
     }
 
     assignPortfolio = (portfolioName) => {
@@ -166,9 +147,9 @@ firebase.auth().onAuthStateChanged((user) => {
         inputEl.addEventListener("input", onCryptoInputChange);
         // alert(portfolioName);
         localStorage.setItem("current_portfolio", portfolioName);
-        
+
         document.getElementById('portfolio-display').style.display = "none";
-        document.getElementById('current-portfolio').innerHTML =`<h3> ${localStorage.getItem("current_portfolio")} </h3>` + modal;
+        document.getElementById('current-portfolio').innerHTML = `<h3> ${localStorage.getItem("current_portfolio")} </h3>` + modal;
         const modal1 = document.querySelector('#add-stock-popup');
         const openModalAddStock = document.getElementById('#add-stock');
         const closeModalAddStock = document.querySelector('#close-addStock-popup');
@@ -181,14 +162,14 @@ firebase.auth().onAuthStateChanged((user) => {
             document.getElementById("price-popup-input").value = "";
             document.getElementById("dateAddAsset").value = "";
             document.getElementById("total-popup-input").value = "";
-            
+
         })
-        
+
         loadPortfoliosAssets();
 
     }
 
-    
+
 
     updatePortfolio = () => {
         // console.log("updatePortfolio")
@@ -197,7 +178,7 @@ firebase.auth().onAuthStateChanged((user) => {
             e.preventDefault();
             let crypto = addAssetForm["radio-crypto"];
             //if user adds crypto
-            if (crypto.checked && addAssetForm["assetInput"].disabled==true){
+            if (crypto.checked && addAssetForm["assetInput"].disabled == true) {
                 const assetName = addAssetForm["assetInput"].value;
                 const assetQty = addAssetForm["quantity-popup-input"].value;
                 const assetBuyPrice = addAssetForm["price-popup-input"].value;
@@ -207,7 +188,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 const assetTotalPrice = +assetQty * +assetBuyPrice;
                 // replace value in the pop modal total price
                 document.getElementById("total-popup-input").innerHTML = assetTotalPrice;
-                if (assetQty>0 && assetBuyPrice>0){
+                if (assetQty > 0 && assetBuyPrice > 0) {
                     let currentUser = db.collection("users").doc(user.uid);
                     const newAsset = {
                         assetName,
@@ -220,13 +201,13 @@ firebase.auth().onAuthStateChanged((user) => {
                     currentUser
                         .get()
                         .then((doc) => {
-                            if(doc.exists) {
+                            if (doc.exists) {
                                 var portList = doc.data().portfolios
                                 for (let i = 0; i < portList.length; i++) {
-                                    if(portList[i].portfolioName == localStorage.getItem("current_portfolio")){
+                                    if (portList[i].portfolioName == localStorage.getItem("current_portfolio")) {
                                         portList[i].assets.push(newAsset);
                                     }
-                                    
+
                                 }
                                 console.log(JSON.stringify(portList) + " updated portfolios");
 
@@ -238,7 +219,7 @@ firebase.auth().onAuthStateChanged((user) => {
                                         console.log("Portfolios updated successfully")
                                         document.querySelector('#add-stock-popup').close()
                                         // location.reload();
-                                        
+
                                     })
                                     .catch((error) => {
                                         console.log(error);
@@ -254,8 +235,8 @@ firebase.auth().onAuthStateChanged((user) => {
                     });
                 }
             }
-    })
-}
+        })
+    }
 
     loadPortfolios();
 
@@ -269,8 +250,9 @@ firebase.auth().onAuthStateChanged((user) => {
 const inputEl = document.getElementById("assetInput");
 let cryptos = []
 getCryptos()
-async function getCryptos(){
-    let coins  = await fetch('../data/cryptos.json');
+async function getCryptos() {
+    // let coins  = await fetch('../data/cryptos.json');
+    let coins = await fetch('./data/cryptos.json');
     let data = await coins.json();
 
     cryptos = data.map((coin) => {
@@ -285,12 +267,12 @@ onCryptoInputChange = () => {
     const value = inputEl.value.toLowerCase();
     if (value.length === 0) return;
     const filteredCoins = []
-    cryptos.forEach((coin) =>{
-        if (coin.name.substr(0, value.length).toLowerCase() === value || coin.symbol.substr(0, value.length).toLowerCase() === value){
+    cryptos.forEach((coin) => {
+        if (coin.name.substr(0, value.length).toLowerCase() === value || coin.symbol.substr(0, value.length).toLowerCase() === value) {
             filteredCoins.push(coin.name + "(" + coin.symbol + ")")
         }
     })
-    
+
     createAutocompleteDropdown(filteredCoins);
 }
 
@@ -318,58 +300,7 @@ function onMenuButtonClick(e) {
     removeAutocompleteDropDown();
 }
 
-function removeAutocompleteDropDown(){
+function removeAutocompleteDropDown() {
     const listEl = document.getElementById("autocomplete-list");
     if (listEl) listEl.remove();
 }
-            
-
-// currentUser
-// // .where('portfolios', 'array-contains', {portfolioName: 'First portfolio'})
-// .where('portfolioName', '==', 'First portfolio')
-// .get()
-// .then((snapshot) => {
-//     snapshot.forEach(doc => {
-//         console.log(doc.data())
-//     })
-// })
-// .catch((error) => console.log(error))
-// .where('first_name', '==', "Harry")
-// // .where('portfolios', 'array-contains', {'portfolioName': 'First portfolio'})
-// .get()
-// // .update({
-// //     "portfolios": firebase.firestore.FieldValue.arrayUnion({
-// //         "assets": firebase.firestore.FieldValue.arrayUnion({
-// //             "name": "btc",
-// //             "price": 150
-// //         }),
-// //         "portfolioName": "First portfolio"
-// //     })
-// // })
-// // .collection("portfolios")
-// // .where("portfolioName", "==", localStorage.getItem("current_portfolio"))
-// .then((querySnapshot) => {
-//     console.log(querySnapshot.docs);
-//     querySnapshot.docs.map((doc) => {
-//         // Access the document data
-//         console.log(doc.id, " => ", doc.data());
-
-//         // // Update the document to add the new asset to the portfolio
-//         // db.collection("users").doc(doc.id).update({
-//         //     "portfolios": firebase.firestore.FieldValue.arrayUnion({
-//         //         "assets": newAsset,
-//         //         "portName": localStorage.getItem('current_portfolio')
-//         //     })
-//         // })
-//         // .then(() => {
-//         //     console.log("Document successfully updated!");
-//         // })
-//         // .catch((error) => {
-//         //     console.error("Error updating document: ", error);
-//         // });
-//     });
-// })
-// .catch((error) => {
-//     alert(error.message);
-//     console.log(error);
-// })
