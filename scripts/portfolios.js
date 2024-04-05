@@ -259,8 +259,8 @@ const inputEl = document.getElementById("assetInput");
 let cryptos = []
 getCryptos()
 async function getCryptos() {
-    let coins  = await fetch('../data/cryptos.json');
-    // let coins = await fetch('./data/cryptos.json');
+    // let coins  = await fetch('../data/cryptos.json');
+    let coins = await fetch('./data/cryptos.json');
     let data = await coins.json();
 
     cryptos = data.map((coin) => {
