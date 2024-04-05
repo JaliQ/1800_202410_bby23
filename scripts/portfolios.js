@@ -190,13 +190,19 @@ firebase.auth().onAuthStateChanged((user) => {
 
     document.getElementById("addAssetForm")["radio-crypto"].addEventListener("change", (e) =>{
         const addAssetForm = document.getElementById("addAssetForm");
-        if (e.target.checked){
             addAssetForm["assetInput"].disabled = false;
             addAssetForm["quantity-popup-input"].disabled = false;
             addAssetForm["quantity-popup-input"].step = 0.0000001;
             addAssetForm["price-popup-input"].disabled = false;
-        }
     });
+
+    document.getElementById("addAssetForm")["radio-stock"].addEventListener("change", (e) => {
+        const addAssetForm = document.getElementById("addAssetForm");
+            addAssetForm["assetInput"].disabled = false;
+            addAssetForm["quantity-popup-input"].disabled = false;
+            addAssetForm["quantity-popup-input"].step = 1;
+            addAssetForm["price-popup-input"].disabled = false;
+    })
 
     updatePortfolio = () => {
         // console.log("updatePortfolio")
