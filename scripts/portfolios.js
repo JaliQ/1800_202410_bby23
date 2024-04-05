@@ -74,13 +74,12 @@ firebase.auth().onAuthStateChanged((user) => {
     loadPortfoliosAssets = () => {
         // console.log(user.uid + " <<<<")
         let currentUser = db.collection("users").doc(user.uid);
-        if (document.getElementById('assets-examples') !== "") {
-            document.getElementById('assets-examples').innerHTML = ""
-        }
+        // if (document.getElementById('assets-examples') !== "") {
+        //     document.getElementById('assets-examples').innerHTML = ""
+        // }
         // document.getElementById('assets-examples').innerHTML = ""
         currentUser
             .onSnapshot((doc) => {
-                console.log(JSON.stringify(doc.data().portfolios) + " <><><>>")
                 var portList = doc.data().portfolios;
                 var assetList;
                 for (let i = 0; i < portList.length; i++) {
@@ -143,6 +142,7 @@ firebase.auth().onAuthStateChanged((user) => {
 
     assignPortfolio = (portfolioName) => {
         localStorage.removeItem("current_portfolio");
+        removeAssetList();
         const modal = ` <div class="card" id="add-stock"> <div class="card-content" id="add-stock" onclick="document.querySelector('#add-stock-popup').showModal()"> <h1 id="plusTag">+</h1> </div> </div>`
         inputEl.addEventListener("input", onCryptoInputChange);
         // alert(portfolioName);
@@ -224,6 +224,7 @@ firebase.auth().onAuthStateChanged((user) => {
                                     .then(() => {
                                         console.log("Portfolios updated successfully")
                                         document.querySelector('#add-stock-popup').close()
+                                        removeAssetList()
                                         loadPortfoliosAssets();
                                         // location.reload();
 
@@ -258,8 +259,8 @@ const inputEl = document.getElementById("assetInput");
 let cryptos = []
 getCryptos()
 async function getCryptos() {
-    // let coins  = await fetch('../data/cryptos.json');
-    let coins = await fetch('./data/cryptos.json');
+    let coins  = await fetch('../data/cryptos.json');
+    // let coins = await fetch('./data/cryptos.json');
     let data = await coins.json();
 
     cryptos = data.map((coin) => {
@@ -312,3 +313,7 @@ function removeAutocompleteDropDown() {
     if (listEl) listEl.remove();
 }
 
+function removeAssetList() {
+    document.getElementById('assets-examples').innerHTML = "";
+                                        
+}
