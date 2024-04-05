@@ -311,4 +311,4 @@ function removeAutocompleteDropDown() {
     const listEl = document.getElementById("autocomplete-list");
     if (listEl) listEl.remove();
 }
-}
+
