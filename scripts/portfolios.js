@@ -169,7 +169,15 @@ firebase.auth().onAuthStateChanged((user) => {
 
     }
 
-
+    document.getElementById("addAssetForm")["radio-crypto"].addEventListener("change", (e) =>{
+        const addAssetForm = document.getElementById("addAssetForm");
+        if (e.target.checked){
+            addAssetForm["assetInput"].disabled = false;
+            addAssetForm["quantity-popup-input"].disabled = false;
+            addAssetForm["quantity-popup-input"].step = 0.0000001;
+            addAssetForm["price-popup-input"].disabled = false;
+        }
+    });
 
     updatePortfolio = () => {
         // console.log("updatePortfolio")
@@ -182,7 +190,6 @@ firebase.auth().onAuthStateChanged((user) => {
                 const assetName = addAssetForm["assetInput"].value;
                 const assetQty = addAssetForm["quantity-popup-input"].value;
                 const assetBuyPrice = addAssetForm["price-popup-input"].value;
-                const assetBuyDate = addAssetForm["dateAddAsset"].value;
                 const assetType = "crypto";
                 // calculate total price in the pop up modal
                 const assetTotalPrice = +assetQty * +assetBuyPrice;
@@ -194,7 +201,6 @@ firebase.auth().onAuthStateChanged((user) => {
                         assetName,
                         assetQty,
                         assetEntryPrice: assetBuyPrice,
-                        assetBuyDate: assetBuyDate,
                         assetType,
                     }
 
@@ -218,6 +224,7 @@ firebase.auth().onAuthStateChanged((user) => {
                                     .then(() => {
                                         console.log("Portfolios updated successfully")
                                         document.querySelector('#add-stock-popup').close()
+                                        loadPortfoliosAssets();
                                         // location.reload();
 
                                     })
@@ -303,4 +310,5 @@ function onMenuButtonClick(e) {
 function removeAutocompleteDropDown() {
     const listEl = document.getElementById("autocomplete-list");
     if (listEl) listEl.remove();
+}
 }

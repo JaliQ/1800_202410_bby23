@@ -39,19 +39,14 @@
 
 # @app.route("/stockPrices")
 # def getStocks():
-#   headers = {
-#     'X-RapidAPI-Key': 'dd54c567bdmshbc2da4da544ff1bp1ffc40jsn2708e9551e62',
-#     'X-RapidAPI-Host': 'yahoo-finance127.p.rapidapi.com'
-#   }
+#     symbols  = request.args.get("symbols")
+#     headers = {
+#         'X-RapidAPI-Key': 'dd54c567bdmshbc2da4da544ff1bp1ffc40jsn2708e9551e62',
+#         'X-RapidAPI-Host': 'yahoo-finance127.p.rapidapi.com'
+#     }
 
-#   session = Session()
-#   session.headers.update(headers)
-#   with open("C:/Users/miste/OneDrive - BCIT/BCIT/1800_2024/Assignments/Labs/1800_202410_bby23/data/stocks.json", "r") as file:
-#     symbols  = ''
-#     rd = json.load(file)
-#     for symbol in rd:
-#       symbols += (symbol["symbol"]+",")
-#     symbols = symbols[0:-1]
+#     session = Session()
+#     session.headers.update(headers)
 #     response = session.get('https://yahoo-finance127.p.rapidapi.com/multi-quote/'+symbols)
 #     data = json.loads(response.text)
 #     prices = []

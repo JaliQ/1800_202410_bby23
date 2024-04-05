@@ -157,25 +157,21 @@
                 <input type="radio" id="radio-crypto" onclick="clearOther(this)">
             </div>
             <div class="input-addAsset-popup" id="addAssetLabel">
-                <input type="text" id="assetInput" placeholder="Name">
+                <input type="text" id="assetInput" placeholder="Name" disabled>
             </div>
             
             <div class="input-addAsset-popup">
                 <label for="Quantity">Quantity</label>
-                <input type="number" step="0.000001" id="quantity-popup-input" oninput="calculate()">
+                <input type="number" step="0.000001" id="quantity-popup-input" oninput="calculate()" disabled>
             </div>
             <div class="input-addAsset-popup">
                 <label for="Price">Price per item</label>
-                <input type="number" step="0.0001" id="price-popup-input" oninput="calculate()">
+                <input type="number" step="1" id="price-popup-input" oninput="calculate()" disabled>
             </div>
             <!-- <div class="input-addAsset-popup">
                 <label for="Price">Price per Stock</label>
                 <input type="number" id="price-popup-input">
             </div> -->
-            <div class="input-addAsset-popup">
-                <label for="">Date</label>
-                <input type="date" id="dateAddAsset">
-            </div>
             <div class="input-addAsset-popup">
                 <label for="date">Total $</label>
                 <input type="text" id="total-popup-input" disabled>
