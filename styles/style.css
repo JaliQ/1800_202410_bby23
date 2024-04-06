@@ -1,35 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-body{
+body {
         background-color: #000000;
         color: white;
 }
 
-#portfolio-display p{
+#portfolio-display p {
         font-family: "Montserrat";
         text-align: center;
         font-size: 36px;
         padding-top: 30px;
 }
 
-.autocomplete-list{
+.autocomplete-list {
         list-style: none;
         padding: unset;
         margin: unset;
         width: 100%;
 }
 
-.autocomplete-list li{
+.autocomplete-list li {
         border: 1px solid #e9e9e9;
         border-top: unset;
 }
 
-.autocomplete-list li :hover{
+.autocomplete-list li :hover {
         border: 1px solid #f3f3f3;
 
 }
 
-.autocomplete-list button{
+.autocomplete-list button {
         border: unset;
         background: none;
         display: block;
@@ -38,7 +38,7 @@ body{
         padding: 0.5em;
 }
 
-#current-portfolio h3{
+#current-portfolio h3 {
         font-family: "Montserrat";
         color: red;
         text-align: center;
@@ -53,217 +53,237 @@ body{
         grid-template-columns: 10% 90%;
         font-family: "Josefin Sans", sans-serif;
         box-decoration-break: clone;
-    }
-    
-   #navbar a{
+        height: 10vh;
+}
+
+#navbar a {
         cursor: pointer;
-   } 
-    .dropDown{
+}
+
+.dropDown {
         display: inline-block;
         cursor: pointer;
-    }
-    
-    .dropDown a{
+}
+
+.dropDown a {
         display: block;
         color: black;
         text-decoration: none;
-    }
-    
-    .dropDown .dropContent{
+}
+
+.dropDown .dropContent {
         margin-top: 0%;
         display: none;
-        position:absolute;
+        position: absolute;
         background-color: rgb(0, 0, 0);
         color: rgb(255, 250, 250);
         min-width: 100px;
         box-shadow: 2px 2px 5px rgb(0, 0, 0);
         padding: 1vh 1vw;
         z-index: 1000;
-        
-    }
-    
-    .dropContent a{
+
+}
+
+.dropContent a {
         padding: 1vh;
         color: white;
-    }
+}
 
-    #portfolio:hover .dropContent{
+#portfolio:hover .dropContent {
         display: block;
         text-align: center;
-    }
+}
 
-    #portfoliosDropDown{
+#portfoliosDropDown {
         margin-top: -25px;
-    }
+}
 
-    #dropDownProfile{
+#dropDownProfile {
         margin-left: 3vw;
-    }
+}
 
-    #usertag:hover .dropContent {
+#usertag:hover .dropContent {
         display: block;
         text-align: center;
-      }
+}
 
-      #usertag:hover #username-tag{
+#usertag:hover #username-tag {
         color: #0f7823;
-      }
+}
 
-      #usertag:hover #username-tag{
-        color:#0f7823;
-      }
-    
-    .dropDown:hover .dropContent{
+#usertag:hover #username-tag {
+        color: #0f7823;
+}
+
+.dropDown:hover .dropContent {
         display: block;
         text-align: center;
-    }
-    .material-symbols-outlined:hover{
-        cursor: pointer;
-    }
+}
 
-    .dropItem:hover {
+.material-symbols-outlined:hover {
+        cursor: pointer;
+}
+
+.dropItem:hover {
         background-color: rgb(251, 251, 251);
         color: rgb(0, 0, 0);
-    }
-    
-    
-    
-    #brand-navbar {
+}
+
+#brand-navbar {
         margin-top: 20%;
         margin-left: 15%;
         margin-right: 5vw;
         font-size: 20px;
-    }
-    #brand-navbar:hover{
+}
+
+#brand-navbar:hover {
         color: #0f7823;
-    }
-    
-    #options-navbar {
+}
+
+#options-navbar {
         display: grid;
         grid-template-columns: 8% 8% 84%;
         margin-top: 1%;
         margin-left: 3vw;
-    }
-    
-    #portfolioTag{
-        margin-top: 18%;
-       margin-right: 0%;
-       padding: 0%;
-       height: 100%;
-       display: grid;
-       grid-template-columns: 40% auto;
-    }
+}
 
-    #portfolio{
+#portfolioTag {
+        margin-top: 18%;
+        margin-right: 0%;
+        padding: 0%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 40% auto;
+}
+
+#portfolio {
         text-align: left;
         margin-left: 0.2vw;
-    }
+}
 
-    #portfolioIcon{
+#portfolioIcon {
         text-align: right;
-    }
+}
 
-    #portfolioTag:hover {
+#portfolioTag:hover {
         color: #0f7823;
-    }
-    
-    #learnTag{
+}
+
+#learnTag {
         margin-top: 18%;
         margin-left: 3vw;
         display: grid;
         grid-template-columns: 40% auto;
-    }
-    
-    #learn{
+}
+
+#learn {
         text-align: left;
         margin-left: 0.5vw;
-    }
-    #learnIcon{
-        text-align: right;
-    }
+}
 
-    #learnTag:hover {
+#learnIcon {
+        text-align: right;
+}
+
+#learnTag:hover {
         color: #0f7823;
-    }
-    
-    #usertag {
+}
+
+#usertag {
         margin-top: 10%;
         text-align: right;
         margin-right: 0%;
         display: grid;
         grid-template-columns: 80% 20%;
-    
-    }
-    /* The a element containing the name of the user. */
-    #userTag{
+
+}
+
+/* The a element containing the name of the user. */
+#userTag {
         text-align: right;
-    }
-    
-    #username {
+}
+
+#username {
         margin-left: 70%;
         display: grid;
         grid-template-columns: 50% 50%;
-    }
-    
-    #userlogo {
+}
+
+#userlogo {
         text-align: left;
-    }
+}
+
+/* This is for main page so the footer will not be covering anything */
+#containerPortfolios{
+        min-height: calc(100vh - 24vh);
+
+}
 
 /* footer */
 footer {
-        position: absolute;
-        bottom: 0;
+        /* display: grid;
+        grid-template-columns: 70% 30%; */
+        height: 12%;
+        margin-top: auto;
         width: 100%;
+        bottom: 0;
         background-color: #004452;
         text-align: center;
-        margin-top: 2vh;
+        margin-top: 1vh;
         color: black;
 }
 
-footer img{
+footer img {
         cursor: pointer;
 }
 
-#optionsFooter{
-        color:#07f2c2;
-}
-footer a{
-        cursor: pointer;
-        
+#optionsFooter {
+        color: #07f2c2;
+        /* margin-top: 0.5vh; */
+        /* text-align: left; */
 }
 
-footer h3{
+footer a {
         cursor: pointer;
-        color: #07f2c2;;
+
 }
+
+footer h3 {
+        cursor: pointer;
+        color: #07f2c2;
+        ;
+}
+
+/* #socialMedia {
+        text-align: right;
+} */
 
 /* Twitter logo footer */
 #x-logo {
-        /* margin-left: 2vw; */
         width: auto;
-        height: 5vh;
+        height: 4vh;
 }
 
 /* Logo instagram footer */
 #instaLogo {
         margin-left: 1vw;
         width: auto;
-        height: 6vh;
+        height: 5vh;
 }
 
 /* Email logo footer */
 #emailLogo {
         /* margin-left: 2vw; */
         width: auto;
-        height: 10vh;
+        height: 8vh;
 }
 
-#optionsFooter a{
+#optionsFooter a {
         margin-left: 1vw;
-        font-size: large;
+        font-size: medium;
 }
 
-#optionsFooter a:hover{
+#optionsFooter a:hover {
         color: aliceblue;
 }
 
@@ -314,14 +334,14 @@ footer h3{
         margin-left: 6vw;
 }
 
-#signup-firstname{
+#signup-firstname {
         width: 30vw;
-        margin-left: 6vw; 
+        margin-left: 6vw;
 }
 
-#signup-lastname{
+#signup-lastname {
         width: 30vw;
-        margin-left: 6vw; 
+        margin-left: 6vw;
 }
 
 #signup-pass1 {
@@ -336,7 +356,7 @@ footer h3{
 
 /* Login page */
 #login {
-        
+
         width: 50vw;
         height: auto;
         border-radius: 30px;
@@ -346,6 +366,7 @@ footer h3{
         color: #000000;
         background-color: rgb(60, 167, 238);
 }
+
 /* image of the login */
 #img-login {
         width: 30vw;
@@ -367,42 +388,48 @@ footer h3{
 
 /* main page */
 /* cards */
-.card{
+.card {
         margin-top: 1vh;
         width: 100%;
 }
+
 /* Profile pop up */
-#profile-pop-up{
+#profile-pop-up {
         border-radius: 30px;
         background-color: white;
         width: 40vw;
         height: 40vh;
         text-align: center;
 }
-#header-popup{
+
+#header-popup {
         margin-top: 1vh;
 }
-#email-popup{
+
+#email-popup {
         margin-left: 2.5vw;
 }
-.input-popup{
+
+.input-popup {
         width: 15vw;
 }
 
-.input-profile-popup{
+.input-profile-popup {
         margin-top: 1vh;
 }
-#button-popup{
+
+#button-popup {
         margin-top: 1vh;
 }
+
 /* add stocks button */
-#add-stock{
+#add-stock {
         text-align: center;
         cursor: pointer;
 }
 
 /* help */
-#help-pop-up{
+#help-pop-up {
         border-radius: 30px;
         background-color: white;
         width: 40vw;
@@ -411,11 +438,11 @@ footer h3{
 }
 
 /* Plus card to add an asset */
-#plusTag{
+#plusTag {
         font-size: 50px;
 }
 
-#plus-icon{
+#plus-icon {
         margin-top: 0.5vh;
         /* margin-left: 14vw; */
         height: 8vh;
@@ -423,17 +450,18 @@ footer h3{
 }
 
 /* Send feedback pop up */
-#sendFeedback{
+#sendFeedback {
         width: 40vw;
         background-color: white;
         border-radius: 30px;
         text-align: center;
 }
-#tInput{
+
+#tInput {
         width: 20vw;
 }
 
-#desPopup{
+#desPopup {
         height: 20vh;
         width: 20vw;
         margin-bottom: 2vh;
@@ -442,28 +470,34 @@ footer h3{
 }
 
 /* add a stock pop-up */
-#add-stock-popup{
+#add-stock-popup {
         width: 30vw;
         background-color: white;
         border-radius: 30px;
         text-align: center;
 }
-#quantity-popup-input{
+
+#quantity-popup-input {
         width: 11vw;
 }
-#price-popup-input{
+
+#price-popup-input {
         width: 8vw;
 }
-#total-popup-input{
+
+#total-popup-input {
         width: 12vw;
 }
-#label-cripto-popup{
+
+#label-cripto-popup {
         margin-left: 1vw;
 }
-.input-addAsset-popup{
+
+.input-addAsset-popup {
         margin-top: 1vh;
 }
-#dateAddAsset{
+
+#dateAddAsset {
         width: 13vw;
         text-align: center;
 }
@@ -472,7 +506,7 @@ footer h3{
         margin-left: 5vw;
 } */
 /* buttons for the pop-up windows */
-.btn-popup{
+.btn-popup {
         background-color: #000000;
         border: none;
         color: white;
@@ -484,8 +518,9 @@ footer h3{
         margin: 4px 2px;
         cursor: pointer;
 }
+
 /* close buttons inside the popup windows */
-#close-popup-profile, #close-addStock-popup{
+#close-popup-profile, #close-addStock-popup {
         background-color: red;
 }
 
@@ -531,13 +566,14 @@ footer h3{
         margin: 0%;
         text-align: center;
 }
-.form-group  input{
+
+.form-group input {
         margin: 0%;
         text-align: center;
         justify-content: center;
 }
 
-#learn-content{
+#learn-content {
         width: 100%;
         height: 100%;
         display: flex;
@@ -548,7 +584,7 @@ footer h3{
         text-align: center;
 }
 
-#learn-content p{
+#learn-content p {
         font-size: 26px;
 }
 
@@ -578,63 +614,67 @@ footer h3{
                 display: grid;
                 grid-template-rows: 40% 60%;
                 grid-template-columns: 100%;
-            }
-        
-            #brand-navbar {
+                height: 20vh;
+        }
+
+        /* Where the name of the app is */
+        #brand-navbar {
                 margin-top: 2%;
                 width: 100%;
                 font-size: 20px;
                 margin-left: 0%;
                 text-align: center;
-            }
-        
-            #options-navbar {
+        }
+
+        #options-navbar {
                 display: grid;
                 grid-template-columns: 33% 33% 33%;
                 margin-top: 1%;
                 text-align: center;
-            }
-            #portfolioTag{
-                margin-top: 10%;
-               margin-right: 0%;
-            }
-        
-            #dropDownProfile{
-                margin-left: 8vw;
-            }
-            #portfoliosDropDown{
-                margin-left: 3vw;
-            }
+        }
 
-            #learnTag{
+        #portfolioTag {
+                margin-top: 10%;
+                margin-right: 0%;
+        }
+
+        #dropDownProfile {
+                margin-left: 8vw;
+        }
+
+        #portfoliosDropDown {
+                margin-left: 3vw;
+        }
+
+        #learnTag {
                 margin-top: 10%;
                 margin-left: 0%;
-            }
-        
-            #userlogo {
+        }
+
+        #userlogo {
                 height: 0%;
                 width: 0%;
-            }
-        
-            #username {
+        }
+
+        #username {
                 display: grid;
                 margin-left: 0%;
                 grid-template-columns: 100%;
-            }
-        
-            #usertag {
+        }
+
+        #usertag {
                 margin-top: 10%;
                 text-align: center;
-            
-            }
-        
-            .dropDown .dropContent{
+
+        }
+
+        .dropDown .dropContent {
                 margin-top: 0vh;
                 display: none;
                 position: absolute;
                 min-width: 100px;
                 padding: 1vh 1vw;
-            }
+        }
 
         /* login */
         #login {
@@ -647,15 +687,17 @@ footer h3{
                 text-align: center;
 
         }
-        #formLoginInputs{
+
+        #formLoginInputs {
                 margin-left: 3vw;
         }
-        #formLoginInputs form{
+
+        #formLoginInputs form {
                 text-align: center;
                 justify-content: center;
         }
 
-        #login-form{
+        #login-form {
                 width: 80vw;
                 margin-left: 0%;
         }
@@ -665,8 +707,8 @@ footer h3{
                 height: auto;
                 /* margin-top: 5vh; */
         }
-        
-        
+
+
 
         /* login inputs */
         #login-email {
@@ -698,12 +740,12 @@ footer h3{
                 margin-left: 10vw;
         }
 
-        #signup-firstname{
+        #signup-firstname {
                 width: 60vw;
-                margin-left: 10vw; 
+                margin-left: 10vw;
         }
-        
-        #signup-lastname{
+
+        #signup-lastname {
                 width: 60vw;
                 margin-left: 10vw;
         }
@@ -719,7 +761,7 @@ footer h3{
         }
 
         /* plus icon to add stock */
-        #plus-icon{
+        #plus-icon {
                 margin-top: 1vh;
                 /* margin-left: 38vw; */
                 height: 8vh;
@@ -727,95 +769,114 @@ footer h3{
         }
 
         /* add stock pop-up */
-        #add-stock-popup{
+        #add-stock-popup {
                 width: 70vw;
         }
-        #quantity-popup-input{
+
+        #quantity-popup-input {
                 width: 15vw;
         }
-        #price-popup-input{
+
+        #price-popup-input {
                 width: 15vw;
         }
-        #total-popup-input{
+
+        #total-popup-input {
                 width: 15vw;
         }
-        #label-cripto-popup{
+
+        #label-cripto-popup {
                 margin-left: 1vw;
         }
-        .input-addAsset-popup{
+
+        .input-addAsset-popup {
                 margin-top: 1vh;
         }
 
         /* Profile pop up */
-#profile-pop-up{
-        border-radius: 30px;
-        background-color: white;
-        width: 80vw;
-        height: 40vh;
-        text-align: center;
-}
-#header-popup{
-        margin-top: 1vh;
-}
-#email-popup{
-        margin-left: 8vw;
-}
-.input-popup{
-        width: 35vw;
-}
-#password-label-popup{
-        margin-left: 2vw;
-}
-/* Send feedback pop up */
-#sendFeedback{
-        width: 80vw;
-        height: 60vh;
-        background-color: white;
-        border-radius: 30px;
-        text-align: center;
+        #profile-pop-up {
+                border-radius: 30px;
+                background-color: white;
+                width: 80vw;
+                height: 40vh;
+                text-align: center;
+        }
+
+        #header-popup {
+                margin-top: 1vh;
+        }
+
+        #email-popup {
+                margin-left: 8vw;
+        }
+
+        .input-popup {
+                width: 35vw;
+        }
+
+        #password-label-popup {
+                margin-left: 2vw;
+        }
+
+        /* Send feedback pop up */
+        #sendFeedback {
+                width: 80vw;
+                height: 60vh;
+                background-color: white;
+                border-radius: 30px;
+                text-align: center;
+        }
+
+        #containerPortfolios{
+                min-height: calc(100vh - 34vh);
+        
+        }
+
+        footer{
+                height: 12vh;
+        }
+
+        #tInput {
+                width: 50vw;
+        }
+
+        #desPopup {
+                height: 20vh;
+                width: 50vw;
+                margin-bottom: 2vh;
+                margin-top: 1vh;
+                text-align: left;
+        }
+
+        #learn-content {
+                text-align: justify;
+                padding: 10px;
+        }
+
+        #learn-content p {
+                font-size: 16px;
+                font-weight: bold;
+        }
+
+        #help-pop-up {
+                border-radius: 30px;
+                background-color: white;
+                width: 80vw;
+                height: 50vh;
+                text-align: center;
+        }
+
+        #help-pop-up h3 {
+                text-align: center;
+                color: blue;
+        }
+
 }
 
-#tInput{
-        width: 50vw;
-}
-
-#desPopup{
-        height: 20vh;
-        width: 50vw;
-        margin-bottom: 2vh;
-        margin-top: 1vh;
-        text-align: left;
-}
-
-#learn-content{
-        text-align: justify;
-        padding: 10px;
-}
-
-#learn-content p{
-        font-size: 16px;
-        font-weight: bold;
-}
-
-#help-pop-up{
-        border-radius: 30px;
-        background-color: white;
-        width: 80vw;
-        height: 50vh;
-        text-align: center;
-}
-
-#help-pop-up h3{
-        text-align: center;
-        color: blue;
-}
-
-}
 
 
 
-
-.card-body a{
+.card-body a {
         text-decoration: none;
 }
 
