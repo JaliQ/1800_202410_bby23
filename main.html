@@ -200,44 +200,7 @@
     <script src="./scripts/portfolios.js"></script>
     <script src="./scripts/script.js"></script>
 
-    <!-- add form to database -->
-    <!-- <script>
-        const addAssetForm = document.getElementById("addAssetForm");
-        addAssetForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const assetName = addAssetForm["assetInput"].value;
-            const assetQty = addAssetForm["quantity-popup-input"].value;
-            const assetBuyPrice = addAssetForm["price-popup-input"].value;
-            const assetBuyDate = addAssetForm["dateAddAsset"].value;
-
-            // calculate total price in the pop up modal
-            const assetTotalPrice = +assetQty * +assetBuyPrice;
-
-            // replace value in the pop modal total price
-            document.getElementById("total-popup-input").innerHTML = assetTotalPrice;
-
-            let currentUser = db.collection("users").doc(user.uid);
-
-            currentUser
-                .get()
-                .collection("portfolios")
-                .where("portfolioName", "==". localStorage.getItem("current_portfolio"))
-                .update({
-                    assetName,
-                    assetQty,
-                    assetEntryPrice: assetBuyPrice,
-                    assetBuyDate
-                })
-                .then((res) => {
-                    console.log("successfully update asset")
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-
-        })
-    </script> -->
-
+  
 </body>
 
 </html>
