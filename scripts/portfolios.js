@@ -104,8 +104,9 @@ firebase.auth().onAuthStateChanged((user) => {
                            if (asset.assetType==="crypto") {let name = asset.assetName;
                             let qty = asset.assetQty;
                             let entry = asset.assetEntryPrice;
+                            let bgStyle = (((qty * prices[name] - entry * qty) / (qty * entry)) * 100) > 0 ? '#1AF18D' : 'red';
                             // console.log(prices.name, name)
-                            let str = `<div class="card" id="display-card"> `
+                            let str = `<div class="card" id="display-card" style="background: ${bgStyle};"> `
                             str += `<div class="card-content">
                     <img src="./img/star-svgrepo-com.svg" alt="star">
                     <div class="stock-name">
@@ -144,20 +145,18 @@ firebase.auth().onAuthStateChanged((user) => {
                     stockParams += `${stock},`
                 })
                 stockParams = stockParams.slice(0, -1);
-                console.log("Before Stock Fetch")
                 fetch(`https://comp1800project.pythonanywhere.com/stockPrices?symbols=${stockParams}`)
                 .then(res => res.json())
                 .then(prices => {
                     const cardArea = document.getElementById("assets-examples");
-                    console.log("Fetched and got prices")
                     assetList.forEach(asset => {                      
                         if (asset.assetType==="stock") {
-                            console.log(prices)
                             let name = asset.assetName;
                             let qty = asset.assetQty;
                             let entry = asset.assetEntryPrice;
+                            let bgStyle = (((qty * prices[name] - entry * qty) / (qty * entry)) * 100) > 0 ? '#1AF18D' : 'red';
                             // console.log(prices.name, name)
-                            let str = `<div class="card" id="display-card"> `
+                            let str = `<div class="card" id="display-card" style="background: ${bgStyle};"> `
                             str += `<div class="card-content">
                         <img src="./img/star-svgrepo-com.svg" alt="star">
                         <div class="stock-name">
