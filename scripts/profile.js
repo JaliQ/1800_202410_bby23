@@ -59,6 +59,7 @@ function saveUserInfo() {
         last_name: userLast
     })
     .then(() => {
+        modal0.close();
         console.log("Document successfully updated!");
         Swal.fire({
             position: "top-end",

@@ -1,21 +1,23 @@
 
+
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         const id = user.uid;
+        const userName = localStorage.getItem("first_name");
         db.collection("users").doc(id).get()
             .then(doc => {
                 portfolios = doc.data().portfolios;
                 if (portfolios.length == 0) {
                     let pg = document.getElementById('portfolio-display');
-                    pg.innerHTML = "<p>Seems like you don't have a porfolio yet </p>"
+                    pg.innerHTML = "<div id='jumbotron'><h1>Welcome to AssetClub, " + userName + "</h1><p>Empower your financial journey with our platform!  <br>Build diversified portfolios spanning stocks and cryptocurrencies, tailored to your financial goals. <br>Let's get started!</p><button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Create portfolio</button></div>"
                 } else {
                     let pg = document.getElementById('portfolio-display');
-                    let str = "<p>your portfolios are: "
+                    let str1 = "<div id='jumbotron'><h1>Welcome back to AssetClub, " + userName + "</h1><p>Discover new opportunities and optimize your financial strategy. <br>Let's make your portfolios thrive!<br> <h3>Your portfolios: "
                     portfolios.forEach(element => {
-                        str += (element.portfolioName + " ");
+                        str1 += (element.portfolioName + ", ");
                     });
-                    str += "</p>";
-                    pg.innerHTML = str;
+                    str1 += "</h3></p></div>";
+                    pg.innerHTML = str1;
                 }
             })
     }
@@ -192,7 +194,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 }
                 
             })
-            
+
     }
 
     assignPortfolio = (portfolioName) => {
@@ -226,22 +228,20 @@ firebase.auth().onAuthStateChanged((user) => {
 
     let isCrypto = false;
 
-    document.getElementById("addAssetForm")["radio-crypto"].addEventListener("change", (e) =>{
+    document.getElementById("addAssetForm")["radio-crypto"].addEventListener("change", (e) => {
         const addAssetForm = document.getElementById("addAssetForm");
-            addAssetForm["assetInput"].disabled = false;
-            addAssetForm["quantity-popup-input"].disabled = false;
-            addAssetForm["quantity-popup-input"].step = 0.0000001;
-            addAssetForm["price-popup-input"].disabled = false;
-            isCrypto=true;
+        addAssetForm["assetInput"].disabled = false;
+        addAssetForm["quantity-popup-input"].disabled = false;
+        addAssetForm["quantity-popup-input"].step = 0.0000001;
+        addAssetForm["price-popup-input"].disabled = false;
     });
 
     document.getElementById("addAssetForm")["radio-stock"].addEventListener("change", (e) => {
         const addAssetForm = document.getElementById("addAssetForm");
-            addAssetForm["assetInput"].disabled = false;
-            addAssetForm["quantity-popup-input"].disabled = false;
-            addAssetForm["quantity-popup-input"].step = 1;
-            addAssetForm["price-popup-input"].disabled = false;
-            isCrypto = false;
+        addAssetForm["assetInput"].disabled = false;
+        addAssetForm["quantity-popup-input"].disabled = false;
+        addAssetForm["quantity-popup-input"].step = 1;
+        addAssetForm["price-popup-input"].disabled = false;
     })
 
 const inputEl = document.getElementById("assetInput");
@@ -447,14 +447,80 @@ function removeAutocompleteDropDown() {
 
 });
 
+const inputEl = document.getElementById("assetInput");
+let cryptos = []
+let stocks = []
+getCryptos()
+getStocks()
+async function getCryptos() {
+    // let coins  = await fetch('../data/cryptos.json');
+    let coins = await fetch('./data/cryptos.json');
+    let data = await coins.json();
+
+    cryptos = data.map((coin) => {
+        return coin
+    })
+}
+
+async function getStocks() {
+    let stucks = await fetch('../data/stocks.json');
+    let data = await stucks.json();
+
+    stocks = data.map((stock) => {
+        return stock;
+    })
+}
 
 
+
+onCryptoInputChange = () => {
+    removeAutocompleteDropDown();
+    const value = inputEl.value.toLowerCase();
+    if (value.length === 0) return;
+    const filteredCoins = []
+    cryptos.forEach((coin) => {
+        if (coin.name.substr(0, value.length).toLowerCase() === value || coin.symbol.substr(0, value.length).toLowerCase() === value) {
+            filteredCoins.push(coin.name + "(" + coin.symbol + ")")
+        }
+    })
+
+    createAutocompleteDropdown(filteredCoins);
+}
+
+function createAutocompleteDropdown(list) {
+    const listEl = document.createElement("ul");
+    listEl.id = "autocomplete-list";
+    listEl.className = "autocomplete-list";
+    list.forEach((coin) => {
+        const listItem = document.createElement("li");
+        const coinButton = document.createElement("button");
+        coinButton.addEventListener("click", onMenuButtonClick)
+        coinButton.innerHTML = coin;
+        listItem.appendChild(coinButton);
+        listEl.appendChild(listItem)
+    })
+    document.querySelector(".input-addAsset-popup").appendChild(listEl)
+}
+
+function onMenuButtonClick(e) {
+    e.preventDefault();
+    const selected = e.target.innerHTML
+    inputEl.value = selected.match(/\((.*?)\)/)[1];
+    inputEl.disabled = true;
+
+    removeAutocompleteDropDown();
+}
+
+function removeAutocompleteDropDown() {
+    const listEl = document.getElementById("autocomplete-list");
+    if (listEl) listEl.remove();
+}
 
 function removeAssetList() {
     document.getElementById('assets-examples').innerHTML = "";
-                                        
+
 }
 
-function resetForm(){
+function resetForm() {
     document.getElementById('addAssetForm').reset();
 }
