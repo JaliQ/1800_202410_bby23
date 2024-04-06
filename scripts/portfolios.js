@@ -253,7 +253,9 @@ firebase.auth().onAuthStateChanged((user) => {
 
 const inputEl = document.getElementById("assetInput");
 let cryptos = []
+let stocks = []
 getCryptos()
+getStocks()
 async function getCryptos() {
     let coins  = await fetch('../data/cryptos.json');
     // let coins = await fetch('./data/cryptos.json');
@@ -261,6 +263,15 @@ async function getCryptos() {
 
     cryptos = data.map((coin) => {
         return coin
+    })
+}
+
+async function getStocks(){
+    let stucks  = await fetch('../data/stocks.json');
+    let data = await stucks.json();
+
+    stocks = data.map((stock) => {
+        return stock;
     })
 }
 
