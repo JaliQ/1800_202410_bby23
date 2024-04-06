@@ -74,10 +74,6 @@ firebase.auth().onAuthStateChanged((user) => {
     loadPortfoliosAssets = () => {
         // console.log(user.uid + " <<<<")
         let currentUser = db.collection("users").doc(user.uid);
-        // if (document.getElementById('assets-examples') !== "") {
-        //     document.getElementById('assets-examples').innerHTML = ""
-        // }
-        // document.getElementById('assets-examples').innerHTML = ""
         currentUser
             .onSnapshot((doc) => {
                 var portList = doc.data().portfolios;
@@ -221,18 +217,16 @@ firebase.auth().onAuthStateChanged((user) => {
                                     }
 
                                 }
-                                console.log(JSON.stringify(portList) + " updated portfolios");
-
                                 currentUser
                                     .update({
                                         portfolios: portList
                                     })
                                     .then(() => {
-                                        console.log("Portfolios updated successfully")
-                                        document.querySelector('#add-stock-popup').close()
-                                        removeAssetList()
+                                        console.log("Portfolios updated successfully");
+                                        document.querySelector('#add-stock-popup').close();
+                                        removeAssetList();
+                                        resetForm();
                                         loadPortfoliosAssets();
-                                        // location.reload();
 
                                     })
                                     .catch((error) => {
@@ -255,11 +249,6 @@ firebase.auth().onAuthStateChanged((user) => {
     loadPortfolios();
 
 });
-
-// closeModalPortfolio = () => {
-//     modal3 = document.querySelector('#add-stock-popup');
-//     modal3.close();
-// }
 
 const inputEl = document.getElementById("assetInput");
 let cryptos = []
@@ -322,4 +311,8 @@ function removeAutocompleteDropDown() {
 function removeAssetList() {
     document.getElementById('assets-examples').innerHTML = "";
                                         
+}
+
+function resetForm(){
+    document.getElementById('addAssetForm').reset();
 }
