@@ -271,7 +271,7 @@ footer h3{
 .card {
         margin: 0 auto;
         border-radius: 25px;
-        background: #07f2c2;
+        /* background: #07f2c2; */
         height: 70px;
         width: 500px;
 }
