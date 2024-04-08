@@ -49,10 +49,10 @@
 #     session.headers.update(headers)
 #     response = session.get('https://yahoo-finance127.p.rapidapi.com/multi-quote/'+symbols)
 #     data = json.loads(response.text)
-#     prices = []
-#     for item in data.values():
-#         prices.append({item["symbol"] : item["regularMarketPrice"]["raw"]})
-#     return jsonify(prices)
+#     res = {}
+#     for item in symbols:
+#         res[item] = data
+#     return jsonify(res)
 
 # def rewriteCryptoList():
 #   parameters = {

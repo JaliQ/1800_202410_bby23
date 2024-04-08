@@ -218,6 +218,10 @@ body {
         min-height: calc(100vh - 24vh);
 
 }
+#articles{
+        min-height: calc(100vh - 28vh);
+
+}
 
 /* footer */
 footer {

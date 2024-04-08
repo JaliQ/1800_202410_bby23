@@ -329,13 +329,12 @@ function removeAutocompleteDropDown() {
         const addAssetForm = document.getElementById("addAssetForm");
         addAssetForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            let crypto = addAssetForm["radio-crypto"];
+            const assetType = addAssetForm["radio-crypto"].checked ? "crypto" : "stock";
             //if user adds crypto
-            if (crypto.checked && addAssetForm["assetInput"].disabled == true) {
+            if (assetType && addAssetForm["assetInput"].disabled == true) {
                 const assetName = addAssetForm["assetInput"].value;
                 const assetQty = addAssetForm["quantity-popup-input"].value;
                 const assetBuyPrice = addAssetForm["price-popup-input"].value;
-                const assetType = "crypto";
                 // calculate total price in the pop up modal
                 const assetTotalPrice = +assetQty * +assetBuyPrice;
                 // replace value in the pop modal total price
@@ -356,61 +355,28 @@ function removeAutocompleteDropDown() {
                                 var portList = doc.data().portfolios
                                 for (let i = 0; i < portList.length; i++) {
                                     if (portList[i].portfolioName == localStorage.getItem("current_portfolio")) {
-                                        portList[i].assets.push(newAsset);
-                                    }
-
-                                }
-                                currentUser
-                                    .update({
-                                        portfolios: portList
-                                    })
-                                    .then(() => {
-                                        console.log("Portfolios updated successfully");
-                                        document.querySelector('#add-stock-popup').close();
-                                        removeAssetList();
-                                        resetForm();
-                                        loadPortfoliosAssets();
-
-                                    })
-                                    .catch((error) => {
-                                        console.log(error);
-                                    })
-                            }
-                        })
-                        .catch(error => console.log(error))
-                } else {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Invalid Input",
-                        text: "Make sure you entered all the information correctly",
-                    });
-                }
-            } else {
-                const assetName = addAssetForm["assetInput"].value;
-                const assetQty = addAssetForm["quantity-popup-input"].value;
-                const assetBuyPrice = addAssetForm["price-popup-input"].value;
-                const assetType = "stock";
-                // calculate total price in the pop up modal
-                const assetTotalPrice = +assetQty * +assetBuyPrice;
-                // replace value in the pop modal total price
-                document.getElementById("total-popup-input").innerHTML = assetTotalPrice;
-                if (assetQty > 0 && assetBuyPrice > 0) {
-                    let currentUser = db.collection("users").doc(user.uid);
-                    const newAsset = {
-                        assetName,
-                        assetQty,
-                        assetEntryPrice: assetBuyPrice,
-                        assetType,
-                    }
-
-                    currentUser
-                        .get()
-                        .then((doc) => {
-                            if (doc.exists) {
-                                var portList = doc.data().portfolios
-                                for (let i = 0; i < portList.length; i++) {
-                                    if (portList[i].portfolioName == localStorage.getItem("current_portfolio")) {
-                                        portList[i].assets.push(newAsset);
+                                        let toParse = portList[i].assets ;
+                                        let flag = true;
+                                        toParse.forEach((asset, index) => {
+                                            if (asset.assetName === newAsset.assetName){
+                                                let price = parseFloat(asset.assetEntryPrice);
+                                                let newPrice = parseFloat(newAsset.assetEntryPrice)
+                                                let qty = parseFloat(asset.assetQty);
+                                                let oldqty = parseFloat(newAsset.assetQty);
+                                                let total = qty+oldqty ;
+                                                let newEntry = (qty*price)/total+((newAsset.assetQty*newAsset.assetEntryPrice)/total);
+                                                newAsset.assetQty = total;
+                                                newAsset.assetEntryPrice = newEntry;
+                                                toParse[index] = newAsset
+                                                asset = newAsset;
+                                                flag = false;
+                                            }
+                                        })
+                                        if (flag){
+                                            portList[i].assets.push(newAsset);
+                                        } else{          
+                                            portList[i].assets = toParse;
+                                        }
                                     }
 
                                 }
@@ -442,7 +408,7 @@ function removeAutocompleteDropDown() {
             }
         })
     }
-
+    removeAssetList();
     loadPortfolios();
 
 });
