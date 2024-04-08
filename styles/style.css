@@ -81,6 +81,7 @@ body {
         box-shadow: 2px 2px 5px rgb(0, 0, 0);
         padding: 1vh 1vw;
         z-index: 1000;
+        text-align: center;
 
 }
 
@@ -215,12 +216,24 @@ body {
 
 /* This is for main page so the footer will not be covering anything */
 #containerPortfolios{
-        min-height: calc(100vh - 24vh);
+        min-height: calc(100vh - 23.5vh);
 
 }
 #articles{
         min-height: calc(100vh - 28vh);
 
+}
+
+/* Jumbotron / wlecome hero */
+#jumbotron{
+        text-align: center;
+        background-color: #0000007a;
+        padding: 2%;
+        height: 25vh;
+}
+
+#jumbotron p{
+        font-size: medium;
 }
 
 /* footer */

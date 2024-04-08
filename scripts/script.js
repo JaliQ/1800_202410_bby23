@@ -1,5 +1,4 @@
 
-
 // modal for the profile popup window
 const modal0 = document.querySelector('#profile-pop-up');
 //const openModal = document.querySelector('#open-popup-profile');
@@ -42,6 +41,7 @@ function submitFeedback() {
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
     })
     .then((docRef) => {
+        modal2.close();
         console.log("Document written with ID: ", docRef.id);
         // Clear input fields after submission
         document.getElementById("tInput").value = "";
@@ -128,6 +128,27 @@ function clearOther(clickedRadio) {
     var otherRadioId = clickedRadio.id === 'radio-stock' ? 'radio-crypto' : 'radio-stock';
     var otherRadio = document.getElementById(otherRadioId);
     otherRadio.checked = false;
+}
+
+
+// to open the drop content portfolios show when they click
+function openDropPortfolios(){
+    let content = document.getElementById("portfoliosDropDown")
+    if (content.style.display === "none"){
+        content.style.display = "block";
+    } else {
+        content.style.display = "none";
+    }
+}
+
+// to open the drop content portfolios show when they click
+function openUserOpt(){
+    let content1 = document.getElementById("dropDownProfile")
+    if (content1.style.display === "none"){
+        content1.style.display = "block";
+    } else {
+        content1.style.display = "none";
+    }
 }
 
 

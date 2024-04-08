@@ -7,7 +7,7 @@
         <span class="material-symbols-outlined" id="portfolioIcon">
           business_center
           </span>
-        <a id="portfolio" onclick="redirHome()">Portfolio</a>
+        <a id="portfolio" onclick="openDropPortfolios()">Portfolio</a>
       </div>
       <div class="dropContent loads-portfolios" id="portfoliosDropDown">
         <div class="load-here"></div>
@@ -21,7 +21,7 @@
       book_4
       </span>
       <a id="learn" onclick="redirLearn()">Learn</a></div>
-    <div id="username">
+    <div id="username" onclick="openUserOpt()">
       <div id="usertag">
         <div class="dropDown">
           <div id="userTag">
@@ -46,8 +46,7 @@
   </div>
 </nav>
 
-
-
+ 
 <script>
   signout = () => {
     firebase.auth().signOut().then(() => {

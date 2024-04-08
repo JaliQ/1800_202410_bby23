@@ -41,8 +41,8 @@
 <body>
     <nav id="navbarPlaceholder"></nav>
 
-    <!-- pop up to update the profile information -->
-    <dialog id="profile-pop-up">
+     <!-- pop up to update the profile information -->
+     <dialog id="profile-pop-up">
         <h3 id="header-popup">Profile</h3>
         <form>
             <fieldset class="mb-3" id="personalInfoFields" disabled>
@@ -66,17 +66,51 @@
             <div id="button-popup">
                 <button type="submit" class="btn-popup" id="saveBtn" onclick="saveUserInfo()">Save</button>
                 <button type="submit" class="btn-popup" id="edit-profile-popup" onclick="editUserInfo()">Edit</button>
-                <button type="submit" id="close-popup-profile" class="btn-popup" onclick="closeModal()">Close</button>
+                <button type="submit" id="close-popup-profile" class="btn-popup"
+                    onclick="closeModalProfile()">Close</button>
             </div>
         </form>
     </dialog>
 
-    <div id="learn-content">
+    <!-- Pop up window to sendfeedback -->
+    <dialog id="sendFeedback">
+        <h3 id="feedback">Send feedback to Asset Club</h3>
+        <form>
+            <div class="input-feedback-popup">
+                <label for="title">Title</label><br>
+                <input type="text" placeholder="Title" class="input-popup" id="tInput">
+            </div>
+            <div class="input-profile-popup">
+                <label for="Name">What did you think of Asset Club?</label><br>
+                <textarea placeholder="Description" class="input-popup" id="desPopup"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn-popup" id="saveBtn" onclick="submitFeedback()">Submit</button>
+                <button type="submit" id="close-popup-profile" class="btn-popup"
+                    onclick="closeModalFeeback()">Close</button>
+            </div>
+        </form>
+    </dialog>
 
-    </div>
+    <!-- Pop up window to help -->
+    <dialog id="help-pop-up">
+        <h3 id="header-popup">Help</h3>
+        <div>
+            <h5><b>For further assistance, Please contact:</b></h5>
+            <p>AssetClub80@gmail.com</p>
+        </div>
+        <div>
+            <button type="submit" id="close-popup-help" class="btn-popup" onclick="closeModalHelp()">Close</button>
+        </div>
+    </dialog>
+
+        <div id="learn-content">
+
+        </div>
+    
 
     <!-- Footer -->
-    <footer id="footerPlaceholder"></footer>
+    <footer id="footerPlaceholder" style="position: absolute;"></footer>
 </body>
 <script src="../scripts/script.js"></script>
 <script src="./scripts/skeleton.js"></script>

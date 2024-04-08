@@ -1,5 +1,5 @@
-<!-- pop up to update the profile information -->
-<dialog id="profile-pop-up">
+ <!-- pop up to update the profile information -->
+ <dialog id="profile-pop-up">
     <h3 id="header-popup">Profile</h3>
     <form>
         <fieldset class="mb-3" id="personalInfoFields" disabled>
@@ -12,23 +12,22 @@
                 <input type="text" placeholder="Enter Last Name" class="input-popup" id="lastNameInput">
             </div>
             <!-- <div class="input-profile-popup">
-        <label for="Name" id="email-popup">Email:</label>
-        <input type="email" placeholder="Enter email" class="input-popup" id="emailInput">
-    </div> -->
+            <label for="Name" id="email-popup">Email:</label>
+            <input type="email" placeholder="Enter email" class="input-popup" id="emailInput">
+        </div> -->
         </fieldset>
         <!-- <div class="input-profile-popup">
-        <label for="Name" id="password-label-popup">Password:</label>
-        <input type="password" value="" class="input-popup" id="passwordInput">
-    </div> -->
+            <label for="Name" id="password-label-popup">Password:</label>
+            <input type="password" value="" class="input-popup" id="passwordInput">
+        </div> -->
         <div id="button-popup">
             <button type="submit" class="btn-popup" id="saveBtn" onclick="saveUserInfo()">Save</button>
             <button type="submit" class="btn-popup" id="edit-profile-popup" onclick="editUserInfo()">Edit</button>
-            <button type="submit" id="close-popup-profile" class="btn-popup" onclick="closeModal()">Close</button>
+            <button type="submit" id="close-popup-profile" class="btn-popup"
+                onclick="closeModalProfile()">Close</button>
         </div>
     </form>
 </dialog>
-
-
 
 <!-- Pop up window to sendfeedback -->
 <dialog id="sendFeedback">
@@ -44,7 +43,20 @@
         </div>
         <div>
             <button type="submit" class="btn-popup" id="saveBtn" onclick="submitFeedback()">Submit</button>
-            <button type="submit" id="close-popup-profile" class="btn-popup" onclick="closeModalFeeback()">Close</button>
+            <button type="submit" id="close-popup-profile" class="btn-popup"
+                onclick="closeModalFeeback()">Close</button>
         </div>
     </form>
+</dialog>
+
+<!-- Pop up window to help -->
+<dialog id="help-pop-up">
+    <h3 id="header-popup">Help</h3>
+    <div>
+        <h5><b>For further assistance, Please contact:</b></h5>
+        <p>AssetClub80@gmail.com</p>
+    </div>
+    <div>
+        <button type="submit" id="close-popup-help" class="btn-popup" onclick="closeModalHelp()">Close</button>
+    </div>
 </dialog>
