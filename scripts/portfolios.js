@@ -12,10 +12,13 @@ firebase.auth().onAuthStateChanged((user) => {
                     pg.innerHTML = "<div id='jumbotron'><h1>Welcome to AssetClub, " + userName + "</h1><p>Empower your financial journey with our platform!  <br>Build diversified portfolios spanning stocks and cryptocurrencies, tailored to your financial goals. <br>Let's get started!</p><button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Create portfolio</button></div>"
                 } else {
                     let pg = document.getElementById('portfolio-display');
-                    let str1 = "<div id='jumbotron'><h1>Welcome back to AssetClub, " + userName + "</h1><p>Discover new opportunities and optimize your financial strategy. <br>Let's make your portfolios thrive!<br> <h3>Your portfolios: "
+                    let str1 = "<div id='jumbotron'><h1>Welcome back to AssetClub, " + userName + "</h1><p>Discover new opportunities and optimize your financial strategy. <br>Let's make your portfolios thrive!<br><h3><img src='./img/crypto.svg' alt='star'> stands for cryptos!</h3> <h3><img id='stkimg' src='./img/stock.svg' alt='star'> stands for stocks!</h3><h3>Your portfolios: "
+                    str1 += "<div id=`list-port`>"
                     portfolios.forEach(element => {
-                        str1 += (element.portfolioName + ", ");
+                        str1 += `<a href="javascript:void(0);" id="portfolioSelection" class="dropItem" onclick="assignPortfolio('${element.portfolioName}')">${element.portfolioName}</a>`
+                        str1 += "<br/>"
                     });
+                    str1 += "</div>"
                     str1 += "</h3></p></div>";
                     pg.innerHTML = str1;
                 }
@@ -74,7 +77,7 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 
     loadPortfoliosAssets = () => {
-        // console.log(user.uid + " <<<<")
+        removeAssetList();
         let currentUser = db.collection("users").doc(user.uid);
         currentUser
             .onSnapshot((doc) => {
@@ -110,25 +113,25 @@ firebase.auth().onAuthStateChanged((user) => {
                             // console.log(prices)
                             let str = `<div class="card" id="display-card" style="background: ${bgStyle};"> `
                             str += `<div class="card-content">
-                    <img src="./img/star-svgrepo-com.svg" alt="star">
+                    <img src="./img/crypto.svg" alt="star">
                     <div class="stock-name">
-                        <span>name</span>
+                        <span>Name</span>
                         <h3>${name}</h3>
                     </div>
                     <div class="stock-name">
-                        <span>entry price</span>
+                        <span>Entry</span>
                         <h3>${entry}</h3>
                     </div>
                     <div class="stock-name">
-                        <span>current price</span>
+                        <span>Current</span>
                         <h3>${prices[name].toFixed(2)}</h3>
                     </div>
                     <div class="stock-name">
-                        <span>qty</span>
+                        <span>Qty</span>
                         <h3>${qty}</h3>
                     </div>
                     <div class="stock-value">
-                            <span>Total Price</span>
+                            <span>Total</span>
                             <h3>${(qty*prices[name]).toFixed(2)}</h3>
                         </div>
                     <div class="stock-name">
@@ -160,25 +163,25 @@ firebase.auth().onAuthStateChanged((user) => {
                             // console.log(prices.name, name)
                             let str = `<div class="card" id="display-card" style="background: ${bgStyle};"> `
                             str += `<div class="card-content">
-                        <img src="./img/star-svgrepo-com.svg" alt="star">
+                        <img src="./img/stock.svg" alt="star">
                         <div class="stock-name">
-                            <span>name</span>
+                            <span>Name</span>
                             <h3>${name}</h3>
                         </div>
                         <div class="stock-name">
-                            <span>entry price</span>
+                            <span>Entry</span>
                             <h3>${entry}</h3>
                         </div>
                         <div class="stock-name">
-                            <span>current price</span>
+                            <span>Current</span>
                             <h3>${prices[name].toFixed(2)}</h3>
                         </div>
                         <div class="stock-name">
-                            <span>qty</span>
+                            <span>Qty</span>
                             <h3>${qty}</h3>
                         </div>
                         <div class="stock-value">
-                            <span>Total Price</span>
+                            <span>Total</span>
                             <h3>${(qty*prices[name]).toFixed(2)}</h3>
                         </div>
                         <div class="stock-name">
@@ -234,6 +237,7 @@ firebase.auth().onAuthStateChanged((user) => {
         addAssetForm["quantity-popup-input"].disabled = false;
         addAssetForm["quantity-popup-input"].step = 0.0000001;
         addAssetForm["price-popup-input"].disabled = false;
+        isCrypto = true
     });
 
     document.getElementById("addAssetForm")["radio-stock"].addEventListener("change", (e) => {
@@ -242,6 +246,7 @@ firebase.auth().onAuthStateChanged((user) => {
         addAssetForm["quantity-popup-input"].disabled = false;
         addAssetForm["quantity-popup-input"].step = 1;
         addAssetForm["price-popup-input"].disabled = false;
+        isCrypto = false
     })
 
 const inputEl = document.getElementById("assetInput");
@@ -329,13 +334,12 @@ function removeAutocompleteDropDown() {
         const addAssetForm = document.getElementById("addAssetForm");
         addAssetForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            let crypto = addAssetForm["radio-crypto"];
+            const assetType = addAssetForm["radio-crypto"].checked ? "crypto" : "stock";
             //if user adds crypto
-            if (crypto.checked && addAssetForm["assetInput"].disabled == true) {
+            if (assetType && addAssetForm["assetInput"].disabled == true) {
                 const assetName = addAssetForm["assetInput"].value;
                 const assetQty = addAssetForm["quantity-popup-input"].value;
                 const assetBuyPrice = addAssetForm["price-popup-input"].value;
-                const assetType = "crypto";
                 // calculate total price in the pop up modal
                 const assetTotalPrice = +assetQty * +assetBuyPrice;
                 // replace value in the pop modal total price
@@ -356,61 +360,28 @@ function removeAutocompleteDropDown() {
                                 var portList = doc.data().portfolios
                                 for (let i = 0; i < portList.length; i++) {
                                     if (portList[i].portfolioName == localStorage.getItem("current_portfolio")) {
-                                        portList[i].assets.push(newAsset);
-                                    }
-
-                                }
-                                currentUser
-                                    .update({
-                                        portfolios: portList
-                                    })
-                                    .then(() => {
-                                        console.log("Portfolios updated successfully");
-                                        document.querySelector('#add-stock-popup').close();
-                                        removeAssetList();
-                                        resetForm();
-                                        loadPortfoliosAssets();
-
-                                    })
-                                    .catch((error) => {
-                                        console.log(error);
-                                    })
-                            }
-                        })
-                        .catch(error => console.log(error))
-                } else {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Invalid Input",
-                        text: "Make sure you entered all the information correctly",
-                    });
-                }
-            } else {
-                const assetName = addAssetForm["assetInput"].value;
-                const assetQty = addAssetForm["quantity-popup-input"].value;
-                const assetBuyPrice = addAssetForm["price-popup-input"].value;
-                const assetType = "stock";
-                // calculate total price in the pop up modal
-                const assetTotalPrice = +assetQty * +assetBuyPrice;
-                // replace value in the pop modal total price
-                document.getElementById("total-popup-input").innerHTML = assetTotalPrice;
-                if (assetQty > 0 && assetBuyPrice > 0) {
-                    let currentUser = db.collection("users").doc(user.uid);
-                    const newAsset = {
-                        assetName,
-                        assetQty,
-                        assetEntryPrice: assetBuyPrice,
-                        assetType,
-                    }
-
-                    currentUser
-                        .get()
-                        .then((doc) => {
-                            if (doc.exists) {
-                                var portList = doc.data().portfolios
-                                for (let i = 0; i < portList.length; i++) {
-                                    if (portList[i].portfolioName == localStorage.getItem("current_portfolio")) {
-                                        portList[i].assets.push(newAsset);
+                                        let toParse = portList[i].assets ;
+                                        let flag = true;
+                                        toParse.forEach((asset, index) => {
+                                            if (asset.assetName === newAsset.assetName){
+                                                let price = parseFloat(asset.assetEntryPrice);
+                                                let newPrice = parseFloat(newAsset.assetEntryPrice)
+                                                let qty = parseFloat(asset.assetQty);
+                                                let oldqty = parseFloat(newAsset.assetQty);
+                                                let total = qty+oldqty ;
+                                                let newEntry = (qty*price)/total+((newAsset.assetQty*newAsset.assetEntryPrice)/total);
+                                                newAsset.assetQty = total;
+                                                newAsset.assetEntryPrice = newEntry;
+                                                toParse[index] = newAsset
+                                                asset = newAsset;
+                                                flag = false;
+                                            }
+                                        })
+                                        if (flag){
+                                            portList[i].assets.push(newAsset);
+                                        } else{          
+                                            portList[i].assets = toParse;
+                                        }
                                     }
 
                                 }
@@ -442,7 +413,7 @@ function removeAutocompleteDropDown() {
             }
         })
     }
-
+    
     loadPortfolios();
 
 });

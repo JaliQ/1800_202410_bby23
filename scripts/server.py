@@ -4,7 +4,7 @@
 # from flask import Flask, jsonify, request
 # from flask_cors import CORS
 
-# coinAPIKEY = "4e3b1866-0baf-40cc-97ea-241926a1b9ce"
+# coinAPIKEY = ""
 
 # url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/map"
 
@@ -49,10 +49,10 @@
 #     session.headers.update(headers)
 #     response = session.get('https://yahoo-finance127.p.rapidapi.com/multi-quote/'+symbols)
 #     data = json.loads(response.text)
-#     prices = []
-#     for item in data.values():
-#         prices.append({item["symbol"] : item["regularMarketPrice"]["raw"]})
-#     return jsonify(prices)
+#     res = {}
+#     for item in symbols:
+#         res[item] = data
+#     return jsonify(res)
 
 # def rewriteCryptoList():
 #   parameters = {

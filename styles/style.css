@@ -219,6 +219,15 @@ body {
         min-height: calc(100vh - 23.5vh);
 
 }
+#articles{
+        min-height: calc(100vh - 28vh);
+
+}
+
+#list-port {
+        display: flex;
+        flex-direction: column;
+}
 
 /* Jumbotron / wlecome hero */
 #jumbotron{
@@ -310,8 +319,9 @@ footer h3 {
 }
 
 .card img {
-        width: 30px;
+        margin-top: 8px;
 }
+
 
 .card img:hover {
         cursor: pointer;
@@ -619,6 +629,18 @@ footer h3 {
                 width: 90px;
                 height: 50px;
                 font-size: 22px;
+        }
+
+        .stock-name, .stock-value{
+                max-width: 13%;
+        }
+
+        .stock-name h3{
+                font-size: 16px;
+        }
+
+        .stock-value h3{
+                font-size: 16px;
         }
 
         /* Navabr css */
