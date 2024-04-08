@@ -70,7 +70,10 @@ closeModalHelp = () => {
 }
 
 closeModalPortfolio = () => {
-    document.getElementById("add-stock-popup").style.display = "none";
+    // alert("Here")
+    const modalPort = document.querySelector('#add-stock-popup')
+    // // document.getElementById("add-stock-popup").style.display = "none";
+    modalPort.close();
 }
 
 
