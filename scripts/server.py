@@ -4,7 +4,7 @@
 # from flask import Flask, jsonify, request
 # from flask_cors import CORS
 
-# coinAPIKEY = "4e3b1866-0baf-40cc-97ea-241926a1b9ce"
+# coinAPIKEY = ""
 
 # url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/map"
 
