@@ -224,6 +224,11 @@ body {
 
 }
 
+#list-port {
+        display: flex;
+        flex-direction: column;
+}
+
 /* Jumbotron / wlecome hero */
 #jumbotron{
         text-align: center;

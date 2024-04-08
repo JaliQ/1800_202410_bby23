@@ -13,9 +13,12 @@ firebase.auth().onAuthStateChanged((user) => {
                 } else {
                     let pg = document.getElementById('portfolio-display');
                     let str1 = "<div id='jumbotron'><h1>Welcome back to AssetClub, " + userName + "</h1><p>Discover new opportunities and optimize your financial strategy. <br>Let's make your portfolios thrive!<br><h3><img src='./img/crypto.svg' alt='star'> stands for cryptos!</h3> <h3><img id='stkimg' src='./img/stock.svg' alt='star'> stands for stocks!</h3><h3>Your portfolios: "
+                    str1 += "<div id=`list-port`>"
                     portfolios.forEach(element => {
                         str1 += `<a href="javascript:void(0);" id="portfolioSelection" class="dropItem" onclick="assignPortfolio('${element.portfolioName}')">${element.portfolioName}</a>`
+                        str1 += "<br/>"
                     });
+                    str1 += "</div>"
                     str1 += "</h3></p></div>";
                     pg.innerHTML = str1;
                 }
