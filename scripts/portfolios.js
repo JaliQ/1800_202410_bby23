@@ -77,7 +77,7 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 
     loadPortfoliosAssets = () => {
-        removeAssetList();
+        removeAssetList()
         let currentUser = db.collection("users").doc(user.uid);
         currentUser
             .onSnapshot((doc) => {
@@ -120,15 +120,15 @@ firebase.auth().onAuthStateChanged((user) => {
                     </div>
                     <div class="stock-name">
                         <span>Entry</span>
-                        <h3>${entry}</h3>
+                        <h3>${entry.toFixed(4)}</h3>
                     </div>
                     <div class="stock-name">
                         <span>Current</span>
-                        <h3>${prices[name].toFixed(2)}</h3>
+                        <h3>${prices[name].toFixed(4)}</h3>
                     </div>
                     <div class="stock-name">
                         <span>Qty</span>
-                        <h3>${qty}</h3>
+                        <h3>${qty.toFixed(4)}</h3>
                     </div>
                     <div class="stock-value">
                             <span>Total</span>
