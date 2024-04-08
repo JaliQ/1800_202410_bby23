@@ -110,7 +110,7 @@ firebase.auth().onAuthStateChanged((user) => {
                             let qty = asset.assetQty;
                             let entry = asset.assetEntryPrice;
                             let bgStyle = (((qty * prices[name] - entry * qty) / (qty * entry)) * 100) > 0 ? '#1AF18D' : 'red';
-                            // console.log(prices.name, name)
+                            // console.log(prices)
                             let str = `<div class="card" id="display-card" style="background: ${bgStyle};"> `
                             str += `<div class="card-content">
                     <img src="./img/crypto.svg" alt="star">
@@ -255,8 +255,8 @@ let stocks = []
 getCryptos()
 getStocks()
 async function getCryptos() {
-    // let coins  = await fetch('../data/cryptos.json');
-    let coins = await fetch('./data/cryptos.json');
+    let coins  = await fetch('../data/cryptos.json');
+    // let coins = await fetch('./data/cryptos.json');
     let data = await coins.json();
 
     cryptos = data.map((coin) => {
