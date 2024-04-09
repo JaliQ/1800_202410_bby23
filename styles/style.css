@@ -224,6 +224,15 @@ body {
 
 }
 
+.del{     
+        padding-top: 15px;
+}
+
+.del button{
+        width: 30px;
+        height: 30px;
+}
+
 #list-port {
         display: flex;
         flex-direction: column;
