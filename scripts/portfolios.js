@@ -76,11 +76,11 @@ firebase.auth().onAuthStateChanged((user) => {
             })
     }
 
-    loadPortfoliosAssets = () => {
-        removeAssetList()
+    loadPortfoliosAssets = () => {   
         let currentUser = db.collection("users").doc(user.uid);
         currentUser
             .onSnapshot((doc) => {
+                
                 var portList = doc.data().portfolios;  
                 for (let i = 0; i < portList.length; i++) {
                     if (portList[i].portfolioName == localStorage.getItem("current_portfolio")) {
@@ -97,6 +97,7 @@ firebase.auth().onAuthStateChanged((user) => {
                     }
                 })
                 let params = ""
+                if (cryptoList.length>0){
                 cryptoList.forEach(name => {
                     params += `${name},`
                 })
@@ -104,11 +105,13 @@ firebase.auth().onAuthStateChanged((user) => {
                 fetch(`https://comp1800project.pythonanywhere.com/prices?symbol=${params}`)
                     .then(res => res.json())
                     .then(prices => {
+                        removeAssetList()
                         const cardArea = document.getElementById("assets-examples");
                         assetList.forEach(asset => {
-                           if (asset.assetType==="crypto") {let name = asset.assetName;
-                            let qty = asset.assetQty;
-                            let entry = asset.assetEntryPrice;
+                           if (asset.assetType==="crypto") {
+                            let name = asset.assetName;
+                            let qty = parseFloat(asset.assetQty);
+                            let entry = parseFloat(asset.assetEntryPrice);
                             let bgStyle = (((qty * prices[name] - entry * qty) / (qty * entry)) * 100) > 0 ? '#1AF18D' : 'red';
                             // console.log(prices)
                             let str = `<div class="card" id="display-card" style="background: ${bgStyle};"> `
@@ -138,12 +141,16 @@ firebase.auth().onAuthStateChanged((user) => {
                         <span>ROI</span>
                         <h3>${(((qty * prices[name] - entry * qty) / (qty * entry)) * 100).toFixed(2)}%</h3>
                     </div>
+                    <div class="del">
+                        <button type="button" class="btn-close" aria-label="Close" onclick="delAs('${name}')"></button>       
+                    </div>
                 </div>`
                             str += `</div>`;
                             cardArea.innerHTML += str;}
                         });
 
                     })
+                }
                 let stockParams = ""
                 if (stockList.length>0){
                 stockList.forEach(stock => {
@@ -157,8 +164,8 @@ firebase.auth().onAuthStateChanged((user) => {
                     assetList.forEach(asset => {                      
                         if (asset.assetType==="stock") {
                             let name = asset.assetName;
-                            let qty = asset.assetQty;
-                            let entry = asset.assetEntryPrice;
+                            let qty = parseFloat(asset.assetQty);
+                            let entry = parseFloat(asset.assetEntryPrice);
                             let bgStyle = (((qty * prices[name] - entry * qty) / (qty * entry)) * 100) > 0 ? '#1AF18D' : 'red';
                             // console.log(prices.name, name)
                             let str = `<div class="card" id="display-card" style="background: ${bgStyle};"> `
@@ -188,6 +195,9 @@ firebase.auth().onAuthStateChanged((user) => {
                             <span>ROI</span>
                             <h3>${(((qty * prices[name] - entry * qty) / (qty * entry)) * 100).toFixed(2)}%</h3>
                         </div>
+                        <div class="del">
+                        <button type="button" class="btn-close" aria-label="Close" onclick="delAs()"></button>       
+                    </div>
                     </div>`
                         str += `</div>`;
                         cardArea.innerHTML += str;}
@@ -198,6 +208,41 @@ firebase.auth().onAuthStateChanged((user) => {
                 
             })
 
+    }
+
+    delAs = (name) =>{
+        let currentUser = db.collection("users").doc(user.uid);
+        currentUser.get().then((doc) => {
+            if (doc.exists) {
+                let portList = doc.data().portfolios;
+
+                for (let i = 0; i < portList.length; i++) {
+                    if (portList[i].portfolioName === localStorage.getItem("current_portfolio")) {
+                        let assets = portList[i].assets;
+
+                        for (let j = 0; j < assets.length; j++) {
+                            if (assets[j].assetName === name) {
+                                assets.splice(j, 1); // Remove the asset from the array
+                                break;
+                            }
+                        }
+
+                        currentUser.update({
+                            portfolios: portList
+                        }).then(() => {
+                            loadPortfoliosAssets();
+                        }).catch((error) => {
+                            console.error("Error updating document: ", error);
+                        });
+
+                        break;
+                    }
+                }
+            }
+        }).catch((error) => {
+            console.error("Error getting document:", error);
+        });
+        
     }
 
     assignPortfolio = (portfolioName) => {
@@ -369,7 +414,7 @@ function removeAutocompleteDropDown() {
                                                 let qty = parseFloat(asset.assetQty);
                                                 let oldqty = parseFloat(newAsset.assetQty);
                                                 let total = qty+oldqty ;
-                                                let newEntry = (qty*price)/total+((newAsset.assetQty*newAsset.assetEntryPrice)/total);
+                                                let newEntry = (qty*price)/total+((oldqty*newPrice)/total);
                                                 newAsset.assetQty = total;
                                                 newAsset.assetEntryPrice = newEntry;
                                                 toParse[index] = newAsset
@@ -390,12 +435,10 @@ function removeAutocompleteDropDown() {
                                         portfolios: portList
                                     })
                                     .then(() => {
-                                        console.log("Portfolios updated successfully");
                                         document.querySelector('#add-stock-popup').close();
                                         removeAssetList();
                                         resetForm();
                                         loadPortfoliosAssets();
-
                                     })
                                     .catch((error) => {
                                         console.log(error);
@@ -412,9 +455,9 @@ function removeAutocompleteDropDown() {
                 }
             }
         })
+        
     }
     
-    loadPortfolios();
 
 });
 
