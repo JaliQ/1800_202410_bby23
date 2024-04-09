@@ -76,6 +76,8 @@ firebase.auth().onAuthStateChanged((user) => {
             })
     }
 
+    loadPortfolios();
+
     loadPortfoliosAssets = () => {   
         let currentUser = db.collection("users").doc(user.uid);
         currentUser
@@ -293,6 +295,7 @@ firebase.auth().onAuthStateChanged((user) => {
         addAssetForm["price-popup-input"].disabled = false;
         isCrypto = false
     })
+
 
 const inputEl = document.getElementById("assetInput");
 let cryptos = []
