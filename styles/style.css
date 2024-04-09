@@ -215,20 +215,31 @@ body {
 }
 
 /* This is for main page so the footer will not be covering anything */
-#containerPortfolios{
+#containerPortfolios {
         min-height: calc(100vh - 23.5vh);
 
 }
-#articles{
+
+/* for the help page to make the footer stay at the end of the page */
+#containerHelp {
+        min-height: 75vh;
+}
+
+#portfolioSelection:hover{
+        background-color: #000000;
+        color:#07f2c2;
+}
+
+#articles {
         min-height: calc(100vh - 28vh);
 
 }
 
-.del{     
+.del {
         padding-top: 15px;
 }
 
-.del button{
+.del button {
         width: 30px;
         height: 30px;
 }
@@ -239,14 +250,14 @@ body {
 }
 
 /* Jumbotron / wlecome hero */
-#jumbotron{
+#jumbotron {
         text-align: center;
         background-color: #0000007a;
         padding: 2%;
         height: 25vh;
 }
 
-#jumbotron p{
+#jumbotron p {
         font-size: medium;
 }
 
@@ -640,15 +651,15 @@ footer h3 {
                 font-size: 22px;
         }
 
-        .stock-name, .stock-value{
+        .stock-name, .stock-value {
                 max-width: 13%;
         }
 
-        .stock-name h3{
+        .stock-name h3 {
                 font-size: 16px;
         }
 
-        .stock-value h3{
+        .stock-value h3 {
                 font-size: 16px;
         }
 
@@ -680,6 +691,7 @@ footer h3 {
         #portfolioTag {
                 margin-top: 10%;
                 margin-right: 0%;
+                grid-template-columns: 30% auto;
         }
 
         #dropDownProfile {
@@ -693,6 +705,7 @@ footer h3 {
         #learnTag {
                 margin-top: 10%;
                 margin-left: 0%;
+                grid-template-columns: 30% auto;
         }
 
         #userlogo {
@@ -709,7 +722,7 @@ footer h3 {
         #usertag {
                 margin-top: 10%;
                 text-align: center;
-
+                grid-template-columns: auto 40%;
         }
 
         .dropDown .dropContent {
@@ -871,12 +884,17 @@ footer h3 {
                 text-align: center;
         }
 
-        #containerPortfolios{
+        #containerPortfolios {
                 min-height: calc(100vh - 34vh);
-        
+
         }
 
-        footer{
+        /* for the help page to make the footer stay at the end of the page */
+        #containerHelp {
+                min-height: 65vh;
+        }
+
+        footer {
                 height: 12vh;
         }
 
